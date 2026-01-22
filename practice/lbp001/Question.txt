@@ -1,0 +1,6 @@
+LBPQ001: PRIME DIGIT OR NOT
+
+Implement a program to calculate the sum of prime digit in the number.
+prime digit from 0 to 9 are: 2, 3, 5, 7
+input: 123	input: 101	input: 142
+output: 5	output: 0	output: 2
