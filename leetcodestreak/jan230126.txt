@@ -1,0 +1,177 @@
+Date: 23th Jan, 2026
+Question ID: 3510
+Link: https://leetcode.com/problems/minimum-pair-removal-to-sort-array-ii/description/?envType=daily-question&envId=2026-01-23
+
+============================================================
+ALGORITHM DESIGN: THE "LEGO MERGE" GAME
+============================================================
+Author: Koushal Jha
+
+
+Think of this algorithm like a row of Lego bricks with numbers 
+written on them. Some bricks are small, and some are big. 
+Sometimes, a big brick is standing in front of a small brick—
+we call this a "Trouble Spot."
+
+Our goal is to merge bricks together until all "Trouble Spots" 
+are gone. Here is the step-by-step plan:
+
+1. CONNECT THE CHAIN: 
+   We link all numbers together so every number knows its 
+   left and right neighbor.
+
+2. SPOT THE TROUBLE: 
+   We look for every place where the left number is bigger 
+   than the right number (a decrease). We count these spots.
+
+3. THE SMART TO-DO LIST (Priority Queue): 
+   We look at every pair of neighbors and put them in a 
+   special list. This list always gives us the pair with 
+   the SMALLEST SUM first. Small sums are "cheaper" to fix.
+
+4. THE SQUISH (Merging): 
+   We take the cheapest pair and squish them into one brick.
+   The new brick's value is the sum of the two old ones.
+
+5. CLEAN UP THE NEIGHBORS: 
+   Because we squished two bricks into one, we have new 
+   neighbors! we check if we fixed an old trouble spot or 
+   accidentally created a new one.
+
+6. WINNING: 
+   We keep squishing until there are zero "Trouble Spots" 
+   left in the line.
+
+============================================================
+JAVA CODE WITH KID-FRIENDLY COMMENTS
+============================================================
+
+import java.util.PriorityQueue;
+
+// A Node is like a person in a line holding a number card
+class Node {
+    long value;   // The number on their card
+    int left;     // Their original spot in line (ID tag)
+    Node prev;    // The friend standing to their left
+    Node next;    // The friend standing to their right
+
+    Node(long value, int left) {
+        this.value = value;
+        this.left = left;
+    }
+}
+
+// This is a "Pair" that might be squished together
+class PQItem implements Comparable<PQItem> {
+    Node first;   // Left friend
+    Node second;  // Right friend
+    long cost;    // The sum of their numbers
+
+    PQItem(Node first, Node second, long cost) {
+        this.first = first;
+        this.second = second;
+        this.cost = cost;
+    }
+
+    // This decides which pair gets picked first from the To-Do list
+    @Override
+    public int compareTo(PQItem other) {
+        // Rule: Always pick the smallest sum (cost) first!
+        if (this.cost == other.cost) {
+            return this.first.left - other.first.left;
+        }
+        return this.cost < other.cost ? -1 : 1;
+    }
+}
+
+public class Solution {
+
+    public int minimumPairRemoval(int[] nums) {
+        // Our smart list that finds the smallest pairs automatically
+        PriorityQueue<PQItem> pq = new PriorityQueue<>();
+        
+        // A checklist to remember if a person has already been merged away
+        boolean[] merged = new boolean[nums.length];
+
+        int decreaseCount = 0; // Number of "Trouble Spots"
+        int count = 0;         // Total number of merges we perform
+        
+        // --- STEP 1: Building the chain ---
+        Node head = new Node(nums[0], 0);
+        Node current = head;
+
+        for (int i = 1; i < nums.length; i++) {
+            Node newNode = new Node(nums[i], i);
+            current.next = newNode; // Connect forward
+            newNode.prev = current; // Connect backward
+            
+            // Put this pair into our smart list
+            pq.offer(new PQItem(current, newNode, current.value + newNode.value));
+            
+            // If Left > Right, we found a Trouble Spot!
+            if (nums[i - 1] > nums[i]) {
+                decreaseCount++;
+            }
+            current = newNode;
+        }
+
+        // --- STEP 2: The Merging Loop ---
+        // Keep merging as long as there is a "Big Number" before a "Small Number"
+        while (decreaseCount > 0 && !pq.isEmpty()) {
+            PQItem item = pq.poll(); // Get the pair with the smallest sum
+            Node first = item.first;
+            Node second = item.second;
+            long cost = item.cost;
+
+            // If either friend is already gone, skip this pair
+            if (merged[first.left] || merged[second.left] || first.value + second.value != cost) {
+                continue;
+            }
+
+            count++; // We just did one merge!
+            
+            // If this merge fixes the Big-before-Small problem between these two
+            if (first.value > second.value) {
+                decreaseCount--;
+            }
+
+            // --- STEP 3: Updating the neighbors ---
+            Node prevNode = first.prev;
+            Node nextNode = second.next;
+            
+            // Remove 'second' from the chain and connect 'first' to the next person
+            first.next = nextNode;
+            if (nextNode != null) {
+                nextNode.prev = first;
+            }
+
+            // Check if the NEW neighbor on the LEFT changed our Trouble Spot count
+            if (prevNode != null) {
+                if (prevNode.value > first.value && prevNode.value <= cost) {
+                    decreaseCount--; // We fixed a spot!
+                } else if (prevNode.value <= first.value && prevNode.value > cost) {
+                    decreaseCount++; // We created a new spot.
+                }
+                // Add this new combination to the list
+                pq.offer(new PQItem(prevNode, first, prevNode.value + cost));
+            }
+
+            // Check if the NEW neighbor on the RIGHT changed our Trouble Spot count
+            if (nextNode != null) {
+                if (second.value > nextNode.value && cost <= nextNode.value) {
+                    decreaseCount--; // We fixed a spot!
+                } else if (second.value <= nextNode.value && cost > nextNode.value) {
+                    decreaseCount++; // We created a new spot.
+                }
+                // Add this new combination to the list
+                pq.offer(new PQItem(first, nextNode, cost + nextNode.value));
+            }
+
+            // Update 'first' with the new combined number and mark 'second' as gone
+            first.value = cost;
+            merged[second.left] = true;
+        }
+
+        return count; // Send back the total number of merges done
+    }
+}
