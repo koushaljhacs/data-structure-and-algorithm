@@ -135,3 +135,44 @@ MANDATORY STANDARDS:
 - Variable:    iplno
 - Scanner:     Scanner input = new Scanner(System.in);
 ------------------------------------------------------------
+
+------------------------------------------------------------
+QUESTION ID: 004
+TITLE: Cupcake Packaging
+
+DESCRIPTION:
+Elavenil needs to decide on a package size 'A' for N cupcakes. 
+All packages must contain exactly A cupcakes. She makes as 
+many full packages as possible and eats the leftovers. 
+Find the size A (1 to N) that maximizes leftovers. If multiple 
+sizes work, choose the largest size.
+
+TECHNICAL SPECIFICATIONS:
++-------------------+--------------------------------------+
+| Goal              | Maximize N % A                       |
+| Constraints       | 2 <= n <= 10000                      |
+| Condition         | If tied, print the largest size A    |
++-------------------+--------------------------------------+
+
+SAMPLE INPUT AND OUTPUT:
++-------------------+--------------------------------------+
+| Sample Input      | Sample Output                        |
++-------------------+--------------------------------------+
+| 7643              | 3822                                 |
++-------------------+--------------------------------------+
+
+LOGICAL TEST CASES:
++---------+--------------------+---------------------------+
+| Case ID | Input (N)          | Expected Output (A)       |
++---------+--------------------+---------------------------+
+| 01      | 7643               | 3822                      |
++---------+--------------------+---------------------------+
+| 02      | 3895               | 1948                      |
++---------+--------------------+---------------------------+
+
+MANDATORY STANDARDS:
+- Package:     ProgrammingInJava.InputAndOutput;
+- Class Name:  Q004
+- Variable:    int n
+- Scanner:     Scanner input = new Scanner(System.in);
+------------------------------------------------------------
