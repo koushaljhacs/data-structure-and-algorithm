@@ -1,0 +1,142 @@
+======================================================================
+UNIX, GIT, & JAVASCRIPT MASTER GUIDE
+======================================================================
+
+-----------------------------------------------------------
+SECTION 1: UNIX COMMANDS (The Foundation)
+-----------------------------------------------------------
+Location: D:/MY_PROJECT
+
+1. LS (List) - SEEING THE TREE
+   - Syntax: ls [options]
+   - Theory: Used to view files. 
+   - Implementation:
+     ls -l   (Long format: shows permissions like -rwxr-xr-x)
+     ls -a   (All: shows hidden files like .git)
+
+2. MKDIR & CD - GROWING THE TREE
+   - mkdir: Creates a folder. 
+   - cd: Moves the "current location".
+   - Implementation: 
+     mkdir JS_TEST
+     cd JS_TEST
+
+3. TOUCH, ECHO, & CAT - CREATING & READING
+   - touch <file>: Creates an empty file.
+   - echo "text" > <file>: Writes text into a file (Overwrites).
+   - echo "text" >> <file>: Adds text to the end (Appends).
+   - cat <file>: Shows all text in the terminal.
+   - Implementation:
+     echo "Study Hard" > exam.txt
+
+4. HEAD & TAIL - PARTIAL READING
+   - Syntax: head -n <number> <file> / tail -n <number> <file>
+   - Implementation:
+     head -n 5 log.txt   (Shows top 5 lines)
+     tail -n 3 log.txt   (Shows last 3 lines)
+
+5. CP, RM, MV - MOVING & DELETING
+   - cp <src> <dest>: Copy.
+   - rm <file>: Delete file.
+   - rm -r <folder>: Delete folder (Recursive).
+   - mv <old> <new>: Rename or Move.
+
+6. GREP & WHOAMI - SEARCHING
+   - grep "word" <file>: Searches for a string.
+   - whoami: Displays current user.
+   - Implementation: grep "Error" server.log
+
+7. CHMOD, SUDO, VIM, NANO - SYSTEM & EDITORS
+   - sudo: Run as Admin (SuperUser Do).
+   - chmod: Change permissions (4-Read, 2-Write, 1-Execute).
+     Example: chmod 755 script.js
+   - nano/vim: Terminal text editors.
+
+-----------------------------------------------------------
+SECTION 2: GIT COMMANDS (The Version Control)
+-----------------------------------------------------------
+
+1. INITIALIZATION & SETUP
+   - git init: Creates the hidden .git folder.
+   - git config --global user.name "YourName"
+   - git config --global user.email "you@example.com"
+
+2. TRACKING CHANGES (The Workflow)
+   - git status: Shows which files are changed/untracked.
+   - git add <file>: Moves file to the Staging Area.
+   - git commit -m "msg": Saves snapshot to Local Repo.
+
+3. BRANCHING (Parallel Universes)
+   - git branch <name>: Creates a new branch.
+   - git checkout <name>: Switches to that branch.
+   - git branch -m <new-name>: Renames a branch.
+   - git merge <name>: Combines <name> into your current branch.
+   - git branch -d <name>: Deletes a branch.
+
+4. REMOTE (Internet)
+   - git clone <url>: Downloads a repo to your PC.
+   - git push origin <branch>: Sends local saves to GitHub.
+   - git pull origin <branch>: Downloads and merges from GitHub.
+   - git fork: (On GitHub) Copies someone's repo to your account.
+
+-----------------------------------------------------------
+SECTION 3: JAVASCRIPT & NPM (The Logic)
+-----------------------------------------------------------
+
+1. VARIABLES & OBJECTS
+   - let: Block-scoped variable (can change).
+   - Object: { key: value } pairs.
+   - JSON: A string format of an object.
+   - Implementation:
+     let person = { "name": "Hitanshu" }; 
+     let jsonStr = JSON.stringify(person); // Object to JSON
+
+2. NPM (Node Package Manager)
+   - npm init: Sets up project.
+   - -y option: Skips questions, sets defaults.
+   - npm install <pkg>: Downloads a tool.
+
+3. FUNCTIONS (Parameters vs Arguments)
+   - Parameter: The variable in the definition (x).
+   - Argument: The real value passed (5).
+   - Implementation:
+     function greet(msg) { console.log(msg); } // msg is Parameter
+     greet("Hello!"); // "Hello!" is Argument
+
+4. ASYNCHRONOUS PROMISES & .THEN()
+   - Promise: An object that will finish later.
+   - .then(): Runs only if successful.
+   - Implementation:
+     const myPromise = new Promise((resolve, reject) => {
+         let success = true;
+         if(success) resolve("Success!");
+         else reject("Error!");
+     });
+     myPromise.then((data) => console.log(data)).catch((err) => console.log(err));
+
+5. FILE SYSTEM (fs module) - REQUIRE, READ, WRITE, DELETE
+   - REQUIRE: Imports the tool.
+   - Implementation:
+     const fs = require('fs');
+     
+     // WRITE (Sync)
+     fs.writeFileSync('test.txt', 'Hello World');
+     
+     // READ (Sync)
+     let content = fs.readFileSync('test.txt', 'utf8');
+     console.log(content);
+     
+     // DELETE (Sync)
+     fs.unlinkSync('test.txt');
+
+-----------------------------------------------------------
+FINAL TREE VISUALIZATION
+-----------------------------------------------------------
+D:/MY_PROJECT
+├── .git/               (git init)
+├── node_modules/       (npm install)
+├── package.json        (npm init -y)
+├── app.js              (touch app.js)
+└── data.txt            (fs.writeFileSync)
+
+======================================================================
