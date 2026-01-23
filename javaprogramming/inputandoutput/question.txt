@@ -176,3 +176,42 @@ MANDATORY STANDARDS:
 - Variable:    int n
 - Scanner:     Scanner input = new Scanner(System.in);
 ------------------------------------------------------------
+
+QUESTION ID: 005
+TITLE: Surface Area of the Object
+
+DESCRIPTION:
+Selvan is playing with an object of random size. He knows 
+the Length, Width, and Height of the object but needs help 
+calculating its total surface area.
+
+TECHNICAL SPECIFICATIONS:
++-------------------+--------------------------------------+
+| Formula           | SA = 2 * [wl + lh + hw]              |
+| Constraints       | 1 <= l, w, h <= 10                   |
++-------------------+--------------------------------------+
+
+SAMPLE INPUT AND OUTPUT:
++-------------------+--------------------------------------+
+| Sample Input      | Sample Output                        |
++-------------------+--------------------------------------+
+| 3                 | 42                                   |
+| 2                 |                                      |
+| 3                 |                                      |
++-------------------+--------------------------------------+
+
+LOGICAL TEST CASES:
++---------+--------------------+---------------------------+
+| Case ID | Input (l, w, h)    | Expected Output           |
++---------+--------------------+---------------------------+
+| 01      | 3, 2, 3            | 42                        |
++---------+--------------------+---------------------------+
+| 02      | 3, 7, 4            | 122                       |
++---------+--------------------+---------------------------+
+
+MANDATORY STANDARDS:
+- Package:     ProgrammingInJava.InputAndOutput;
+- Class Name:  Q005
+- Variables:   length, width, height
+- Scanner:     Scanner input = new Scanner(System.in);
+------------------------------------------------------------
