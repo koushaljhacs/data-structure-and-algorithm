@@ -1,0 +1,304 @@
+================================================================================
+                            Assignment -1: Course Cards Design
+================================================================================
+AUTHOR: KOUSHAL JHA 
+MANAGED BY: OctNov 
+
+ Deadline: 25th January, 2026 before 6:00 PM
+ Total Marks: 20
+ Objective: Recreate exact course cards design using HTML & CSS
+
+===============================================================================
+                            FOLDER STRUCTURE
+===============================================================================
+
+Create this exact structure in your OctNov folder:
+
+OctNov/
+└── UITechnologies/
+    └── Assignment-1/
+        ├── assets/                    (Place all 8 images here)
+        │   ├── amazon-web-service.jpg
+        │   ├── manual-testing.png
+        │   ├── crt.png
+        │   ├── seo-online-tranning.png
+        │   ├── unix-linux.png
+        │   ├── mulesoft.png
+        │   ├── data-science-with-ai.png
+        │   └── r-programminng-online-training.png
+        └── public/                    (Your code files here)
+            ├── index.html             (Main HTML file)
+            ├── style.css              (CSS styles)
+            └── README.md              (Documentation)
+
+===============================================================================
+                            REQUIREMENTS
+===============================================================================
+
+1. HTML STRUCTURE:
+   • Create container: <div class="course-container">
+   • Create 8 cards: <div class="card">
+   • Each card has 3 sections:
+       1. Header with image
+       2. Body with course details
+       3. Footer with two buttons
+
+2. COURSE CARDS (8 Total):
+   1. Amazon Web Services (AWS) - Rating: 4.5 stars
+   2. Manual Testing - Rating: 4.5 stars
+   3. Campus Recruitment Training (CRT) - Rating: 4.5 stars
+   4. SEO Online Training - Rating: 4.5 stars
+   5. Unix/Linux - Rating: 4.5 stars
+   6. MuleSoft - Rating: 4.5 stars
+   7. Data Science & AI - Rating: 5 stars
+   8. R Programming Online Training - Rating: 4.5 stars
+
+   Each card must show:
+   ✓ Course Title
+   ✓ Star Rating (Bootstrap icons)
+   ✓ Duration: "---" 
+   ✓ Start Date: "Batch Starts Soon" (in RED color)
+
+3. IMAGE REFERENCES (Use EXACT these paths in HTML):
+   • AWS:         <img src="../assets/amazon-web-service.jpg" alt="Amazon Web Services">
+   • Manual Test: <img src="../assets/manual-testing.png" alt="Manual Testing">
+   • CRT:         <img src="../assets/crt.png" alt="Campus Recruitment Training">
+   • SEO:         <img src="../assets/seo-online-tranning.png" alt="SEO Online Training">
+   • Unix/Linux:  <img src="../assets/unix-linux.png" alt="Unix/Linux">
+   • MuleSoft:    <img src="../assets/mulesoft.png" alt="MuleSoft">
+   • Data Science:<img src="../assets/data-science-with-ai.png" alt="Data Science with AI">
+   • R Programming:<img src="../assets/r-programminng-online-training.png" alt="R Programming">
+
+4. CSS STYLING REQUIREMENTS:
+
+   A. UNIVERSAL SETTINGS (Must include):
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f5f5f5;
+          padding: 20px;
+      }
+
+   B. LAYOUT:
+      • Use flexbox for .course-container
+      • Cards wrap to next row
+      • Max 4 cards per row on desktop
+      • Responsive for mobile/tablet
+
+   C. CARD DESIGN:
+      • Width: 280px
+      • White background
+      • Border radius: 8px
+      • Box shadow for depth
+      • Consistent spacing
+
+   D. BUTTONS (CRITICAL REQUIREMENTS):
+      • Two buttons: ENROLL (blue) & SHARE (light gray)
+      • NO GAP between buttons (Use: gap: 0; in .card-footer)
+      • Buttons extend FULLY to card edges (no side padding)
+      • EQUAL width for both buttons (use flex: 1 or width: 50%)
+      • NO dropdown icon on SHARE button
+      • Buttons TOUCH each other (no visible gap)
+      • Remove border-radius from buttons (rectangular shape)
+      • ENROLL button: Blue color (#007bff)
+      • SHARE button: Light gray (#f8f9fa) with 1px border
+
+   E. COLORS & TYPOGRAPHY:
+      • Stars: Yellow (#ffc107)
+      • "Batch Starts Soon": Red (#ff6b6b)
+      • Course title: Bold, #333 color
+      • Regular text: #555 or #666
+
+5. BOOTSTRAP ICONS (Required):
+   • Add in <head>: <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+   • Star:        <i class="bi bi-star-fill"></i>
+   • Half star:   <i class="bi bi-star-half"></i>
+   • Clock:       <i class="bi bi-clock"></i>
+   • Calendar:    <i class="bi bi-calendar-event"></i>
+
+===============================================================================
+                            IMPORTANT RULES
+===============================================================================
+
+ DO NOT USE AI TOOLS for coding
+ You may use AI ONLY for conceptual help (e.g., "how CSS flexbox works?")
+ DO NOT USE ID attributes (Use CLASSES only)
+ Write clean, commented code
+ Follow proper naming conventions
+ Validate your HTML/CSS
+
+===============================================================================
+                            STARTER HTML CODE
+===============================================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Cards Assignment</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="course-container">
+        
+        <!-- CARD 1: AWS -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-image">
+                    <img src="../assets/amazon-web-service.jpg" alt="Amazon Web Services">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="course-title">Amazon Web Services (AWS)</h3>
+                <div class="course-rating">
+                    <!-- Add star icons here -->
+                    <span class="rating-value">4.5</span>
+                </div>
+                <div class="course-detail">
+                    <i class="bi bi-clock"></i>
+                    <span class="duration">Duration: ---</span>
+                </div>
+                <div class="course-detail">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>Start Date: <span class="batch-soon">Batch Starts Soon</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn-enroll">ENROLL</button>
+                <button class="btn-share">SHARE</button>
+            </div>
+        </div>
+        
+        <!-- Add 7 more cards following same structure -->
+        
+    </div>
+</body>
+</html>
+
+===============================================================================
+                            SUBMISSION INSTRUCTIONS
+===============================================================================
+
+STEP-BY-STEP GUIDE:
+    1. Navigate to OctNov folder
+    2. Open terminal at this location
+    3. Run command: git pull
+    4. Check for Assignment-1 folder in repository
+    5. Copy ENTIRE Assignment-1 folder
+    6. Navigate to: OctNov/UITechnologies/
+    7. Paste the folder here
+    8. Complete your assignment
+    9. Ensure all files are properly structured
+
+README.md MUST INCLUDE:
+    ✓ Your Name and Roll Number
+    ✓ Brief description of implementation
+    ✓ Challenges faced
+    ✓ Learning outcomes
+
+===============================================================================
+                            GRADING CRITERIA (20 Marks)
+===============================================================================
+
+1. Exact visual match with reference       - 5 marks
+2. Proper HTML structure                   - 3 marks
+3. Correct CSS implementation              - 5 marks
+4. Button layout (no gap, equal width)     - 3 marks
+5. Responsive design                       - 2 marks
+6. Code quality & comments                 - 2 marks
+7. Folder structure & submission           - 2 marks
+
+===============================================================================
+                            HINTS & TIPS
+===============================================================================
+
+BUTTON SOLUTIONS:
+    • To remove gap: .card-footer { gap: 0; }
+    • Equal width: .btn-enroll, .btn-share { flex: 1; }
+    • Touch buttons: .btn-share { border-left: none; }
+    • Full width: .card-footer { padding: 0; }
+
+COLOR CODES:
+    • ENROLL button: #007bff
+    • SHARE button: #f8f9fa (border: #ddd)
+    • Batch text: #ff6b6b
+    • Stars: #ffc107
+    • Background: #f5f5f5
+
+RESPONSIVE TIPS:
+    • Use @media queries for mobile
+    • Test on different screen sizes
+    • Use percentage/flexible units
+
+COMMON ISSUES & SOLUTIONS:
+    1. Images not showing? Check "../assets/" path
+    2. Icons missing? Verify Bootstrap link path
+    3. Buttons not equal? Use flex: 1 for both
+    4. Gap between buttons? Set gap: 0 in parent
+    5. Buttons not edge-to-edge? Remove side padding
+
+===============================================================================
+                            FOR FIRST-TIMERS
+===============================================================================
+
+This is your first UI assignment! Focus on:
+    1. Understanding flexbox concepts
+    2. Learning CSS properties
+    3. Debugging using browser tools
+    4. Writing clean, organized code
+
+ASK FOR HELP when stuck on:
+    • Flexbox alignment
+    • CSS specificity
+    • Box model understanding
+    • Responsive techniques
+
+BUT CODE YOURSELF! Don't copy-paste.
+
+===============================================================================
+                             LATE SUBMISSION POLICY
+===============================================================================
+
+• No submissions after 6:00 PM, 25th Jan 2026
+• Partial marks for incomplete work
+• Plagiarism = ZERO marks
+• Submit EXACT folder structure
+
+===============================================================================
+                            FINAL CHECKLIST
+===============================================================================
+
+Before submitting, verify:
+    8 cards with correct content
+    Images display properly
+    No gap between buttons
+    Equal button width
+    Buttons touch edges
+    Responsive design
+    Bootstrap icons working
+    Colors match reference
+    Folder structure correct
+    README.md complete
+
+================================================================================
+                           GOOD LUCK! 
+     Remember: The goal is LEARNING, not just completing the assignment.
+================================================================================
