@@ -1,0 +1,145 @@
+============================================================
+                     ASSIGNMENT HEADER
+============================================================
+| Author     : Koushal Jha                                 |
+| Subject    : Java Programming                            |
+| Chapter    : Datatypes and Operators                     |
+| Difficulty : Level 1                                     |
+| Duration   : 48 Hours                                    |
+============================================================
+
+------------------------------------------------------------
+QUESTION ID: Q011
+TITLE: Fence Building Robot
+
+DESCRIPTION:
+Bryan Mills wants a regular polygon fence for his farm. He 
+purchased a robot that can only build fences with a single 
+specific interior angle (alpha). Your task is to determine 
+if there exists any regular polygon that has an interior 
+angle equal to alpha.
+
+TECHNICAL SPECIFICATIONS:
++-------------------+--------------------------------------+
+| Formula           | n = 360 / (180 - alpha)              |
+| Property          | n must be a positive integer >= 3    |
+| Constraints       | 0 < alpha < 180                      |
++-------------------+--------------------------------------+
+
+SAMPLE INPUT AND OUTPUT:
++-------------------+--------------------------------------+
+| Sample Input      | Sample Output                        |
++-------------------+--------------------------------------+
+| 60                | YES                                  |
++-------------------+--------------------------------------+
+
+LOGICAL TEST CASES:
++---------+--------------------+---------------------------+
+| Case ID | Input (alpha)      | Expected Output           |
++---------+--------------------+---------------------------+
+| 01      | 38                 | NO                        |
+| 02      | 68                 | NO                        |
+| 03      | 60                 | YES                       |
+| 04      | 90                 | YES                       |
++---------+--------------------+---------------------------+
+
+MANDATORY STANDARDS:
+- Package:     ProgrammingInJava.DatatypesAndOperators;
+- Class Name:  Q011
+- Keywords:    int y,x; 
+- Operator:    ==, %, =
+
+------------------------------------------------------------
+QUESTION ID: Q012
+TITLE: Video Stream Buffering
+
+DESCRIPTION:
+Mbappe and Pogba want to watch a video of length 'c' seconds. 
+The video requires 'a' units of data per second to watch, 
+but their internet speed only allows downloading 'b' units 
+per second. To watch without pauses (hang-ups), they must 
+wait for an initial 't' seconds. Find the minimum integer 
+waiting time 't' such that the downloaded data is always 
+greater than or equal to the data consumed.
+
+TECHNICAL SPECIFICATIONS:
++-------------------+--------------------------------------+
+| Formula           | t = ceil(c * (a - b) / a)            |
+| Constraints       | 1 <= a, b, c <= 1000; a > b          |
+| Logic             | Data Downloaded >= Data Watched      |
++-------------------+--------------------------------------+
+
+SAMPLE INPUT AND OUTPUT:
++-------------------+--------------------------------------+
+| Sample Input      | Sample Output                        |
++-------------------+--------------------------------------+
+| 4 1 1             | 3                                    |
++-------------------+--------------------------------------+
+
+LOGICAL TEST CASES:
++---------+--------------------+---------------------------+
+| Case ID | Input (a b c)      | Expected Output           |
++---------+--------------------+---------------------------+
+| 01      | 4 1 1              | 3                         |
+| 02      | 10 3 2             | 5                         |
++---------+--------------------+---------------------------+
+
+MANDATORY STANDARDS:
+- Package:     ProgrammingInJava.DatatypesAndOperators;
+- Class Name:  Q012
+- Variables:   double a,b,c;
+- Input:       c=sc.nextDouble();
+- Math:        Math.ceil
+------------------------------------------------------------
+
+QUESTION ID: Q013
+TITLE: T20 Cricket Win Possibility
+
+DESCRIPTION:
+Kenneth is playing in a T20 cricket match. In a match, Team A 
+plays for 20 overs. In a single over, the team gets to play 
+6 times, and in each of these 6 tries, they can score a 
+maximum of 6 runs. After Team A's 20 overs are finished, 
+Team B similarly plays for 20 overs and tries to get a 
+higher total score than the first team. The team with the 
+higher total score at the end wins the match.
+
+Kenneth is in Team B. Team A has already played their 20 
+overs, and have gotten a score of R. Kenneth's Team B has 
+started playing, and have already scored C runs in the first 
+O overs. In the remaining 20-O overs, find whether it is 
+possible for Kenneth's Team B to get a score high enough to 
+win the game. That is, can their final score be strictly 
+larger than R?
+
+TECHNICAL SPECIFICATIONS:
++-------------------+--------------------------------------+
+| Component         | Details                              |
++-------------------+--------------------------------------+
+| Constraints       | 0 <= R <= 720                        |
+|                   | 1 <= O <= 19                         |
+|                   | 0 <= C <= 36 * O                     |
+| Input Format      | Single line: R, O, C (integers)      |
+| Output Format     | "YES" or "NO"                        |
++-------------------+--------------------------------------+
+
+SAMPLE INPUT AND OUTPUT:
++-------------------+--------------------------------------+
+| Sample Input      | Sample Output                        |
++-------------------+--------------------------------------+
+| 719 18 648        | YES                                  |
++-------------------+--------------------------------------+
+
+LOGICAL TEST CASES:
++---------+--------------------+---------------------------+
+| Case ID | INPUT (STDIN)      | EXPECTED OUTPUT           |
++---------+--------------------+---------------------------+
+| 01      | 719 18 648         | YES                       |
+| 02      | 4000 10 40         | NO                        |
++---------+--------------------+---------------------------+
+
+MANDATORY STANDARDS:
+- Package:     ProgrammingInJava.DatatypesAndOperators;
+- Class Name:  Q013
+- Keywords:    ?, int r,o,c;
+------------------------------------------------------------
