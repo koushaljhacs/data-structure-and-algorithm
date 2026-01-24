@@ -1,0 +1,2405 @@
+Author: Koushal Jha
+Managed By: OctNov
+Special Thanks to "Sudhakar Sharma" Ex-Microsoft 
+
+
+
+	
+	 _______________________________________________________________________________________________________________________________________________________________________________														 |
+	| TWCID   	|				CONTENT 			|  HITANSHU		 |  CHANDRASHEKHAR	|  SHIVANSHU		|  KOUSHAL		|					 
+	|_______________|_______________________________________________________________|________________________|______________________|_______________________|_______________________|
+	| 000001   	| what is network 						|														
+	| 000002   	| what is internet 						|							
+	| 000003   	| what is web 							|
+	| 000004	| what are web principles 					|
+	| 000005	| web version 							|
+	| 000006	| web architecture						|
+	| 000007	| what web comprises of						|
+	| 000008	| what is a web site 						|
+	| 000009	| what is web server						|	
+	| 000010	| what is Windows Internet Information Service [IIS]
+									Web Application
+							-------------------------------------------------
+TWCID: 000001
+-> what is a network
+- A computer network comprises of group of computers connecting with each other for sharing information and resources.
+- ARPANET is the first computer network introudced in early 1960's by US-DOD.
+  [Advanced Research Projects Agency Network]
+- CERN labs [Council for European Research and Nuclear] developed network into 
+    a) LAN 
+    b) MAN
+    c) WAN
+
+TWCID: 000002
+-> what is internet
+- internet is derived from International Network.
+- It is a WAN that connects computers around the globe.
+
+TWCID: 000003
+-> what is web
+- web is a portion of internet with restricted access.
+- Tim Berners Lee introduced the concept of web in early 1990's.
+- web is classified into 3 major layers
+    a) Surface Web
+    b) Deep Web 
+    c) Dark Web
+- web standards are maintained by "W3C" [World Wide Web Consortium]      
+
+TWCID: 000004
+-> what are web principles
+- The World Wide Web Consortium (W3C) develops standards and guidelines to help everyone build a web based on the principles of 
+   - Accesbility 
+   - Privacy
+   - Security
+   - Internationalization
+       
+TWCID: 000005
+-> web versions
+- Now the latest version of web is "Web-3".     
+
+TWCID: 000006
+-> web architecture
+   C:\Users\koush\OneDrive\JavaFullStackDeveloper\UI TECHNOLOGIES\HTML
+
+TWCID: 000007
+-> what web comprises of
+    - Websites
+    - Web Applications
+    - Blogs
+    - Micro BLogs
+    - Wikis
+    - Podcasting
+    etc...
+
+TWCID: 000008
+-> what is a web site
+- it is a virtual directory on web server, that provides access to resources
+
+TWCID: 000009
+-> what is web server
+- server resembles both hardware and software
+- it handles request from client and sends a customized response.
+- Sever listens to client request and sends response.
+- Web server are categorized into 2 types:
+    a) Local Server
+    b) Cloud Server
+
+    - Local Server are configured on a device with a private access
+	a) IIS [ Internet Information Service Manager }
+	b) tomcat
+	c) WAMP
+	d) XAMP
+	etc...
+
+    - Cloud Server are configured on cloud as a part of service. we can set private or public access.
+	a) GIT HUB Pages
+	b) Netifly
+	c) Firebase
+	d) AWS
+	e) AZURE
+	etc...
+
+
+TWCID: 000010
+										Windows IIS
+									----------------------------
+- It is local web server with windows OS
+    1. Go to control pannel of windows OS
+    2. Go to "programs & Features"
+    3. 
+    4. Select checkbox for "Internet Information Service" [IIS]
+    5. Click OK
+
+- you can open local web server IIS from programs
+- it reference can be
+    a) localhost
+    b) 127.0.0.1
+
+creating a new website:
+    1. create a new folder on local device for applicaton
+	C:\brand-factory
+	    - images
+            - videos
+	    - docs
+    2. Open IIS from programs
+    3. Expand Local Computer
+    4. Expand Sites folder
+    5. Right CLick on "Default Website"
+    6. Select "Add Virtual Directory"
+	alias: brand-factory
+	physical: d:\brand-factory
+    7. Click OK
+    8. Open any browser and request resources
+        http:127.0.0.1/brand-factory/images/img.jpeg
+
+
+Setup Development Environment for Web Application:
+---------------------------------------------------
+1. Make sure that your PC is using WIN-8 and higher version.
+   [Linux any vendor, Mac any version]
+
+2. Download and Install "Node JS" on your PC.
+    https://nodejs.org/en/download
+
+    - Node JS is a JavaScript runtime used by developer to build web applications, servers, CLI tools, scripts etc.
+    - Node JS provides a package manager called "NPM".
+    - Package manager is a software tool used by develpers to install, update, and uninstall any library required for project
+    - There are various pacakge managers
+	- Yarn
+	- Bower
+	- Ruby Gems
+	- Composer
+	- NuGet
+	etc.
+
+    - After install open your command prompt and run [ programs => cmd ]
+	C:\>node -v 	make sure that node is above 18x
+	C:\>npm -v	and npm is above 8x
+
+3. Download and Install "Visual Studio Code" editor
+    - Editor: Editor provides an IDE [Integrated Development Environment]
+    - It allows developer to build, debug, test and deploy applications.		    
+
+    https://code.visualstudio.com/download
+
+4. Open Visual Studio Code on your PC
+5. Go to "Extensions" and install following extensions
+    a) Live Server 	[ Ritwick Dey ]
+    b) Live Preview 	[ Microsoft ]
+    c) vs-code icons    [ vscode icons team ]
+    d) HTML CSS Support [ ecmel ]
+    
+6. Go to settings of VS Code => Search for "Emmet" => Select checkbox for "Show Abbreviation Suggestions"
+
+
+Create a new Web Application & Setup Developmetn Environment
+------------------------------------------------------------
+1. create a new folder for your project on local drive
+    D:\brand-factory    
+
+2. Open folder in visual studio code
+3. open terminal in VS code [is a command line tool] Ctrl + `
+4. switch to command prompt from Power Shell [PS]
+5. Runt the following command
+    > npm init -y     
+  
+    - It generates a new file into your project by name "package.json" ]
+    - It is meta data, contains information about your application
+	a) project name
+	b) version
+	c) scripts
+	d) dependencies
+	       
+6. Add a new file into project by name "README.md"
+    - It is a help document designed by developer for deveoper
+
+7. Add the following folders into project
+    a)  > public
+    b)  > src
+
+	- public is used to keep all static resources like html, images, docs, videos etc...
+	- src is used to keep all dynamic resources like CSS< SCSS, JS, ts, Jsx, tsx....etc.    
+
+8. Add resources into folders
+    public
+	- images
+	- docs
+	- videos
+
+9. Click "Go Live" in status bar
+10. Open browser and request
+    http://localhost:5500
+    http://127.0.0.1
+
+
+									Web Page
+								-------------------------
+- It is a hyper text document that provides an UI from where user can intereact with the resources in applications.
+- The term "hyper" refers to "beyond".
+- A hyper text document provides content on screen and naviagates user beyond the content to access details.
+- web pages are classfied into 2 types:
+    a) Static Page
+    b) Dynamic Page
+
+    Static Page:
+    ------------
+	- Static refers to continuous memory
+	- Memory allocated to first request will continue for next set of requests.
+	- Static page comprises of same information to display across any number of requests
+	- Static page have extensions
+	    a) .htm
+	    b) .html
+
+    Dynamic Page:
+    -------------
+    	- Dynamic refers to discrete memory
+	- It is disconnected memory
+	- Memory is newly allocated for every request
+	- Dynamic page comprises content customized  according to client request.
+	- Dynamic page have extensions
+	    a) .jsp
+	    b) .php
+	    c) .asp
+	    d) .aspx
+	    etc...  
+
+    NOTE: HTML is a language use to design both static and dynamic pages.
+	  How ever the dynamic page composition comprises of business logic in backend.
+
+
+
+									HTML
+								-------------------
+- Hyper Text Markup Language
+- Hyper means beyond
+- Markup refers to the term marking up, which is a process of preparing our content to present exactly as required.
+- HTML is a markup language used to present content on "Browser".
+
+
+Evolution of HTML
+------------------
+- Internet started with a browser called "Mosaic".
+- CERN labs developed a language called GML later improved as SGML.
+- GML & SGML are markup languages used for Mosaic.
+	CERN => Council for European Research & Nuclear
+	GML  => Genreic Markup Language
+	SGML => Standard Generic Markup Language
+
+- Tim Berners developed HTML as super set to GML & SGML in early 1990.
+- IETF [ Internet Engineering Task Force ] developed several versions of HTML.
+- IETF developed up to 3.1 version.
+- WHATWG [ Web Hyper Text Application Technology Work Group ] started , maintaining and envolving HTML since 2004 [ HTML 4 ]
+- The latest version of HTML is HTML5. [ 2014 ]
+	https://whatwg.org/
+
+
+								Browser Architecture
+							-------------------------------------
+- Browser is a software tool used by clients to access and view resources on web.
+- The popular browsers
+    a) Chrome
+    b) Firefox
+    c) Safari
+    d) Edge
+    e) Opera
+    etc...
+
+1. User Interface
+    - UI comprises of tabs, navigation buttons, plugins, workspace etc..
+    - UI also comprises of development tools.
+
+2. UI Backend
+    - It provides the logic for UI.
+    - All UI elements are controlled by using UI backend.
+    - If you are using any open source browser then you can customize UI backend.
+
+3. Browser Engine
+    - It translates HTML & CSS.
+    - Every browser have its own engine, which leads to compatibility issues.
+	
+	Chrome  	V8 		Blink
+	IE		Chakra 		Trident
+	Firefox		Gecko		SpiderMonkey	
+	Safari		Webkit 		Nitro
+	Edge		EdgeHTML 	Chakra
+	Opera		Blink		V8
+
+4. JavaScript Interpreter
+    - It is responsible for translating JavaScript in browser.
+    - In browser JS is translated line-by-line, which is known as interpreting.
+
+5. Rendering Engine
+    - Rendering is the process of generating output
+    - Every browser have a rendering engine, which is responsible for rendering output generated through HTML, CSS & JavaScript.
+
+6. Networking
+    - It handles the request from client.
+    - It connects to server and loads all resources requested by client.
+    - It allows developers to monitor the resources.
+
+    NOTE: Every webpage loads as a result of browser "DOMContentLoaded" event.
+
+7. Data Persistence
+    - Every browser stores data.
+    - Data storage in browser can be managed using
+	a) Local Storage
+	b) Session Storage
+	c) Extension Storage
+	d) Cache Storage
+	e) Cookies 
+	etc...
+	
+    - Storage are temporary & permanent.
+
+						HTML Parsing
+	Markup -> Bytes -> Chars -> Tokens -> Node [Elements] -> DOM -> Render -> Layout -> painting
+							[ Documentaion Object Model ]
+
+
+
+								HTML Elements
+							-------------------------------
+- HTML presents content by using a set of elements.
+- Elements are arranged in a hierarchical order called as DOM [ Document Object Model ].
+- HTML elements are categorized into 5 groups
+    1. Normal Elements
+    2. Void Elelments
+    3. RC Data Elements
+    4. Raw Text Elements
+    5. Foreign Elements
+
+    1. Normal Elements:
+    -------------------
+	- A normal element can present directly on callback without using any additional attributes.
+	- It starts a presentation but can't stop implicitly.
+	- Hence it requires an explicit stop by using end token.
+	syntax:
+	    <b> 	Start Token
+	    </b>	End Token 
+	Example:
+		<p> Your Paragraph </p>
+
+	List of Normal Elements:
+ 	~~~~~~~~~~~~~~~~~~~~~~~~
+ 	    <a> </a> 					- Anchor token
+		<abbr> </abbr>				- Abbreviation
+		<address> </address>		- Contact Information
+		<article> </article>		- Article
+		<aside> </aside>			- Aside
+		<audio> </audio>			- Audio Player
+ 		<b> </b>					- Bold text
+		<bdi> </bdi>				- Bi-directional Isolation
+		<bdo> </bdo>				- Bi-directional Override
+		<blockquote> </blockquote>	- Block Quotation
+		<body> </body>				- Document Body
+		<button> </button>			- Button
+		<canvas> </canvas>			- Graphics Canvas
+		<caption> </caption>		- Table Caption
+		<cite> </cite>				- Citation
+		<code> </code>				- Code Fragment
+		<colgroup> </colgroup>		- Column Group
+		<data> </data>				- Machine-readable Data
+		<datalist> </datalist>		- Input Suggestions
+		<dd> </dd>					- Description Details
+		<del> </del>				- Deleted Text
+		<details> </details>		- Details Widget
+		<dfn> </dfn>				- Definition Term
+		<dialog> </dialog>			- Dialog Box
+ 		<div> </div>				- Division
+		<dl> </dl>					- Description List
+		<dt> </dt>					- Description Term
+ 		<em> </em>					- Emphasized text
+		<fieldset> </fieldset>		- Fieldset
+		<figcaption> </figcaption>	- Figure Caption
+		<figure> </figure>			- Figure
+		<footer> </footer>			- Footer
+ 		<form> </form>				- Form
+ 		<h1> to <h6> </h1> to </h6> - Headings
+		<head> </head>				- Document Head
+		<header> </header>			- Header
+		<html> </html>				- Root Element
+ 		<i> </i>					- Italic text
+		<iframe> </iframe>			- Inline Frame
+		<ins> </ins>				- Inserted Text
+		<kbd> </kbd>				- Keyboard Input
+		<label> </label>			- Input Label
+		<legend> </legend>			- Fieldset Legend
+		<li> </li>					- List Item
+		<main> </main>				- Main Content
+		<map> </map>				- Image Map
+		<mark> </mark>				- Marked Text
+		<meter> </meter>			- Scalar Measurement
+		<nav> </nav>				- Navigation
+		<noscript> </noscript>		- No Script Fallback
+		<object> </object>			- Embedded Object
+		<ol> </ol>					- Ordered List
+		<optgroup> </optgroup>		- Option Group
+		<option> </option>			- Options in Drop Down
+		<output> </output>			- Calculation Output
+		<p> </p>					- Paragraph
+		<picture> </picture>		- Picture Container
+		<pre> </pre>				- Preformatted Text
+		<progress> </progress>		- Progress Bar
+		<q> </q>					- Inline Quotation
+		<rp> </rp>					- Ruby Fallback Parenthesis
+		<rt> </rt>					- Ruby Text
+		<ruby> </ruby>				- Ruby Annotation
+		<s> </s>					- Strikethrough
+		<samp> </samp>				- Sample Output
+ 		<script> </script>			- Script
+		<section> </section>		- Section
+ 		<select> </select>			- Drop Down
+		<small> </small>			- Small Text
+ 		<span> </span>				- Span
+ 		<strong> </strong> 			- Strong text
+ 		<style> </style>			- Style Sheet
+		<sub> </sub>				- Subscript
+		<summary> </summary>		- Summary for Details
+		<sup> </sup>				- Superscript
+ 		<table> </table>			- Table
+		<tbody> </tbody>			- Table Body
+		<td> </td>					- Table Data Cell
+		<th> </th>					- Table Header Cell
+		<thead> </thead>			- Table Head
+		<time> </time>				- Time
+		<title> </title>			- Document Title
+		<tr> </tr>					- Table Row
+ 		<textarea> </textarea>		- Text Area
+		<u> </u>					- Underline text
+		<ul> </ul>					- Unordered List
+		<var> </var>				- Variable
+		<video> </video>			- Video Player
+
+
+
+
+    2. Void Elements:
+    -----------------
+	- The term void refers to "no-return".
+	- A void element will not return any presentation directly on callback.
+  	- It can return a presentation by using additional attributes.
+	- It return specified content and stops implicitly.
+	- It doesn't required end token
+	Ex:
+	    <img> 
+
+	List of Void Elements:
+	~~~~~~~~~~~~~~~~~~~~~~
+	    <area>			- Image Map Area
+	    <base>			- Base URL
+	    <br>			- Line Break
+	    <col>			- Table Column
+	    <embed>			- External Content
+	    <hr>			- Horizontal Rule
+	    <img>			- Image
+	    <input>			- Input Field
+	    <link>			- Link to external resource
+	    <meta>			- Metadata
+	    <param>			- Object Parameter
+	    <source>		- Media Source
+	    <track>			- Media Track
+	    <wbr>			- Word Break Opportunity
+
+    3. RC Data Elements:
+    --------------------
+	- Rich Content data elements.
+	- RC allows only plain text content.
+	- You can't define any another element with in the context of RC element.
+	Ex:
+	    <textarea> </textarea>
+	
+	List of RC Data Elements:
+	~~~~~~~~~~~~~~~~~~~~~~
+	    <script> </script>	- Script
+	    <style> </style>	- Style Sheet
+	    <title> </title>	- Document Title
+	    <textarea> </textarea> - Text Area
+
+    4. Raw Text Elements:
+    ---------------------
+        - Raw text is used for presentation.
+	- These elements doesn't require any token for presentation.
+	- Noraml text can present content.
+	Ex:
+	    &#8377; 
+
+	List of Raw Text Elements (Entities):
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	    &nbsp;			- Non-Breaking Space
+	    &lt;			- Less Than
+	    &gt;			- Greater Than
+	    &amp;			- Ampersand
+	    &quot;			- Double Quote
+	    &apos;			- Apostrophe
+	    &copy;			- Copyright
+	    &reg;			- Registered
+	    &trade;			- Trademark
+	    &euro;			- Euro
+	    &pound;			- Pound
+	    &#8377;			- Rupee
+
+    5. Foreign Elements:
+    --------------------
+	- These are HTML elements that require additonal plugin's to function.
+	- Every browser have different engine.
+	- Hence extensions are required to use rare type of elements in page.
+	Ex:
+	    SVG, Canvas, MATHML
+
+	List of Foreign Elements:
+	~~~~~~~~~~~~~~~~~~~~~~~~~
+	    <svg> </svg>		- Scalable Vector Graphics
+	    <math> </math>		- Mathematical Markup Language
+
+
+    FAQ's:
+    ------
+	1. What are semantic and non-semantic elements?
+	    - Semantic refers to a specific purpose. It can't be used for nay another purpose.
+	    - Non-semantic can be used for any purpose
+	    Ex:
+		<img>, <p>, <h2> ....	semantic
+		<div>, <span>	.... 	non-semantic
+
+	2. what are generic and non-generic elements?
+	    - Generic elements have pre-defined functionality.
+	    - Non generic need to be configured with functionality explicityly.
+	    Ex:
+		<form> 		Generic
+		<div>		Non Generic
+
+	3. whar are inline & block level elements?
+	    - a block level element will not allow any another element in the same line.	NOTE: However you can transform an inline element to block level
+	    - an inline element will allow other elements in the same line.			      and vice-versa.
+	   Ex:
+		<p> 	Block level
+		<img> 	Inline level
+
+    Summary				categories
+    -------				----------
+	- Semantic			    - Normal
+	- Non-Semantic		            - Void
+	- Generic			    - RC
+	- Non-Generic		 	    - Raw Text
+	- Block Level			    - Foreign
+	- Inline
+
+
+									HTML PAGE STRUCTURE
+								-------------------------------------
+1. A static page can have extension
+    a) .html
+    b) .htm
+
+    FAQ: What is difference between .html & .htm ?
+    Ans: Technically both are same.
+	 ".htm" is extension given for page according to naming conventions.
+	
+		index.html		=> add into root level of your project
+		index.htm
+
+		D:\Brand-Factory
+		|
+		|_public
+		|   |_images
+		|   |_docs
+		|   |_video
+		|
+		|_src
+		|   |_styles
+		|   |_script
+		|   |_scss
+		|
+		|_index.html
+		|_package.json
+		|_readme.md
+
+2. Every HTML page design in 5 version starts with "Document Declaration".
+    <!DOCTYPE html>
+	- Document declaration specifies version and language used for markup.
+	- It is new from HTML 5.
+	- Hence if document declaration is defined then page is using HTML 5 version.
+
+3. Every web page have a document scope.
+    <html>
+	document scope
+    </html>
+
+4. Every document scope requires a language to configure to define the origin.
+    <html lang="en-in">			 -----------------------------
+					|      html      => element   |
+    </html>				|      </html>   => token    
+					|      <
+
+    - It is an internationalization rule according to web principles
+    - "lang" is an attribute of HTML element
+
+    syntax:
+    -------
+	<!DOCTYPE html>
+	<html lang="en-in">
+	</html>
+
+5. Every HTML document comprises of 2 sections at high level
+    a) <head>
+    b) <body>
+
+    - Content in body section are loaded as a result of round-trip.
+    - Content in heaad section will save round-trip. They are cached and loaded.
+
+    Diagram Representation: C:\Users\koush\OneDrive\JavaFullStackDeveloper\UI TECHNOLOGIES\HTML
+
+   FAQ: what is round-trip ?
+   ans: It is the process of loading resources every time from server.
+
+   FAQ: How to save round-trip ?
+   ans: By caching the content.
+
+   FAQ: What is caching ?
+   ans: It is the process of storing frequently requested content into buffer [ temporary memory ].
+
+   Head Section:
+   -------------
+	- It allows to cache the content.
+	- It saves round-trip.
+	- Typically web pages keep following content in head section
+	    a) <title>
+	    b) <link> 
+	    c) <meta>
+   	    d) <base>
+	    e) <script>
+	    f) <style>
+
+	    (a) Title:
+	    -----------
+		- It is used to display page title in browser title bar.
+		- It is used in bookmarking page.
+		- It is also used in SEO [ Search Engine Organization ].
+		Ex:
+		    <!DOCTYPE html>
+		    <html lang = "en-in">
+    			<head>
+			    <title>Brand Factory</title>
+    			</head>
+		    </html>
+
+	    (b) Link Element:
+	    -----------------
+		- It allows to link any external document to page, which includes favicons, style sheets etc...
+
+	    	Creating and Adding a "Favicon" to Web Page
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~			NOTE: Favicon must have extention ".ico" and size
+		1. Go to your project "public" folder					16 x 16 pixels to 32 x 32 pixels
+		2. Add a new folder into public by name "assets"			Every Web page size must be
+		3. Add a new file into assets by name "favico.ico"			1200 px width
+		4. Open your favicon in ms-paint					740 px height
+		5. set page size to max 32 x 32 pixels
+		6. Design your icon										
+		7. Save
+		8. Go to HTML page and link favicon							Ex:
+													    <!DOCTYPE html>
+			<link>										    <html>
+			<rel>	: It specifies the file type   |						<head>
+				  "stylesheet" for css	       | ----> 	<link rel = "shortcut icon">		    <title> Web Development </title>
+				  "shortcut icon" for favicon  |						    <link rel = "shortcut icon" href= "assets/favicon.ico">
+														</head>
+			href	: It is hyper reference        |					    </html>	
+				  virtual path or file 	       | ----> 	href = "assets/favicon,ico"
+													NOTE: . There is no order dependency of element in head section.
+		 	syntax: 									      . There is no order dependency of attributes in element.
+			    <link rel = "shortcut icon" href = "assets/favicon.ico">
+
+
+		FAQ: what is difference between "src" and "href"?
+		ans: "src" is a getter, it is used to get the path and display the file.
+		     "href" is a setter, it is used to set the path and access the file.
+
+
+	    (c) Meta Element:
+	    -----------------
+		- Meta stands for "meta-data".
+		- Usually meta data comprises of information about your page, provided to Web Crawlers and Web Spiders.
+		- Web Crawlers and Web Spiders.
+		- SEO [ Search Engine Optimization ]
+		- Meta is one of the option for making page SEO freindly and responsive.
+		  [ Responsive page fits according to device and browser ]
+
+		syntax:				UTF : Unicode Transformation Format			8  Bit => for English [us, gb, in]
+		    <meta charset = "utf-8">	It is used by BOTS to know the language used in page	16 Bit => for Korean, Japanese etc.
+
+			Difference between <html lang = "en-in"> and <meta charset = "utf-8">
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+			<html lang="en-in"     -> Google Engine
+			<meta charset="utf-8"> -> SEO
+		    				
+
+		- through meta we also request headers
+		  syntax:
+		      <meta http-equiv = "refresh" content = "4">
+			  content in seconds
+
+		Meta viewport
+		--------------
+		- It makes the page responsive.
+		- It is one of the option for making page responsive.
+		  responsive means, page will fit content according to device width.
+
+		syntax:
+		    <meta name = "viewport" content = "width=device-width, initial-scale = "1">
+			
+			viewport	: It identify the device screen size & orientation
+		    	content		: It refer to content in page which will be equal to device width.
+		    	intial-scale	: It is zoom % of content in browser. Default is 100%.
+						0.9  = 90%
+						1    = 100%
+						1.5  = 150%
+
+
+    Body Section
+    ------------
+ 	- body section contains information to display in browser workspace
+	- Body sections loads content every time as a result of "round-trip".
+	- evertime will come from server (round-trip) and if round-trip you want to save then it is saved in cache memory and come under head section 
+
+  	Body related Attributes:
+	------------------------
+	    1. bgcolor	: It sets a background color for a page.
+	    2. text	: It sets page text color.
+
+		HTML Colors:
+		------------
+	    	    a) color name
+			<body bgcolor="green">
+
+		    b) color shade name
+			<body bgcolor="lightgreen">
+
+		    c) Hexadecimal code
+			i) 3 chars hexadecimal starting with "#"
+		    	    #RGB
+			    R, G, B => 0,1,2,3,4,5,,6,7,8,9,a,b,c,d,e,f
+			    <body bgcolor="#f00"> 	Red
+
+			ii) 6 chars hexadecimal starting with "#"
+			    #RRGGBB
+			    <body bgcolor="#ff0000"> 	Red
+
+	    3. background : It sets a background image for page.
+			    HTML can't control the background image, it require CSS background attributes.
+			    syntax:
+				<body background="./public/images/banner.jpg">
+				https://www.freepik.com/
+				https://www.canva.com/	
+				https://copilot.microsoft.com/
+
+	    4. Align : It aligns the page content left, center, right or justified.
+	       	       syntax:
+			<body align="center | justify | left | right">
+
+	    5. leftmargin	|
+	    6. rightmargin	| ------> syntax:
+	    7. topmargin	|	    <body leftmargin = "350" rightmargin = "350" topmargin = "50" bottommargin = "50">
+	    8. bottommargin	|
+
+	    9. alink	: sets color for active link		<body alink = "red" vlink = "gray">
+	    10. vlink	: sets color for visited link		    <a href = "http://www.amazon.in"> Amazon </a>		
+								    <a href = "http://www.microsoft.com"> Microsoft </a>
+								</body>
+    	    
+	    
+	Body Section Semantic Elements:
+	-------------------------------
+	    - HTML 4 body section is designed by using "Tables".
+	    - It is not SEO freindly
+	    - HTML 5 introduces new sematic elements, to make HTML page more SEO freindly.
+	        1.  Aside		|
+		2.  Article		|
+		3.  Dialog		|
+	 	4.  Figure		|
+		5.  FigCaption		|
+		6.  Header		|
+		7.  Footer		|-----------> Diagram: Body-Section-Layout-Desgin
+		8.  Section		|
+		9.  Main		|
+		10. Div			|
+		11. Span		|
+		12. Nav			|
+		13. Menu		|
+
+
+		    Div [ Blocked Content ]			Span [ Inline Content ]
+			Loading content line by line		    Loading content side by side
+
+		    Example: Body Section Layout Design
+		    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Index</title>
+                            <style>
+                                header, footer {
+                                    background-color: red;
+                                    color: white;
+                                    text-align: center;
+                                }
+                                section {
+                                    height: 400px;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <header>
+                                <nav>
+                                    <menu>
+                                        <span>Home</span>
+                                        <span>|</span>
+                                        <span>About</span>
+                                    </menu>
+                                </nav>
+                            </header>
+                            <section>
+                                <dialog>
+                                    chat with hr
+                                </dialog>
+                                <figure>
+                                    Some image
+                                    <figcaption>Fig-1</figcaption>
+                                </figure>
+                                <main>
+                                    Our Website Summary
+                                    <div>
+                                        Courses information
+                                    </div>
+                                </main>
+                                <aside>
+                                    Ads here.. 
+                                </aside>
+                                <article>
+                                    Offers..
+                                </article>
+                            </section>
+                            <footer>
+                                &copy; copyright 2025
+                            </footer>
+                        </body>
+                        </html>
+
+		=============================================
+		    Example: layout
+		    ~~~~~~~~~~~~~~~
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title>Layout</title>
+                            <style>
+                                header {
+                                    background-color: tomato;
+                                    color: white;
+                                    padding: 10px;
+                                    font-size: 25px;
+                                    text-align: center;
+                                    border: 2px solid black;
+                                }
+
+                                footer {
+                                    background-color: tomato;
+                                    color: white;
+                                    text-align: center;
+                                    font-size: 20px;
+                                    padding: 5px;
+                                    border: 2px black solid;
+                                }
+
+                                section {
+                                    height: 450px;
+                                    display: grid;
+                                    grid-template-columns: 2fr 8fr 2fr;
+                                    margin-top: 20px;
+                                }
+                                nav div {
+                                    border: 2px black solid;
+                                    border-radius: 10px;
+                                    width: 120px;
+                                    margin-bottom: 20px;
+                                    padding: 10px;
+                                    font-size: 20px;
+                                    background-color: tomato;
+                                    color: white
+                                }
+                                aside {
+                                    width: 100px;
+                                    height: 50px;
+                                    border: 50px;
+                                    border: 2px dotted black;
+                                    text-align: center;
+                                }
+                                article {
+                                    width: 300px;
+                                    background-color: darkcyan;
+                                    text-align: center;
+                                    color: white;
+                                    padding: 5px;
+                                    font-size: 25px;
+                                    margin-left: 200px;
+                                }
+                                main div {
+                                    font-size: 40px;
+                                    text-align: center;
+                                }
+                                figure {
+                                    height: 100px;
+                                    width: 200px;
+                                    border: 2px double black;
+                                }
+                            </style>
+                        </head>
+
+                        <body>
+                            <header>
+                                <div>Amazon Shopping</div>
+                            </header>
+                            <section>
+                                <nav>
+                                    <div>Home</div>
+                                    <div>Electronic</div>
+                                    <div>Footwear</div>
+                                    <div>Fashion</div>
+                                </nav>
+                                <main>
+                                    <dialog open>Any Help </dialog>
+                                    <div>Welcome to Online Shopping Store</div>
+                                    <figure>
+                                        Your image
+                                        <figcaption>Samsung TV</figcaption>
+                                    </figure>
+                                    <article>
+                                        70% off on Electronics
+                                    </article>
+                                </main>
+                                <aside>
+                                    Ads here..
+                                </aside>
+                            </section>
+                            <footer>
+                                <div>&copy;copyright 2025</div>
+                            </footer>
+                        </body>
+
+                        </html>
+
+		=====================================================
+		    Example: amazonfooter
+		    ~~~~~~~~~~~~~~~~~~~~~
+
+
+	Basic HTML Elements and Elements in Body Section
+	------------------------------------------------
+	1. Line Breaks
+	~~~~~~~~~~~~~~
+	    - Browser ignores line breaks defined in Editor.
+	    - You have to add line break manually by using <br> element.
+															
+	    FAQ: What is the difference between <br> <br/> and </br> ?					    
+	    ans: <br> is the valid line break.
+		 <br/> defines that it is self ending [ void ].
+		 </br> Invalid
+
+		 Functionally all are same
+		 Browser can understand only <br>
+		 Avoid using <br /> or </br>
+
+	2. Blank Space
+	~~~~~~~~~~~~~~
+	    - Browser can use single character space between chars or words.
+	    - Additional blank spaces are ignored.
+	    - You can manually add a blank space by using "&nbsp" [ Non-Breakable Space ]
+														 _______________________________________________________________
+	3. Pre-Formatted Text											|	    <body>						|
+	~~~~~~~~~~~~~~~~~~~~~											|		<div> Sample C Program </div>			|
+	    - HTML ignore line break and blankspace in a formatted content.					|		<div>						|
+	    - You can display the formatted content exactly as defined in editor by using <pre> element		|		    <pre>					|
+	    syntax:												|			#include &lt;stdio.h&gt;		|
+		<pre>												|			main() {				|
+		    .......											|			    printf("Hello World");		|
+		    .......	________________________________________________________________________________|			}					|
+		</pre> 												|		    </pre>					|
+														|		<div>						|
+	4. Code													|	    </body>						|
+	~~~~~~~													|_______________________________________________________________|	    
+	    - It is an HTML element used to configure a code block.						
+	    - Browser engine and SEO can handle code block
+	    - It is defined by using <code> element.								
+														
+	    syntax:
+		<code>
+		    .........
+		    .........
+		</code>
+
+	5. Variables
+	~~~~~~~~~~~~												 _______________________________________________________________
+	    - Computer programming uses variables to store data.						|								|
+	    - HTML provides <var> element for designating varaibles.						|	<body>							|
+	    syntax:												|	    var <var>username</var> = "John"; <br>		|
+		var <var> userName </var> = "John";	________________________________________________________|	    var <var>email</var> = "john@gmail.com";		|
+														|	</body>							|
+	6. Title for Text and Images										|_______________________________________________________________|
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	    - Title can display content as screen tip.					 _______________________________________________________________________________________
+	    - Screen tip is displayed when mouse pointer is over the content.		|										 	|
+											|	<body>										|
+		<span title = "Some description"> Your Text </span>  ___________________|	    Test Your web project on <span title="it is a server">server*</server>.	|
+		<img title = "">							|	</body>										|
+											|_______________________________________________________________________________________|
+		"Title" is an attribute defined for HTML elements.
+
+	7. Headings
+	~~~~~~~~~~~
+	    - HTML provides <hn> element for headings where "n" refers to level number from 1 to 6.				
+																  
+		<h1> </h1>	|	   Heading levels 1 to 6 decreases the font size.
+		<h2> </h2>	|	   Heading elements is used to make heading SEO freindly.
+		.		| -------> SEO can identify the topics in your page.
+		.		|	   Don't use heading element for highlighting any text or content in a paragraph.
+		<h6> </h6>	|	   Don't use lot of headings in one page. This will SPAM your page.
+
+
+	    FAQ: without heading element can we define heading styles?
+	    ans: Yes, but they are not SEO freindly
+
+	    FAQ: can we change the size, color and effects for heading?
+	    ans: Yes, with CSS
+
+	    FAQ: What is the purpose of Heading Element?
+	    ans: to make the content SEO freindly.
+		 SEO can summarize the topics in your page by using headings.
+
+	    Heading Attribute:
+	    ~~~~~~~~~~~~~~~~~~
+		- Heading can be defined with "align" attribute.
+
+		    <h1 align = "center"> Your Text </h1>
+
+
+	8. Paragraphs and Blockquotes
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	    - Paragraphs are defined by using <p>
+	      Blockquotes are defined using <blockquote>
+	      [ Blockquote have left and right identation ]
+									Attribute: align
+	    - <p> your paragraph </p>						   <p align = "justify">
+	      <blockquote> your content </blockquote>				   <blockquote algin = "justify">
+
+
+
+Data Terms and Definitions
+--------------------------
+<dl> 		defines a data list, which contains terms and conditions
+<dt> 		data terms
+<dd> 		data definition
+
+    syntax:							dl {
+	<dl>							    display: grid;
+	    <dt> Term </dt>					    grid-templates-columns: 3fr 9fr;
+	    <dd> Defintion </dd>				}
+	</dl>
+
+	Example: Data Terms and Definition			Example: Data Terms and Definition with grid
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+            <!DOCTYPE html>					    <!DOCTYPE html>
+            <html>						    <html>
+									<head>
+            <head>							    <title>Home</title>
+                <title>Home</title>					    <style>
+                <style>								dt {
+                    dt {							    font-weight: bold;
+                        background-color: beige;				    margin-bottom: 20px;
+                        font-weight: bold;					    background-color: gray;
+                        color: black;						    color: white;
+                        margin-bottom: 10px;					}
+                    }								dl {
+                </style>							    display: grid;
+            </head>								    grid-template-columns: 3fr 9fr;
+										}
+            <body>							    </style>
+                <h2>Web Technologies</h2>				<head>
+                <dl>							<body>
+                    <dt>HTML</dt>					    <h2>Product Details</h2>
+                    <dt>Hyper Text Markup Lnaguage</dt>			    <dl>
+                    <dd>It is a markup language.</dd>				<dt>Name</dt>
+                    <dd>It is used for presentation</dd>			<dd>Samsung</dd>
+                    <dt>CSS </dt>						<dt>Price</dt>
+                    <dd>It defines styles for HTML.</dd>			<dd>55000.55</dd>
+                    <dt>JavaScript</dt>						<dt>Stock</dt>
+                    <dd>It handles client side interactions.</dd>		<dd>Available<dd>
+                </dl>							    </dl>
+            </body>							</body>
+
+            </html>						    </html>
+
+
+Details and Summary
+-------------------
+<details>		contains information which you can toggle display 
+				[ show or hide ]
+
+<summary>		It defines the title for details
+
+
+syntax:
+    <details>
+	<summary> Title </summary>	NOTE: Detisl is hidden by default, keep the attribute "open"
+	----------
+	----------
+    </details>
+
+    Example:
+    ~~~~~~~~
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Home</title>
+        </head>
+
+        <body>
+            <h2>Select Category</h2>
+            <details>
+                <summary>Electronics</summary>
+                <dl>
+                    <dd>Televisions</dd>
+                    <dd>Mobiles</dd>
+                    <dd>Watches</dd>
+                </dl>
+            </details>
+            <details>
+                <summary>Footwear</summary>
+                <dl>
+                    <dd>Casuals</dd>
+                    <dd>Boot</dd>
+                    <dd>Sneakers</dd>
+                </dl>
+            </details>
+        </body>
+
+        </html>
+	    
+
+Fieldset and Legend						Shadow for Container
+-------------------						--------------------
+<fieldset>		defines a frame				div {
+<legend>		defines a caption for frame		    box-shadow: horizontal vertical blur color;	     ----------------------------------------------------
+								}						    |						    	 |
+syntax:														    |	NOTE: Box shadow can't be applied to text.  	 | 
+    <fieldset>							div {						    |	      You have to use "text-shadow".	         |
+	<legend> Your Title </legend>				    box-shadow: 5px 4px 2px red;		    |						     	 |
+	.......							}						    | 	    syntax:					 |
+	.......													    |	      text-shadow: horizontal vertical blur color|
+    </fieldset>													    |							 |
+														     ----------------------------------------------------
+    Example
+    ~~~~~~~
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>Home</title>
+                <style>
+                    fieldset {
+                        margin-top: 30px;
+                    }
+                    dt {
+                        font-weight: bold;
+                        margin-bottom: 20px;
+                    }
+                    dl {
+                        display: grid;
+                        grid-template-columns: 3fr 9fr;
+                    }
+                    legend {
+                        text-align: center;
+                        border: 2px solid black;
+                        padding: 10px;
+                        font-size: 17px;
+                        font-weight: bold;
+                        border-radius: 20px;
+                        width: 200px;
+                        box-shadow: 5px 3px 2px gray;
+                        background-color: darkcyan;
+                        color: white;
+                    }
+                    fieldset {
+                        box-shadow: 3px 3px 2px darkcyan;
+                    }
+                    h1 {
+                        text-align: center;
+                        text-shadow: 2px 2px 2px black;
+                        color: yellow;
+                        border: 2px solid black;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>PRODUCT CATALOG</h1>
+                <fieldset>
+                    <legend>Basic Details</legend>
+                    <dl>
+                        <dt>Name</dt>
+                        <dd>Samsung</dd>
+                        <dt>Price</dt>
+                        <dd>60000.32</dd>
+                    </dl>
+                </fieldset>
+                <fieldset>
+                    <legend>Shipping Details</legend>
+                    <dl>
+                        <dt>Stock</dt>
+                        <dd>Available</dd>
+                        <dt>Shipped</dt>
+                        <dd>Delhi, Hyderabad</dd>
+                        <dt>Vendor</dt>
+                        <dd>Reliance Digital</dd>
+                    </dl>
+                </fieldset>
+            </body>
+        </html>
+
+
+Terms and Definition with sticky
+--------------------------------
+position: sticky;
+top: 0px;
+
+Example:
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Terms and Definitions</title>
+            <style>
+                dt {
+                    background-color: black;
+                    padding: 5px;
+                    color: white;
+                    font-weight: bold;
+                    position: sticky;
+                    top: 0px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Web Technologies</h1>
+            <dl>
+	      __________________________________	
+             |   <dt>HTML Tutorial</dt>		|
+             |   <dd>Void Elements</dd>		|
+             |   <dd>Normal Elements</dd>	|---------------------------> 4 times
+             |   <dd>RC Data Elements</dd>	|	
+             |   <dd>Foreign Elements</dd>	|
+	     |__________________________________|  
+	     |	<dt>CSS Tutorials</dt>		|
+             |   <dd>Selectors</dd>		|
+             |   <dd>Attributes</dd>		|---------------------------> 4 times
+             |   <dd>Box Model</dd>		|
+             |   <dd>Responsive</dd>		|
+             |__________________________________|   
+             |   <dt>JavaScript</dt>		|
+             |   <dd>Statements</dd>		|
+             |   <dd>Variables</dd>		|---------------------------> 4 times
+             |   <dd>Operators</dd>		|
+             |__________________________________|
+            </dl>
+        </body>
+    </html>
+
+
+Ordered List and Unordered List
+-------------------------------
+    - Ordered List is auto numberinig style for firs list items.
+	<ol> 	Ordered list						     --------------------------------------------------------------------------------------------
+	<li>	List item						    |												 |
+									    |	NOTE: Always use camel-case for naming	----> lowerUppercase				 |
+	<ol>		1,2,3						    |		PMD					prefix: which component you are refering |
+	<ol type="">	1,a,A,i						    |		Sonar					suffix: for what purpose		 |
+	<ol start="">	from which level numbering must start		    |												 |
+	<ol reversed>	it will reverse the numbering only not the data	    |							Example: btnSubmit			 |
+									    |												 |
+	List items side by side	   |	List items in Multiple Columns	    |												 |
+	-----------------------	   |	-------------------------------	     --------------------------------------------------------------------------------------------
+	Example:		   |	Example: 
+	    ol {		   |	    ol {
+		display: flex;	   |		display: grid;
+	    }			   |		grid-templates-columns: 6fr 6fr;
+				   |	    }
+
+
+	Example: 
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <title>Orderlist and Unorder list</title>
+                    <style>
+                        #optionsList {
+                            display: grid;
+                            grid-template-columns: 6fr 6fr;
+                            margin-top: 20px;
+                        }
+                        li {
+                            margin-right: 30px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <ol type="1">
+                        <li>HTML is ______________ language.</li>
+                        <ol type="a" id="optionsList">
+                            <li>functional</li>
+                            <li>programming</li>
+                            <li>presentation</li>
+                            <li>structural</li>
+                        </ol>
+                    </ol>
+                </body>
+            </html>
+
+
+    - Unordered List is bulleted style for list items
+	<ul>	Unordered list
+	<li>	List item
+
+	Attribute:
+	    type = circle, disc, square
+
+	    <ul type="circle>
+
+	Custom image as Bullet
+	----------------------
+	Example:
+	    ul {
+		list-style-image: url("assets/bullet.png");
+	    }
+
+	Library for symbols in your project
+	-----------------------------------
+	    - Fontawesome
+	    - Bootstrap icons
+
+	    Download and install Bootstrap Icons for your project
+	    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		1. Open Project Terminal
+		    [Ctrl + `]
+
+		2. Type the following command
+		    > npm install bootstrap-icons --save
+
+		3. All library files are copied into "node_modules" folder
+
+		4. Go to HTML file and link "bootstrap-icons" css file
+		    <head>
+		    	<link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+		    </head>
+
+		5. Every icon is accessed by using its class name, which you can apply for any container, <span> <div> <p> <dd> <li> etc.
+
+		    <span class = "bi bi-bell"> </span>
+		    Website: https://icons.getbootstrap.com/
+
+	    Example-1: Bootstrap Icons Demo
+	    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <title>Icons demo</title>
+                        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+                        <style>
+                            ul {					 _______________________________________________________________
+                                list-style: none; ________		|    NOTE: to remove numbering or bullet symbol for list item	|
+                                position: fixed;	  |		|	   syntax:						|
+                                bottom: 0px; 		  |		|		ul , ol {					|
+                                right: 20px;		  |_____________|		    list-style: none;				|
+                            }						|		}						|
+                            li {					|								|
+                                margin-bottom: 20px;			|_______________________________________________________________|
+                                padding: 10px;									|
+                                font-size: 30px;								|
+                                color: white;									|
+                                background-color: darkcyan;			 				|
+                                border-radius: 10px;								|
+                            }											|
+                        </style>										|
+                    </head>											|
+                    <body>											|
+                        <h1 align="center"><span class="bi bi-cart4">Amazon Shopping</span></h1>		|
+                        <p> lorem500 </p>									|
+			<p> lorem500 </p>									|
+			<p> lorem500 </p>									|
+                        <div>											|
+			 _______________________________________________					|
+                        |    <ul>					|					|
+                        |        <li class="bi bi-facebook"></li>  	|					|
+                        |        <li class="bi bi-linkedin"></li>	|					|
+                        |        <li class="bi bi-twitter"></li>	|_______________________________________|	
+                        |        <li class="bi bi-youtube"></li>	|	
+                        |    </ul>					|
+			|_______________________________________________|
+                        </div>
+                    </body>
+                </html>
+
+
+	    Example-2: Bootstrap Icons Demo
+	    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                <!DOCTYPE html>
+                <html>
+                    <head>
+                        <title>Navbar</title>
+                        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+                        <style>
+                            ul {
+                                list-style: none;
+                            }
+                            li {
+                                width: 200px;
+                                background-color: tomato;
+                                color: white;
+                                padding: 5px;
+                                font-size: 20px;
+                                margin-bottom: 20px;
+                                border-radius: 10px;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <nav>
+                            <ul>
+                                <li><span class="bi bi-house-fill"></span>Home</li>
+                                <li><span class="bi bi-bell"></span>Notification</li>
+                                <li><span class="bi bi-person"></span>Sign</li>
+                            </ul>
+                        </nav>
+                    </body>
+                </html>   
+
+
+Text Effects in HTML										 	 _______________________________________________________________________________
+--------------------										        |										|
+    - font											 	|		<!DOCTYPE html>							|
+	face, size, color										|		<html>								|
+													|		    <head>							|
+	<font>:												|			<title>Font</title>					|
+	~~~~~~~												|		    </head>							|
+	    - It is used to define face, size and color.						|		    <body>							|
+	        . face = Arial, Times New Roman, Script							|			<div>							|
+													|			  ______________________________________________	|
+													|			 |   <font size = "3" color = "red">W</font>	|	|
+	    	    syntax:										|			 |   <font size = "4" color = "green">E</font>	|	|
+		    	<font face = "Arial"> Your Text </font>	________________________________________|________________________|   <font size = "5" color = "blue">L</font>	|	|
+											      |		|			 |   <font size = "6" color = "yellow">C</font>	|	|
+	            FAQ: what are web safe fonts?					      |		|			 |   <font size = "5" color = "blue">O</font>	|	|
+	            ans: serif, sans-serif, monospace					      |		|			 |   <font size = "4" color = "green">M</font>	|	|
+											      |		|			 |   <font size = "3" color = "red">E</font>	|	|
+											      |		|			 |______________________________________________|	|
+		. size = it defines the font size in 7 levels, 3 is default		      |		|			</div>							|
+		. color: it sets font color by name or hexa code _____________________________|		|	    	    </body>							|
+											      |		|		</html>								|
+		    syntax:								      |		|_______________________________________________________________________________|
+			<font face = "Arial" size = "4" color = "red"> Your Text </font> _____|
+
+
+		    h2 {
+			font-family: "Arial"; 
+			font-size: 30px;	
+			color: red;
+		    }
+
+
+    - font-styles
+	bold, italic
+
+    - font effects
+	underline, strikeout, super script, subscript
+
+
+	Font Styles and Effects:
+	------------------------
+	    <b> 	 	bold
+	    <strong> 		bold
+	    <i>			Italic
+	    <em>		Italic [ emphasized ]
+	    <u>			Underline
+	    <ins>		Underline
+	    <strike>	 	Strikeout
+	    <del>		Delete
+	    <sup>		SuperScript
+	    <sub>		SubScript
+
+	    FAQ: what is difference between <b> and <strong> ?
+	    ans: Document have 2 modes
+		 a) Design mode
+		 b) Review mode
+
+		 <b> 		: is bolid in design
+		 <strong> 	: is bold in review mode
+
+	    <sup>				<sub>
+	 	syntax:				    syntax:
+		    10<sup>th</sup>			H<sub>2</sub>O
+
+	   
+Images in HTML
+--------------
+    - what are the images Types supported for Web Desgin?
+	
+	APNG	- Animated Portable Network Graphics	.apng
+	PNG	- Portable Network Graphics		.png
+	JPG	- Joint Photo Graphic Expert Group	.jpg, .jpeg
+	GIF	- Graphic Interchange Format		.gif
+	BMP	- Bitmap				.bmp
+	SVG	- Scalar Vector Graphics		.svg
+	ICON	- Microsoft ICON			.ico
+	Webp	- Web Picture				.webp
+
+
+    - What is the difference between various types of images formats?
+	
+	. PNG, APNG	- HD, HR, More Pixel Depth, More Space
+	. JPG		- HD, HR, Compressed Images, less space
+	. GIF		- Low Res, 256 colors, same as PNG, can have animation
+			  [ buttons, logo, bullets ]
+	. SVG		- Vector Graphics
+			  XML Based Image
+			  XML can flow through firewall
+			  virus can't effect
+
+	    Pixel Based				Vector Based
+	    ----------------------------------------------------
+	    zoom - qulaity decrease	zoom - quality increase
+
+	. Webp		- Web Picture Format
+			  will save entire web page
+			  embedded into webpage
+
+    Image Types
+    -----------
+	- Embed images into page
+	    - The tag <img> is used to embed images.
+	    - It is an void element
+
+	- Image Attributes:
+	    1. alt		: alternative text to display when image fails to load.				Advanced Attributes:
+	    2. src		: it defines the image path and name.						--------------------
+	    3. width & height   : specifies width and height of image in pixels 				    8. crossorign	: it defined with "anonymous & use-credentials".
+				  % makes image responsive and fluid									  it allows or restrict image from cross-orign.
+														    
+		FAQ: what fluid images?										    9. decoding		: it is defined with "sync, async and auto"
+		ans: Image that can adjust size according to browser. You can define by using "%" as units.				  sync	: synchronous  - blocking technique
+																	  async : asynchronous - unblocking
+	    4. title		: it is used to display screen tip. 									  auto  : accoriding to environment preferences
+	    5. border		: it defines border in pixels.
+	    6. align		: image can be aligned left or right						   10. importance	: it is defined with low, high & auto.
+				  align is used to to wrap text around image								  it loads images as per the priority defined.
+	    7. vspace & hspace	: padding vertical and horizontal										
+	
+
+Card Layout using Images with responsive design:						 __________________________________________________________________________________________
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~						| Student Task: Design Product Card Layout						   |
+<!DOCTYPE html>											|==========================================						   |
+<html>												| Objective:										   |
+												| ----------										   |
+<head>												|    - Design a responsive product card layout like the example, using HTML and CSS. Each  |
+    <title>Card</title>										|      card should display the product name, image, rating, price and an "Add to Cart"	   |
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">	|      button.										   |
+    <style>											|											   |
+        #container {										|Task Requirements:									   |
+            display: flex;									|------------------									   |
+            flex-wrap: wrap;									|    1. Layout										   |
+            background-color: white;								|	- Display 4 cards in a row on desktop.						   |
+        }											|	- Cards should have a subtle shadow and rounded corners.			   |
+        #card {											|	- On smaller screens, cards should wrap into multiple rows.			   |
+            width: 200px;									|											   |
+            /* increased width */								|    2. Card Structure								  	   |
+            height: 380px;									|	- Each card should include:							   |
+            /* fixed equal height */								|	    - Product Name : Top of the card in a colored rectange			   |
+            margin: 20px;									|	    - Product Image: centered inside the card 					   |
+            padding: 20px;									|	    - Rating	   : Stars below the image (4-5 stars)				   |
+ 
+            border-radius: 10px;								|	    - Add to Cart  : Colored button with a cart icon				   |
+            box-shadow: 3px 2px 5px gray;							|											   |
+            display: flex;									|    3. Styling										   |
+            flex-direction: column;								|	- Use Flexbox or CSS Grid for card alignment.					   |
+            justify-content: space-between;							|	- use border-radius for card corners and buttons				   |
+        }											|	- Include hover effect on buttons						   |
+												|	- Keep padding and margin consistent						   |
+        #card-header {										|											   |
+            text-align: center;									|    4. Responsiveness									   |
+            font-weight: bold;									|	- Cards hosuld adapt on different screen sizes					   |
+            padding: 3px;									|	- Animate the button on hover							   |
+            border: 2px solid black;								|__________________________________________________________________________________________|
+            background-color: tomato;								
+            color: white;									
+        }
+
+        #card-body {
+            padding-top: 10px;
+            text-align: center;
+            flex-grow: 1;
+        }
+        #card-body img {
+            width: 100%;
+            height: 200px;
+            /* fixed space for all images */
+            object-fit: contain;
+            /* keep proportions */
+        }
+
+        #price {
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        #card-footer {
+            padding: 10px;
+        }
+
+        #card-footer button {
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: tomato;
+            color: white;
+            border: 4px solid black;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        #card-footer button:hover {
+            background-color: darkcyan;
+        }
+        #rating {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="card">
+            <div id="card-header">JBL Speaker</div>
+            <div id="card-body">
+                <img src="./assets/speaker.jpeg" alt="Speaker">
+                <p id="rating">
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                </p>
+                <p id="price">&#8377; 5000.44</p>
+            </div>
+            <div id="card-footer">
+                <button><span class="bi bi-cart4"></span> Add to Cart</button>
+            </div>
+        </div>
+
+        <div id="card">
+            <div id="card-header">Nike Casuals</div>
+            <div id="card-body">
+                <img src="./assets/shoe.jpeg" alt="Shoe">
+                <p id="rating">
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-half"></span>
+                </p>
+                <p id="price">&#8377; 6000.66</p>
+            </div>
+            <div id="card-footer">
+                <button><span class="bi bi-cart4"></span> Add to Cart</button>
+            </div>
+        </div>
+
+        <div id="card">
+            <div id="card-header">Lee Boot</div>
+            <div id="card-body">
+                <img src="./assets/shoe-lee-boot.jpeg" alt="Boot">
+                <p id="rating">
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-half"></span>
+                </p>
+                <p id="price">&#8377; 3000.66</p>
+            </div>
+            <div id="card-footer">
+                <button><span class="bi bi-cart4"></span> Add to Cart</button>
+            </div>
+        </div>
+
+        <div id="card">
+            <div id="card-header">Shirt</div>
+            <div id="card-body">
+                <img src="./assets/shirt.jpeg" alt="Shirt">
+                <p id="rating">
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-fill"></span>
+                    <span class="bi bi-star-half"></span>
+                </p>
+                <p id="price">&#8377; 2000.66</p>
+            </div>
+            <div id="card-footer">
+                <button><span class="bi bi-cart4"></span> Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+Links in HTML
+-------------
+    - Link is clickable text, picture or graphic that navigates the user to any location when clicked.
+    - Links on Web are known as "HyperLink".
+    - Hyper Links are classified into two types:
+	1. Intra Document Links
+	2. Inter Document Links
+
+	1. Intra Document Links:
+	------------------------
+	    - A hyperlink that navigates from one location to another within the same page.
+	    - Hyperlink is created by using "anchor" element that uses <a> tag.
+	    - Link uses "href" attribute that sets the target URL
+	    - to define intra document links:
+		
+		step-1: Define "id" for any element in page
+		   	<h2 id="home">
+			<h2 id="footwear">
+
+		step-2: You can refer "id" by using anchor element <a>
+			<a href="#home"> Home </a>
+			<a href="#footwear"> Footwear </a>	
+	
+		FAQ: how to target any reference within the page with style?
+		ans: By using ":target" selector
+		     syntax:
+			.topic {
+			    initial effects;
+			}
+			.topic:target {
+			    effects to apply when it is a target for hyperlink;
+			}
+
+		FAQ: how to change effects for element on mouse over?
+		ans: By using ":hover" selector
+		     syntax:
+			.topic:hover {
+			    your effects
+			}
+
+		FAQ: How to remove underline for Hyperlink?
+		ans: By using "text-decoration:none" with style
+		     syntax:
+			a {
+			    text-decoration:none;
+			}
+
+		FAQ: How to change color for HyperLink?
+		ans: 
+		     syntax:
+			a {
+			    effects for all phases [visited, normal, active]
+			a:link {
+			    effect for normal link;	
+			}
+			a:visited {
+			    effect for visited link;
+			}
+			a:active {
+			    effect for active link;
+			}
+
+
+	2. Inter Document Links:
+	------------------------
+	    - Handling naviagation from one page to another.
+	    - navigates to any specific file, url or application.
+	    
+	    NOTE: The target linked document can open in browser only when relative plugin's are supported by browser.
+		  if plugins are not supported then the target document will download.
+
+	    FAQ: How to link a document which will download always?
+	    ans: By using "download" attribute in anchor element.
+		 syntax:
+		     <a href="assets/shoe.jpeg" download="NikeCasuals"> Shoe </a>
+
+	    FAQ: How to open linked document in a new Tab?
+	    ans: By using attribute "target=_bank"
+		 Syntax:
+		     <a href="assets/shoe.jpeg" target="_blank"> Shoe </a>
+
+	    FAQ: How to open linked document in a new window?
+	    ans: By using JavaScript "window.open()"
+		 syntax:
+		     <a href="javascript:window.open('assets/shoe.jpeg','nike','width=400 height=400')"> Shoe </a>
+	
+	    FAQ: How to open linked document in the same page embedded at specific location?
+	    ans: By using "<iframe>"
+		 syntax:
+		     <iframe name="frameBody"></iframe>
+		     <a href="assets/shoe.jpeg" target="frameBody"> Shoe </a>
+		     <iframe src="home.html"></irame>
+		     <iframe src="http://www.site.com"></iframe>
+
+	    FAQ: How to create a link for email, skype and phone call?
+	    ans: Link href uses
+		 
+			"mailto:"	for email
+			"tel:"		for phone call
+			"skype:"	for skype
+			"javascript:"	for executing a javascript function [window.open()]
+
+		 syntax:
+		     <a href="mailto:koushaljha@gmail.com">koushaljha@gmail.com</a>
+		     <a href="tel:+910123456789">Call us</a>
+		     <a href="skype:yourid@outlook.com"> Skype us </a>
+
+	    FAQ: How to link embedded videos or presentation?
+	    ans: By using "<iframe>"
+
+		 https://www.youtube.com/watch?v=0diZqEfx6_A&list=RD0diZqEfx6_A&start_radio=1
+		 https://www.youtube.com/embed/0diZqEfx6_A&list=RD0diZqEfx6_A&start_radio=1
+
+		 view url : 	watch?v= code
+		 embed url:	/embed/code 
+
+Frames in HTML
+--------------
+    - Frame splits the window into horizontal and vertical panes.
+    - Every frame can display a document embedded into window.
+    - It is not embedded into page, it is embedded into browser window.
+
+	syntax:
+	    <frameset rows/cols ="15% 70% 15%">
+	    	<frame src = ""></frame>
+		<frame src = ""></frame>
+	    </frameset>
+
+    - when you designing frameset, HTML page can't have body section <body>
+    - <frameset> is defined after <head> section.
+    - Frames can be nested with rows and columns.
+    - Frame can't display any content directly, it requires a HTML page or URL source.
+	syntax:
+	    <frame name="frameBody" src="home.html"></frame>
+
+
+Center Your content on Page Horizontly and Vertically						<!DOCTYPE html>
+------------------------------------------------------						<html>
+    1. Create a container - parent								    <head>
+    2. Create a container - child									<title>Netflix</title>
+    3. keep your content in child container								<style>
+													    body {
+	<div class = "parent">											bacground-color: balck;
+	    <div class = "child">										color: white;
+		your content											font-family: Arial;
+	    </div>											    }								
+	</div>												    .container {
+														display: flex;
+    4. Set following effects to parent										justify-content: center;
+														align-items: center;
+	.parent {												height: 400px;
+	    display: flex;										    }
+	    justify-content: center;									    .main-content {
+	    align-items: center;									  	text-align: center;
+	    height: 400px;											width: 400px;
+	}												    }
+													    p {
+    5. background image for body section		         					        font-size: 24px;
+	(remove background-color: black)								    }
+	body {												</style>
+	    background-image: url("assets/netflix.jpg");					    </head>
+	    background-size: 100% 100%;								    <body>
+	    background-repeat: no-repeat;								<div class="container">
+	}												    <div class=main-content>
+        .container {                                   								<h1>Unlimited movies, TV shows and more.</h1>
+            background-color: rgba(0,0,0,0.3);      								<p>Watch anywhere. Cancel anytime</p>
+            height: 600px;                            							    </div>
+                                          								</div>
+                                        							    </body>
+                                    								</html>
+
+
+Tables in HTML
+--------------
+    - used to arrange content into rows and columns.
+    - table tags
+
+	<table>		: start and end of table
+	<thead>		: head section
+	<tbody>		: body section
+	<tfoot>		: footer section
+	<tr>		: row
+	<th>		: heading cell
+	<td>		: normal cell
+	<colgroup>	: groups the columns to define a style
+	<caption>	: table caption
+
+    Table Attributes:
+    -----------------
+	1. frame, rules and border
+	    
+	    . frame	: it is defined for entire table, it can have values
+		    	  "box, rhs, lhs, above, below, void"
+ 
+ 		   	syntax:
+		           <table frame = "box | rhs | lhs | above | below | void">  </table>
+
+	    . rules	: it is defined for rows, columns and groups. it can have values
+		          "all | rows, cols, groups, none"
+
+		   	syntax:
+		           <table rules = "all | rows | cols | groups | none"> </table>
+
+	    . border	: defined for cells. it have values
+		     	  0 [ false ]	= no border
+			  1 [ true  ]	= border
+
+			syntax:
+			    <table border = "0 | 1"> </table>
+
+			NOTE: Border can't display if table is configured with "rules" attribute. You have to remove "rules" attribute from table to define border.
+			      The priority is given for rules:
+				if you configure both ruls and border for table, then it will display only rules.
+
+	2. cellspacing and cellpading
+
+	    . cellspacing	: it sets space between cells in table.
+	    . cellpadding	: it sets space around table cell content.
+
+	      syntax: 
+		<table> cellspacing="20" cellpadding="10"> </table>
+
+	3. background color and image
+	
+	    . bgcolor		: it sets background color for table, group, row, cell.
+	    . background	: it sets background image for table, group, row, cell.
+		
+	      syntax:
+		<table bgcolor = "red">
+		<thead bgcolor = "red">
+		<tr bgcolor = "red">
+		<td bgcolor = "red">
+		<th bgcolor = "red">
+
+		<table background = "Your_image_path"> <table> [anywhere]
+
+	4. Alignments
+
+	    . align		: horizontally left, center, right or justified
+	    . valign		: vertically top, center and bottom
+	
+	      syntax:
+		<table align = "" valign = ""> </table> 
+		<td algin = "" valign = ""> </td>
+
+	5. Widht and Height
+
+	    . widht	: it defines width for table and cell
+	    . height	: it defines height for table and cell or row
+
+	6. Merging of rows and coloumn
+		
+	    . colspan	: it can merge multiple columns into single cell
+	    . rowspan	: it can merge multiple rows into single cell
+
+	      syntax:
+		<td colspan = "4"> </td>
+		<th rowspan = "2"> </th>
+
+	7. Nested tables: you can design a table with in another table
+
+
+Forms in HTML
+-------------
+    - Forms provides an UI [User Interface] that allows the user to interact with application. 
+    - Form is a container with collection of elements like button, textbox, listbox, dropdown, radio, checkbox etc.
+    - HTML provides <form> container that comprises of various elements.
+
+    The Form container Attributes:
+    ------------------------------
+	1. id		: it defines a unique ID for form		syntax:
+	2. name		: it defines a reference name for form		    <form id="frmRegister" name="frmRegister" class="form-container">
+	3. class	: it specifies a CSS class name
+	
+	4. method	: it defines the type of action to perfrom. Every HTML form comprises of 2 action methods
+			  a) GET
+			  b) POST
+
+			  a) GET									b) POST
+			  -------									--------
+			     - It submits data to server.						    - It submit data to server.
+			     - it appends data into URL as Query string					    - data is submitted as "FormBody"
+			     - it can be viewed by any user						    - it is not appended into URL.
+			     - It is not safe								    - it is safe.
+			     - it is easy to hack your data						    - it is hard to hack.
+			     - anyone can bookmark your data.						    - it is not in browser history.
+			     - it is stored in browser logs [history]					    - it can't be bookmarked.
+			     - Data is appended into URL, hence you can't submit complex data		    - there is no limit for data, you can submit any amount of data.
+			     - You can't submit binary type data [image, grpahics]			    - you can submit any complex data. even binary type data/
+			     - you can submit max 2048 chars.
+				
+							 _______________________________________________________
+							|     NOTE: always use GET method for fetching data	|
+							|	   always use POST method for submiting data	|
+							|_______________________________________________________|
+
+			 -------------------------------------------------------
+			|  HTTP Method | HTTP Verbs |		Purpose		|	<form method="GET">		FAQ: can we POST | SUBMIT data on GET request?
+			|---------------------------|---------------------------|	<form method="POST">		ans: Yes, But not recommended
+			| 	GET		    |	Fetch Data		|	<form>	default method GET
+			| 	POST		    |	Submit Data		|					FAQ: where data is present, when it is submitted on GET request?
+			|	PUT		    |	Modify all details	|					ans: Query String
+			|	PATCH		    |	Modify partial Details	|
+			|	DELETE		    |	Remove details		|
+			 -------------------------------------------------------	
+
+	5. action	: it indicates the target page, where to submit the data. Usually it refers to server side pages [JSP, PHP, ASP, ASPX etc.]
+			  
+			  syntax:
+			      <form method="POST" action="register.php">				 _______________________________________________________
+													|							|
+	6. novalidate	: HTML 5 introduces form validations.						|	<h2> Register User </h2>			|
+			  Form validation verifies the details before submitting.			|	<form method="GET" novalidate>			|
+			  It allows submitting only when all field are valid.			    	|    	    Your Email: 				|
+			  "novalidate" is used to ignore validation. it will by-pass the validation. 	|    	    <input type="email" name="email">		|
+			  									    	|      	    <button> Register </button>			|
+			  syntax:									|	</form>						|
+			      <form novalidate> </form>							|_______________________________________________________|
+			      [ This will by-pass only HTML validationn ]
+
+
+    Form Elements
+    -------------
+	1. TextBox	 
+	    
+	    - It allows to view, input and edit text.
+	    - It can handle a string [ group of chars - alphabet, numeric and special chars ]
+		
+		<input type="text">
+
+	    	Attributes:
+	    	-----------
+		    - name		NOTE: Form will not submit value of any element if it is not 
+		    - id		      defined with a name. "name" attribute is mandatory for
+		    - class		       element in a form.
+
+		    - value		: It indicates the default value to display in textbox.
+		    - placeholder	: it indicates the watermark text to display in textbox. 
+		    - readonly		: it will not allow to change the value but can submit the value
+		    - disabled		: it will disable the element, form can't submit the value of anydisabled element.
+
+		    - size		: It defines the width of textbox. 
+					  Default size is 20.
+					  
+					  syntax:
+					      <input type="text" name="pin" size="4">		
+
+		    - autofocus		: it sets focus to textbox automatically on page load.
+		    - minlength		: it validates the minimum number of chars that can be entered into textbox.
+		    - maxlength		: it restricts the maximum number of chars that can be entered.
+					  
+					  syntax:
+					      <input type="text" name="pin" minlength="4" maxlength="4">
+
+		    - required		: it is used to verify and ensure that textbox is having a value and it is not empty. 
+					  It is used for mandatory fields.
+
+					  syntax:
+					      <input type="text" name="pin" required>
+
+		    - pattern		: It is used to verify the format of input value. 
+					  It uses a regualr expression.
+				
+					  [A-Z] {4,10}
+					  [0-9] {10}
+		
+					  syntax:
+					      <input type="text" name="Mobile" pattern="[0-9]{10}">
+					      <input type="text" name="UserNmae" pattern="[A-Z]{4.10}">
+
+		    - list		: it is used to define a datalist <datalist> for textbox, which contains options to display as auto complete.
+					  
+					  syntax:
+					      <input type="text" list="topics">
+					      <datalist id="topics">
+					      <option> topic1 </option>
+					      <option> topic2 </option>
+
+	2. Password
+
+	    - It is similar to text box, but will display text masked with password character "*".
+	    syntax: 
+		<input type="password">
+
+
+	3. Number Input
+
+	    - It allows the user to input only numeric value.	Number: Hexa, Octa, Binary, exponent
+	    - It restricts the input to number
+	    syntax:
+		<input type="number">
+
+	        Attributes:
+		-----------
+		    - min
+		    - max	syntax:
+		    - step	    <input type="number" name="Age" min="15" max="25" step="5" value="16">
+ 		    - value			
+
+
+	4. Range Input
+
+	    - It is similar to number but will display a slider to select numeric value.
+	    syntax:
+		<input type="range">
+
+
+	5. Date Input
+	
+	    - It is text box that allows to input date value. Some browsers can display a date picker.
+	    syntax:
+		<input type="date">			only date
+		<input type="datetime-local">		both date and time
+		<input type="datetime">			no longer in use
+		<input type="month">			only month and year
+		<input type="week">			only week
+		<input type="year">			no longer in use
+
+	    FAQ: How to restrict date value?
+	    ans: By using "min" and "max".
+		
+		 syntax:
+		    <dd><input type="date" min="2021-11-05" max="2021-11-22" value="2021-11-05"></dd>
+
+		NOTE: Always the date format must be in "YYYY-MM-DD".
+
+
+	6. Email Input
+	
+	    - It is similar to a textbox but allows to input email format with "@".
+	    syntax:
+		<input type="email">
+
+
+	7. URL Input
+	
+	    - It allows input of valid "url" format.
+	    syntax:
+		<input type="url">
+
+
+	8. File Input
+	
+	    - It allows to browse and select a file for upload.
+	    - It will not upload the file.
+	    - It is just selecting a file.
+	    syntax:
+		<input type="file">
+
+	    - To select multiple file, you have to use the option "multiple
+
+	    FAQ: How to restrict specific file type in selection?
+	    ans: By using "accept" attribute
+		 
+		 syntax:
+		     <input type="file" accept="MIME Type / Extension">
+		     <input type="file" accept="image/jpeg">
+		     <input type="file" accept=".jpg">
+		     <input type="file" accept".jpg,.png" multiple>
+
+
+	9. Color Input
+	
+	    - It allows the user to select a color from color pannel
+	      
+		 syntax:
+		    <input type="color" name="color" value="#ff0000">
+
+
+	10. Radio Button
+
+	    - Allows to select one or multiple options.
+	    - Radio button once checked can't be unchecked
+	    - Radio button is used with  mutex mechanism
+					[ Mutex Exclusion ]
+
+	    syntax:
+		<input type="radio" name"gender"> Text
+
+	    - "checked" attribute is used to select a radio.
+	    - By default radio button submit "on" as value.
+	    - You have to define a value
+	    
+		syntax:
+		    <input type="radio" name="gender" value="Male"> Male
+
+
+	11. Check Box
+
+	    - Check box allows to check and uncheck any option.
+	    - It can be used to select one or multiple.
+	    - Even you define same name, every check box is individual. 
+
+	    syntax:
+		<input type="checkbox">
+	
+
+	    Modern CheckBox
+	    ---------------
+		- Download and install "bootstrap"
+		  > npm install bootstrap --save
+
+		- Link Bootstrap CSS file to your web page
+		  node_modules/bootstrap/dist/css/bootstrap.css
+
+		- Apply the following classes for checkbox.
+		    .form-switch
+		    .form-check-input
+
+		NOTE: These classes are available from bootstrap 5 version
+
+		syntax:
+		    <div class="form-switch">
+			<input type="checkbox" class"form-check-input"> Yes
+		    </div>
+
+
+	12. Dropdown List
+
+	    - It allows the user to select any one option from list.
+	    - The <select> element defines dropdown list aand
+		  <option> defines items in dropdown list.
+
+	    syntax:
+		<select>
+		    <option> Item-1 </option>
+		    <option> Item-2 </option>
+		</select>
+
+	    - Every option comprises of following attributes
+		1. value		It defines the value to submit
+		2. selected		It makes the option selected [default selection]
+		3. disabled		it will not allow to select any specific option
+
+	    - Every option comprises of following properties [JavaScript]
+		1. value
+		2. selected
+		3. disabled
+		4. text			It indicates the text to display for item in dropdown
+					<option value=""> Text </option>
+
+		syntax:
+		    <select name="Category">
+	                <option value="all">All</option>
+	                <option value="ele101">electronics</option>
+            		<option value="foot102" selected>Footwear</option>
+	                <option value="Fashion">Fashion</option>
+	            </select>
+
+
+	    - You can group the options in a dropdown by using "<optgroup>"
+	      syntax:
+		<optgroup label="Electronics">
+		    <option> TV </option>
+		    <option> Mobile </option>
+		</optgroup>
+
+	      NOTE: Option Group is used to classify the items into categories visually not logically.
+
+	
+	13. ListBox
+	
+	    - It is similar to dropdown but allows the user to select one or multiple options froma  group of choices.
+	    - All elements are same as drowdown.
+
+		<select>
+		<optgroup>
+		<option>
+
+	    - To transform into listbox you have to defined the following attributes for <select> element.
+
+		a) multiple
+		b) size
+
+		syntax:
+		    <select size="3" multiple>
+
+		if size or mulitple attributes are not defined then it is a dropdown.
+
+	    NOTE: Multiple attribute allows to select multiple using "ctrl or shift" keys.
+		  [ You can also extend selection with mouse pointer drag ]
+
+		  <option> is RC Data Type - Plain Text
+		  symbols, images and icons not allowed
+
+	14. Meter
+	
+	    - It is used as grade meter.
+	    - It can display a value range.
+	    - It is readonly, it will not allow to change manually, but it can change dynamically.
+
+	    Attributes:
+	    -----------
+		- min
+		- max
+		- value
+		- low			above minimum and below high
+		- high		 	below maximum and above low
+
+		syntax:
+		    <meter min="1" max="100" value="100" low="20" high="60">
+
+		NOTE: Meter can have contextual colors
+
+			warning		- gold yellow
+			success		- green
+			danger		- red
+		   
+			conditions:
+			-----------
+  			    if low and high = 0					success
+			    if low and high range value is minimum		danger
+			    if low and high range value is maximum		warning
+
+			Always the value must be set to max for contextual colors.
+
+			    <meter min="1" max="100" value="100" low="0" high="0"></meter>	green
+			    <meter min="1" max="100" value="100" low="20" high="80"></meter>	yellow
+			    <meter min="1" max="100" value="100" low="60" high="80"></meter>    red
+
+
+			    												within body
+											 _______________________________________________________________________________
+	15. Progressbar									|	<dl>									|
+											|	    <dt> Preparing for Download </dt>					|
+	    - It is used to display status of any task performed by webpage.		|	    <dd> <progress> </progress> </dd>					|
+		downloading, uploading, copying etc.					|	    									|
+											|	    <dt> 70% Download </dt>						|
+	    syntax:				Attributes:				|	    <dd> <progress min="1" max="100" value="70"></progress> </dd>	|
+		<progress> </progress>		    - min, max, value			|	</dl>									|
+											|_______________________________________________________________________________|
+		    													Example - 1
+				
+
+											 _______________________________________________________________________________
+	15. Textarea									|	<fieldset>								|
+											|	    <legend> Your Comments </legend>					|
+	    - It is used for multiple text. It is an RC Data type.			|	    <textarea rows="4" cols="40" readonly disabled>			|
+	    	[ only plain text ]							|		your text...							|
+											|	    </textarea>								|
+	    syntax: 				Attributes:				|	    <br> <br>								|
+		<textarea> </textarea>		    rows, cols, readonly, disabled	|	    <button>Post Comment</button>					|
+ 											|	</fieldset>								|	
+											|_______________________________________________________________________________|
+
+
+	16. Buttons
+
+	    - used to confirm user actioins.
+	    - HTML provides 2 types of buttons
+		a) Generic
+		b) Non-Generic
+
+		a) Generic:
+		-----------
+		    - Generic buttons have pre-defined functionality.
+		    	
+				   HTML 4				HTML 5			
+			   
+			    <input type="submit>	    <button type="submit"> </button>
+			    <input type="reset">	    <button type="submit"> </button>
+
+		    	NOTE: HTML 5 Button allows symbols and images.
+			      HTML 4 Button uses plain text and special characters.
+		
