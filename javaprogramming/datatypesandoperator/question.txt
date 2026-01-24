@@ -1,0 +1,51 @@
+============================================================
+                     ASSIGNMENT HEADER
+============================================================
+| Author     : Koushal Jha                                 |
+| Subject    : Java Programming                            |
+| Chapter    : Datatypes and Operators                     |
+| Difficulty : Level 1                                     |
+| Duration   : 48 Hours                                    |
+============================================================
+
+------------------------------------------------------------
+QUESTION ID: Q001
+TITLE: Fence Building Robot
+
+DESCRIPTION:
+Bryan Mills wants a regular polygon fence for his farm. He 
+purchased a robot that can only build fences with a single 
+specific interior angle (alpha). Your task is to determine 
+if there exists any regular polygon that has an interior 
+angle equal to alpha.
+
+TECHNICAL SPECIFICATIONS:
++-------------------+--------------------------------------+
+| Formula           | n = 360 / (180 - alpha)              |
+| Property          | n must be a positive integer >= 3    |
+| Constraints       | 0 < alpha < 180                      |
++-------------------+--------------------------------------+
+
+SAMPLE INPUT AND OUTPUT:
++-------------------+--------------------------------------+
+| Sample Input      | Sample Output                        |
++-------------------+--------------------------------------+
+| 60                | YES                                  |
++-------------------+--------------------------------------+
+
+LOGICAL TEST CASES:
++---------+--------------------+---------------------------+
+| Case ID | Input (alpha)      | Expected Output           |
++---------+--------------------+---------------------------+
+| 01      | 38                 | NO                        |
+| 02      | 68                 | NO                        |
+| 03      | 60                 | YES                       |
+| 04      | 90                 | YES                       |
++---------+--------------------+---------------------------+
+
+MANDATORY STANDARDS:
+- Package:     ProgrammingInJava.DatatypesAndOperators;
+- Class Name:  Q001
+- Keywords:    int y,x; 
+- Operator:    =
+------------------------------------------------------------
