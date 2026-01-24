@@ -1,0 +1,65 @@
+ASSIGNMENT 1 ANNOUNCEMENT - UI TECHNOLOGIES
+
+Hello OctNov Students,
+
+Your first UI Technologies assignment is now available. Please read this announcement carefully.
+
+DEADLINE: 25th January 2026, 6:00 PM
+TOTAL MARKS: 20
+TOPIC: Course Cards Design using HTML & CSS
+
+HOW TO ACCESS THE ASSIGNMENT:
+1. Go to the repository (link provided in comments)
+2. Find the "Assignment-1" folder
+3. Read the RULES.md file thoroughly
+4. Copy the folder to your local machine
+5. Begin working immediately
+
+ASSIGNMENT TASK:
+Create 8 responsive course cards that exactly match the provided reference design. Each card must display course details with proper styling, ratings, and functional buttons.
+
+KEY REQUIREMENTS:
+- Use HTML5 and CSS3 only
+- Implement Flexbox for layout
+- Create responsive design for all screen sizes
+- Ensure no gap between buttons
+- Buttons must have equal width and touch the card edges
+- Use Bootstrap icons for ratings
+- Follow the exact folder structure provided
+
+IMPORTANT RULES:
+- Do not use AI tools for coding
+- Use only class selectors (no IDs unless absolutely necessary)
+- Write clean, well-commented code
+- Test your implementation across different browsers
+- Submit before the deadline
+
+FOLDER STRUCTURE TO FOLLOW:
+OctNov/UITechnologies/Assignment-1/
+├── assets/ (for all images)
+└── public/ (for your HTML, CSS, and README files)
+
+SUBMISSION INSTRUCTIONS:
+1. Complete all requirements
+2. Ensure all 8 cards are implemented
+3. Test responsiveness
+4. Fill out the README.md file with your details
+5. Keep the folder structure intact
+
+GRADING CRITERIA:
+- Design accuracy: 5 marks
+- HTML structure: 3 marks
+- CSS implementation: 5 marks
+- Button layout: 3 marks
+- Responsive design: 2 marks
+- Code quality: 2 marks
+
+QUESTIONS AND SUPPORT:
+If you have questions, please post them in the comments below. I will address common queries in follow-up posts.
+
+Remember, this assignment is about learning and applying core UI concepts. Focus on understanding the fundamentals rather than just completing the task.
+
+Start early and submit on time.
+
+Koushal Jha
+UI Technologies Instructor

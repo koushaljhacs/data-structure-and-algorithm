@@ -1,21 +1,104 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
-        <title>Course Layout</title>
-        <style>
-
-        </style>
-    </head>
-    <body>
-        <!--WRITE YOUR CODE HERE-->
-        <img src="../assets/amazon-web-service.jpg" alt="">
-        <img src="../assets/crt.png" alt="">
-        <img src="../assets/data-science-with-ai.png" alt="">
-        <img src="../assets/manual-testing.png" alt="">
-        <img src="../assets/mulesoft.png" alt="">
-        <img src="../assets/r-programminng-online-training.png" alt="">
-        <img src="../assets/seo-online-tranning.png" alt="">
-        <img src="../assets/unix-linux.png" alt="">
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Cards Assignment - UI Technologies</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Internal CSS for basic setup -->
+    <style>
+        /* Basic Reset and Setup - DO NOT MODIFY THIS PART */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        /* Student: Add your CSS for the assignment below or in style.css */
+    </style>
+</head>
+<body>
+    <!-- Main Container for all course cards -->
+    <div class="course-container">
+        
+        <!-- Card 1: AWS -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-image">
+                    <img src="../assets/amazon-web-service.jpg" alt="Amazon Web Services">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="course-title">Amazon Web Services (AWS)</h3>
+                <div class="course-rating">
+                    <!-- Add star icons here -->
+                    <span class="rating-value">4.5</span>
+                </div>
+                <div class="course-detail">
+                    <i class="bi bi-clock"></i>
+                    <span class="duration">Duration: ---</span>
+                </div>
+                <div class="course-detail">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>Start Date: <span class="batch-soon">Batch Starts Soon</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn-enroll">ENROLL</button>
+                <button class="btn-share">SHARE</button>
+            </div>
+        </div>
+        
+        <!-- Card 2: Manual Testing -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-image">
+                    <img src="../assets/manual-testing.png" alt="Manual Testing">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="course-title">Manual Testing</h3>
+                <div class="course-rating">
+                    <!-- Add star icons here -->
+                    <span class="rating-value">4.5</span>
+                </div>
+                <div class="course-detail">
+                    <i class="bi bi-clock"></i>
+                    <span class="duration">Duration: ---</span>
+                </div>
+                <div class="course-detail">
+                    <i class="bi bi-calendar-event"></i>
+                    <span>Start Date: <span class="batch-soon">Batch Starts Soon</span></span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn-enroll">ENROLL</button>
+                <button class="btn-share">SHARE</button>
+            </div>
+        </div>
+        
+        <!-- Students: Add 6 more cards here following the same structure -->
+        <!-- Card 3: Campus Recruitment Training (CRT) -->
+        <!-- Card 4: SEO Online Training -->
+        <!-- Card 5: Unix/Linux -->
+        <!-- Card 6: MuleSoft -->
+        <!-- Card 7: Data Science & AI (Rating: 5 stars) -->
+        <!-- Card 8: R Programming Online Training -->
+        
+    </div>
+    
+    <!-- Optional: Add your JavaScript here if needed -->
+    <script>
+        // Optional: Add interactivity if needed
+    </script>
+</body>
 </html>
