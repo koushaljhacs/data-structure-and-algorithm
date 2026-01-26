@@ -1,0 +1,54 @@
+Date: 25th Jan, 2026
+Question ID: 1200
+https://leetcode.com/problems/minimum-absolute-difference/description/?envType=daily-question&envId=2026-01-26
+
+======================================================================
+ALGORITHM 1: THE CLOSEST NEIGHBORS
+======================================================================
+
+--- THE DESIGN ---
+Think of this as finding the two friends in a line with the smallest 
+gap between them.
+
+1. THE LINE UP: Sort everyone from shortest to tallest. 
+2. FIND THE BEST GAP: Walk through the line and measure the gap between 
+   neighbors. Remember the smallest one you see.
+3. THE WINNER LIST: Walk through the line again. Every pair that has 
+   that exact smallest gap gets added to the result book.
+
+--- THE CODE ---
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class Solution {
+    public List<List<Integer>> minimumAbsDifference(int[] inputNumbers) {
+        // 1. Sort so closest numbers are neighbors
+        Arrays.sort(inputNumbers);
+        
+        int listSize = inputNumbers.length;
+        int smallestGapRecord = Integer.MAX_VALUE;
+
+        // 2. Find the smallest gap record
+        for (int i = 0; i < listSize - 1; i++) {
+            int currentGap = inputNumbers[i + 1] - inputNumbers[i];
+            if (currentGap < smallestGapRecord) {
+                smallestGapRecord = currentGap;
+            }
+        }
+
+        // 3. Collect all neighbor pairs that match the record
+        List<List<Integer>> winningPairs = new ArrayList<>();
+        
+        for (int i = 0; i < listSize - 1; i++) {
+            int leftFriend = inputNumbers[i];
+            int rightFriend = inputNumbers[i + 1];
+            
+            if (rightFriend - leftFriend == smallestGapRecord) {
+                winningPairs.add(Arrays.asList(leftFriend, rightFriend));
+            }
+        }
+
+        return winningPairs;
+    }
+}
