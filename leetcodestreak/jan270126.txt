@@ -1,0 +1,113 @@
+Date: 27th Jan, 2026
+Question ID: 3650
+https://leetcode.com/problems/minimum-cost-path-with-edge-reversals/description/?envType=daily-question&envId=2026-01-27
+======================================================================
+ALGORITHM: THE "SMART MAP EXPLORER" (DIJKSTRA)
+======================================================================
+Author: Koushal Jha
+
+--- THE DESIGN ---
+Imagine you are playing a game where you have to travel between cities.
+Each road has a cost. Your goal is to find the absolute cheapest way 
+to get from City 0 to the very last City (n-1).
+
+1. BUILD THE MAP: We take all the road information and organize it.
+   Note: Some roads are "one-way" deals. In this game, going from X to Y 
+   costs 'W', but going back from Y to X costs double ('2 * W').
+
+2. THE "BEST PRICE" LIST: We keep a notebook (array) to write down the 
+   cheapest price we have found for every city so far. At the start, 
+   we think everything is infinitely expensive except for City 0.
+
+3. THE SMART TO-DO LIST (Priority Queue): We use a special list that 
+   always puts the cheapest city to visit at the very top.
+
+4. EXPLORATION:
+   - Pick the cheapest city from the list.
+   - If it's our destination, WIN!
+   - Otherwise, look at all the neighbors of that city.
+   - If we find a way to reach a neighbor that is cheaper than what 
+     we wrote in our notebook, we update our notebook and add that 
+     neighbor to our To-Do list.
+
+======================================================================
+JAVA CODE WITH MEANINGFUL VARIABLE NAMES
+======================================================================
+
+import java.util.*;
+
+class Solution {
+
+    public int minCost(int totalCities, int[][] roadData) {
+        // 1. Create the map (An array of lists to hold neighbor info)
+        List<int[]>[] cityMap = new ArrayList[totalCities];
+        for (int i = 0; i < totalCities; i++) {
+            cityMap[i] = new ArrayList<>();
+        }
+
+        // Fill the map with roads
+        for (int[] road : roadData) {
+            int cityA = road[0];
+            int cityB = road[1];
+            int travelCost = road[2];
+            
+            // Road from A to B costs normal price
+            cityMap[cityA].add(new int[] { cityB, travelCost });
+            // Road from B to A costs double!
+            cityMap[cityB].add(new int[] { cityA, 2 * travelCost });
+        }
+
+        // 2. Setup Dijkstra's Essentials
+        int[] cheapestPriceToReach = new int[totalCities];
+        boolean[] alreadyFinishedCity = new boolean[totalCities];
+        
+        // Start by assuming every city is impossible to reach (Infinity)
+        Arrays.fill(cheapestPriceToReach, Integer.MAX_VALUE);
+        
+        // Cost to stay at the starting city is 0
+        cheapestPriceToReach[0] = 0;
+
+        // 3. The Smart To-Do List (Sorts by cost, smallest first)
+        PriorityQueue<int[]> travelQueue = new PriorityQueue<>(
+            Comparator.comparingInt(a -> a[0])
+        );
+        
+        // Start our journey at City 0 with 0 cost
+        travelQueue.offer(new int[] { 0, 0 }); // Format: [CurrentTotalCost, CityID]
+
+        while (!travelQueue.isEmpty()) {
+            // Get the city that is currently the cheapest to reach
+            int[] currentTrip = travelQueue.poll();
+            int costSoFar = currentTrip[0];
+            int currentCity = currentTrip[1];
+
+            // If we reached the goal (the last city), return the cost!
+            if (currentCity == totalCities - 1) {
+                return costSoFar;
+            }
+
+            // If we've already found the best way to this city, skip it
+            if (alreadyFinishedCity[currentCity]) {
+                continue;
+            }
+            alreadyFinishedCity[currentCity] = true;
+
+            // Look at everyone reachable from here
+            for (int[] neighborInfo : cityMap[currentCity]) {
+                int neighborCity = neighborInfo[0];
+                int roadCost = neighborInfo[1];
+
+                // Check if this new path is cheaper than any we found before
+                if (costSoFar + roadCost < cheapestPriceToReach[neighborCity]) {
+                    cheapestPriceToReach[neighborCity] = costSoFar + roadCost;
+                    
+                    // Add this neighbor to our exploration list
+                    travelQueue.offer(new int[] { cheapestPriceToReach[neighborCity], neighborCity });
+                }
+            }
+        }
+
+        // If we can't reach the last city, return -1
+        return -1;
+    }
+}
