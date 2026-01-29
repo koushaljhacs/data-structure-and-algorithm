@@ -1,7 +1,46 @@
 +----+------------------------------------+------------+------------------------------------+---------------------------------------------------------------------------+
 | #  | File Name                          | LeetCode # | Description                        |   Link                                                                    |
 +----+------------------------------------+------------+------------------------------------+----------------------------------------------------------------------- ---|
-| 1  | BasicBinarySearch.java             | 704        | Classic Binary Search              |
-| 2  | SearchInsertPosition.java          | 35         | Insert Position                    |
-| 3  | LowerBoundImplementation.java      | -          | Lower Bound Algorithm              |
-| 4  | FirstBadVersion.java               | 278        | First Bad Version                  |
+| 1  | BasicBinarySearch.java             | 704        | Classic Binary Search              | https://leetcode.com/problems/binary-search/description/                  |
+|----|------------------------------------|------------|------------------------------------|---------------------------------------------------------------------------|
+| 2  | SearchInsertPosition.java          | 35         | Insert Position                    | https://leetcode.com/problems/search-insert-position/description/         |
+|----|------------------------------------|------------|------------------------------------|---------------------------------------------------------------------------|
+| 3  | LowerBoundImplementation.java      | -          | Lower Bound Algorithm              |                                                                           |
+|----|------------------------------------|------------|------------------------------------|---------------------------------------------------------------------------|
+| 4  | FirstBadVersion.java               | 278        | First Bad Version                  | https://leetcode.com/problems/first-bad-version/
+
+
+lower bound 
+greater or equal
+
+target = 40
+
+10  20  30  40  40  40  40
+0   1   2   3   4   5   6
+
+first position: lower bound 
+
+target = 42
+
+10  20  30  40  50  60  70
+0   1   2   3   4   5   6
+
+lower bound = 4
+
+
+
+upper bound
+strictly greater 
+target = 40
+
+10  20  30  40  40  40  40
+0   1   2   3   4   5   6
+
+upper bound = 7
+
+
+api = 4
+METHOD 
+
+0   1   2    3    4     5   6       7       8
+G   G   G    G    B     B   B       B       B
