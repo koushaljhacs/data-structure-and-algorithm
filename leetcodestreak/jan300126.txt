@@ -130,3 +130,189 @@ class Solution {
         return minCostToPosition[sourceLength - 1];
     }
 }
+
+
+
+--------------------------------------------------------------------------------------------------
+================================================================================
+Algorithm Designer: Koushal Jha
+Algorithm Name: Recursive Memoization with Substring Transformation
+================================================================================
+
+ALGORITHM EXPLANATION:
+This recursive solution uses memoization (top-down dynamic programming) to find 
+the minimum cost to transform the source string into the target string using 
+allowed word transformations.
+
+KEY STEPS:
+1. PREPROCESSING:
+   - Build a transformation map: Map<String, Map<String, Integer>>
+   - Outer map key: Original word
+   - Inner map: Changed word -> Minimum transformation cost
+   - Store only the minimum cost for each (original, changed) pair
+
+2. RECURSIVE FUNCTION (dfs):
+   - Parameters: current position in string, source, target, transformation map, memo array
+   
+   a. BASE CASE:
+      If position == source.length(), return 0 (no more characters to process)
+   
+   b. MEMOIZATION CHECK:
+      If memo[position] != null, return memo[position] (already computed)
+   
+   c. INITIALIZE MINIMUM COST:
+      Set minCost = Long.MAX_VALUE / 2 (a very large value)
+   
+   d. OPTION 1: CHARACTER MATCH
+      If source.charAt(position) == target.charAt(position):
+         minCost = Math.min(minCost, dfs(position + 1, ...))
+   
+   e. OPTION 2: SUBSTRING TRANSFORMATION
+      For all possible substrings starting at current position:
+        1. Extract substring from source (i to j)
+        2. Extract substring from target (i to j)
+        3. Check if transformation exists in map
+        4. If exists: cost = transformationCost + dfs(j + 1, ...)
+        5. Update minCost = Math.min(minCost, cost)
+   
+   f. CACHE AND RETURN:
+      memo[position] = minCost
+      return minCost
+
+3. MAIN FUNCTION:
+   - Build transformation map
+   - Initialize memo array of size n+1
+   - Call dfs(0, ...)
+   - Return result (or -1 if impossible)
+
+TIME COMPLEXITY: O(n² * L) where n is string length, L is average word length
+SPACE COMPLEXITY: O(n) for memoization cache
+
+================================================================================
+COMPLETE JAVA CODE:
+================================================================================
+
+import java.util.*;
+
+class Solution {
+    public long minimumCost(String source, String target, 
+                           String[] originalWords, String[] changedWords, 
+                           int[] transformationCosts) {
+        // Step 1: Build transformation map with minimum costs
+        Map<String, Map<String, Integer>> transformationMap = new HashMap<>();
+        
+        for (int i = 0; i < originalWords.length; i++) {
+            String fromWord = originalWords[i];
+            String toWord = changedWords[i];
+            int cost = transformationCosts[i];
+            
+            transformationMap.putIfAbsent(fromWord, new HashMap<>());
+            Map<String, Integer> innerMap = transformationMap.get(fromWord);
+            
+            // Store minimum cost for each transformation
+            if (!innerMap.containsKey(toWord) || cost < innerMap.get(toWord)) {
+                innerMap.put(toWord, cost);
+            }
+        }
+        
+        // Step 2: Initialize memoization array
+        Long[] memo = new Long[source.length()];
+        
+        // Step 3: Start recursive search from position 0
+        long result = dfs(0, source, target, transformationMap, memo);
+        
+        // Step 4: Return result (or -1 if impossible)
+        return result >= Long.MAX_VALUE / 2 ? -1 : result;
+    }
+    
+    private long dfs(int position, String source, String target,
+                    Map<String, Map<String, Integer>> transformationMap,
+                    Long[] memo) {
+        // Base case: reached end of string
+        if (position == source.length()) {
+            return 0;
+        }
+        
+        // Check memoization cache
+        if (memo[position] != null) {
+            return memo[position];
+        }
+        
+        long minCost = Long.MAX_VALUE / 2;
+        
+        // Option 1: If characters match, move forward with no cost
+        if (source.charAt(position) == target.charAt(position)) {
+            minCost = Math.min(minCost, dfs(position + 1, source, target, transformationMap, memo));
+        }
+        
+        // Option 2: Try all possible substring transformations
+        StringBuilder sourceSubstring = new StringBuilder();
+        StringBuilder targetSubstring = new StringBuilder();
+        
+        for (int end = position; end < source.length(); end++) {
+            // Build substrings incrementally
+            sourceSubstring.append(source.charAt(end));
+            targetSubstring.append(target.charAt(end));
+            
+            String fromWord = sourceSubstring.toString();
+            String toWord = targetSubstring.toString();
+            
+            // Check if this transformation is allowed
+            if (transformationMap.containsKey(fromWord) && 
+                transformationMap.get(fromWord).containsKey(toWord)) {
+                
+                int transformationCost = transformationMap.get(fromWord).get(toWord);
+                long remainingCost = dfs(end + 1, source, target, transformationMap, memo);
+                
+                // Update minimum cost if valid
+                if (remainingCost < Long.MAX_VALUE / 2) {
+                    minCost = Math.min(minCost, transformationCost + remainingCost);
+                }
+            }
+        }
+        
+        // Memoize and return result
+        memo[position] = minCost;
+        return minCost;
+    }
+}
+
+================================================================================
+EXAMPLE USAGE:
+================================================================================
+
+Input:
+source = "abc"
+target = "def"
+originalWords = ["ab", "c"]
+changedWords = ["de", "f"]
+transformationCosts = [5, 3]
+
+Execution:
+1. Build map: {"ab" -> {"de": 5}, "c" -> {"f": 3}}
+2. dfs(0):
+   - Option 1: 'a' != 'd', so skip
+   - Option 2: Try substrings:
+     * "a"->"d": Not in map
+     * "ab"->"de": Cost = 5 + dfs(2)
+       dfs(2): 
+         - Option 1: 'c' != 'f', skip
+         - Option 2: "c"->"f": Cost = 3 + dfs(3)
+           dfs(3): Base case, return 0
+         Total: 5 + 3 = 8
+3. Return 8
+
+================================================================================
+ADVANTAGES:
+1. Easy to understand and implement
+2. No need for complex graph algorithms
+3. Naturally handles substring matching
+4. Memoization prevents exponential time complexity
+
+================================================================================
+LIMITATIONS:
+1. Slower than DP for large inputs
+2. Can cause stack overflow for very long strings
+3. Repeated substring creation can be optimized
+
+================================================================================
