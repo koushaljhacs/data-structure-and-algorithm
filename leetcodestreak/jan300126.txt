@@ -1,0 +1,132 @@
+Question ID: 2977
+https://leetcode.com/problems/minimum-cost-to-convert-string-ii/description/?envType=daily-question&envId=2026-01-30
+
+class TrieNode {
+    TrieNode[] children = new TrieNode[26];
+    int wordId = -1; // -1 means this is not a complete word
+}
+
+class Solution {
+    private static final int INF = Integer.MAX_VALUE / 2;
+    
+    // Add a word to the trie and return its unique ID
+    private int addWordToTrie(TrieNode root, String word, int[] nextId) {
+        TrieNode currentNode = root;
+        
+        for (char letter : word.toCharArray()) {
+            int index = letter - 'a';
+            if (currentNode.children[index] == null) {
+                currentNode.children[index] = new TrieNode();
+            }
+            currentNode = currentNode.children[index];
+        }
+        
+        // Assign a new ID if this word hasn't been seen before
+        if (currentNode.wordId == -1) {
+            currentNode.wordId = ++nextId[0];
+        }
+        
+        return currentNode.wordId;
+    }
+    
+    public long minimumCost(
+        String source,
+        String target,
+        String[] originalWords,
+        String[] changedWords,
+        int[] transformationCosts
+    ) {
+        int sourceLength = source.length();
+        int wordCount = originalWords.length;
+        
+        // Create trie to store all words and map them to unique IDs
+        TrieNode trieRoot = new TrieNode();
+        int[] nextWordId = {-1}; // Start from -1, will increment to 0 for first word
+        int totalWordIds = wordCount * 2; // Maximum possible unique words
+        
+        // Create graph for shortest path between words
+        int[][] minCostBetweenWords = new int[totalWordIds][totalWordIds];
+        for (int i = 0; i < totalWordIds; i++) {
+            Arrays.fill(minCostBetweenWords[i], INF);
+            minCostBetweenWords[i][i] = 0; // Cost to stay same word is 0
+        }
+        
+        // Add all words to trie and build initial cost graph
+        for (int i = 0; i < wordCount; i++) {
+            int fromWordId = addWordToTrie(trieRoot, originalWords[i], nextWordId);
+            int toWordId = addWordToTrie(trieRoot, changedWords[i], nextWordId);
+            minCostBetweenWords[fromWordId][toWordId] = Math.min(
+                minCostBetweenWords[fromWordId][toWordId], 
+                transformationCosts[i]
+            );
+        }
+        
+        int uniqueWordCount = nextWordId[0] + 1; // Number of unique words found
+        
+        // Find cheapest paths between all words using Floyd-Warshall
+        for (int intermediateWord = 0; intermediateWord < uniqueWordCount; intermediateWord++) {
+            for (int fromWord = 0; fromWord < uniqueWordCount; fromWord++) {
+                for (int toWord = 0; toWord < uniqueWordCount; toWord++) {
+                    int directCost = minCostBetweenWords[fromWord][toWord];
+                    int throughIntermediateCost = minCostBetweenWords[fromWord][intermediateWord] + 
+                                                minCostBetweenWords[intermediateWord][toWord];
+                    minCostBetweenWords[fromWord][toWord] = Math.min(directCost, throughIntermediateCost);
+                }
+            }
+        }
+        
+        // DP array: minimum cost to transform first j characters
+        long[] minCostToPosition = new long[sourceLength];
+        Arrays.fill(minCostToPosition, -1); // -1 means impossible
+        
+        for (int endPosition = 0; endPosition < sourceLength; endPosition++) {
+            // If previous position was impossible, skip
+            if (endPosition > 0 && minCostToPosition[endPosition - 1] == -1) {
+                continue;
+            }
+            
+            long baseCost = (endPosition == 0) ? 0 : minCostToPosition[endPosition - 1];
+            
+            // Option 1: If characters match, no transformation needed
+            if (source.charAt(endPosition) == target.charAt(endPosition)) {
+                if (minCostToPosition[endPosition] == -1) {
+                    minCostToPosition[endPosition] = baseCost;
+                } else {
+                    minCostToPosition[endPosition] = Math.min(minCostToPosition[endPosition], baseCost);
+                }
+            }
+            
+            // Option 2: Try transforming substring starting at current position
+            TrieNode sourceNode = trieRoot;
+            TrieNode targetNode = trieRoot;
+            
+            for (int startPosition = endPosition; startPosition < sourceLength; startPosition++) {
+                char sourceChar = source.charAt(startPosition);
+                char targetChar = target.charAt(startPosition);
+                
+                sourceNode = sourceNode.children[sourceChar - 'a'];
+                targetNode = targetNode.children[targetChar - 'a'];
+                
+                // If either path doesn't exist, stop
+                if (sourceNode == null || targetNode == null) {
+                    break;
+                }
+                
+                // If both are complete words and transformation is possible
+                if (sourceNode.wordId != -1 && targetNode.wordId != -1 && 
+                    minCostBetweenWords[sourceNode.wordId][targetNode.wordId] != INF) {
+                    
+                    long transformationCost = baseCost + minCostBetweenWords[sourceNode.wordId][targetNode.wordId];
+                    
+                    // Update DP for the end position of this transformation
+                    if (minCostToPosition[startPosition] == -1 || 
+                        transformationCost < minCostToPosition[startPosition]) {
+                        minCostToPosition[startPosition] = transformationCost;
+                    }
+                }
+            }
+        }
+        
+        return minCostToPosition[sourceLength - 1];
+    }
+}

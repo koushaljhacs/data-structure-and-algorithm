@@ -1,0 +1,61 @@
+Question ID: 2976
+https://leetcode.com/problems/minimum-cost-to-convert-string-i/?envType=daily-question&envId=2026-01-29
+
+class Solution {
+    public long minimumCost(
+        String source,
+        String target,
+        char[] original,
+        char[] changed,
+        int[] cost
+    ) {
+        long totalMinimumCost = 0;
+        
+        // Create a table to store cheapest way to change between letters
+        long[][] cheapestChange = new long[26][26];
+        for (long[] row : cheapestChange) {
+            Arrays.fill(row, Integer.MAX_VALUE);
+        }
+
+        // Fill the table with given direct changes
+        for (int i = 0; i < original.length; ++i) {
+            int fromLetter = original[i] - 'a';
+            int toLetter = changed[i] - 'a';
+            cheapestChange[fromLetter][toLetter] = Math.min(
+                cheapestChange[fromLetter][toLetter],
+                (long) cost[i]
+            );
+        }
+
+        // Find cheapest paths between all letters using helper letters
+        for (int helper = 0; helper < 26; ++helper) {
+            for (int from = 0; from < 26; ++from) {
+                for (int to = 0; to < 26; ++to) {
+                    long directCost = cheapestChange[from][to];
+                    long throughHelperCost = cheapestChange[from][helper] + cheapestChange[helper][to];
+                    cheapestChange[from][to] = Math.min(directCost, throughHelperCost);
+                }
+            }
+        }
+
+        // Calculate total cost to change source to target
+        for (int position = 0; position < source.length(); ++position) {
+            char sourceLetter = source.charAt(position);
+            char targetLetter = target.charAt(position);
+            
+            if (sourceLetter == targetLetter) {
+                continue;
+            }
+            
+            int fromLetterIndex = sourceLetter - 'a';
+            int toLetterIndex = targetLetter - 'a';
+
+            if (cheapestChange[fromLetterIndex][toLetterIndex] >= Integer.MAX_VALUE) {
+                return -1;
+            }
+            totalMinimumCost += cheapestChange[fromLetterIndex][toLetterIndex];
+        }
+
+        return totalMinimumCost;
+    }
+}
