@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Registration Form</h1>
+        <form action="/register" method="post">
+            
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="name">Full Name:</label><br>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <br>
+            
+            <!-- Age Field -->
+            <div class="form-group">
+                <label for="age">Age:</label><br>
+                <input type="number" id="age" name="age" min="1" max="120" required>
+            </div>
+            
+            <br>
+            
+            <!-- Phone Field -->
+            <div class="form-group">
+                <label for="phone">Phone Number:</label><br>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+                <small>Format: 10-digit number</small>
+            </div>
+            
+            <br>
+            
+            <!-- Gender Field -->
+            <div class="form-group">
+                <label>Gender:</label><br>
+                
+                <!-- Radio buttons  -->
+                <input type="radio" id="male" name="gender" value="male" checked>
+                <label for="male">Male</label>
+                
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+            
+            <br>
+            
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <br>
+            
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" minlength="6" required>
+                <small>Minimum 6 characters</small>
+            </div>
+            
+            <br>
+            
+            <!-- Address Field -->
+            <div class="form-group">
+                <label for="address">Address:</label><br>
+                <textarea id="address" name="address" rows="3" cols="30"></textarea>
+            </div>
+            
+            <br>
+            
+            <!-- Terms and Conditions -->
+            <div class="form-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+            
+            <br>
+            
+            <!-- Submit and Reset Buttons -->
+            <div class="form-group">
+                <button type="submit">Register</button>
+                <button type="reset">Clear Form</button>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+Date: 22nd Jan, 2026
+
+There are two methods:
+    GET     : if we want to content from the server.
+    POST    : if we want to send request to server like instagram post.
+    

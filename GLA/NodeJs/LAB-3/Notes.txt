@@ -1,0 +1,120 @@
+==========================================================
+      TECHNICAL DOCUMENTATION: NODE.JS HTTP SERVER
+==========================================================
+
+1. MODULE INITIALIZATION
+------------------------
+Code: let http = require('http');
+Description: This line loads the built-in HTTP module. It provides the 
+necessary tools to create a server that can listen for requests and 
+send back data over the internet.
+
+2. SERVER ARCHITECTURE (req & res)
+----------------------------------
+Code: http.createServer((req, res) => { ... })
+- req (Request): This object contains all the information sent by the 
+  client (browser or Postman), such as the URL and headers.
+- res (Response): This object is used by the server to send the status 
+  code and the final message back to the client.
+
+3. HEADER DATA EXTRACTION
+-------------------------
+Code: let header = req.headers.authorization;
+Description: In Postman, you send data in the "Headers" tab. This line 
+extracts the value linked to the 'authorization' key. It is the 
+standard way to verify a user's identity without showing the password 
+in the URL.
+
+4. LOGIC CONTROL & THE 'RETURN' COMMAND
+---------------------------------------
+Code: return res.end();
+Importance: The res.end() function tells the server to finish the 
+response. However, the code below it will still try to run. We use 
+'return' to stop the function immediately. Without 'return', the 
+server will try to send a second response, causing a crash.
+
+5. HTTP STATUS CODES (Technical Specification)
+----------------------------------------------
+Status codes are three-digit numbers that tell the client what happened.
+
+- 200 OK: The request was successful. Access is granted.
+- 201 Created: The request was successful and a new record was 
+  successfully created on the server.
+- 400 Bad Request: The server cannot process the request because the 
+  client made an error (e.g., missing a required header).
+- 401 Unauthorized: Specifically used when authentication fails 
+  (wrong secret key).
+
+6. SERVER DEPLOYMENT
+--------------------
+Code: server.listen(3001, ...)
+Description: This tells the server to stay active and "listen" for 
+incoming traffic on Port 3001.
+
+==========================================================
+            PRACTICAL EXECUTION EXAMPLE
+==========================================================
+
+If you run the code and use Postman:
+
+CASE 1: No Header sent
+- Result: The code sees (!header) is true.
+- Status: 400
+- Output: "Kindly enter secret key first"
+
+CASE 2: Header 'authorization' is "koushaljha"
+- Result: The code sees (header == secret) is true.
+- Status: 200
+- Output: "Welcome user"
+
+CASE 3: Header 'authorization' is "wrong-key"
+- Result: The code enters the 'else' block.
+- Status: 400 (or 401)
+- Output: "Invalid! user..."
+
+==========================================================
+
+
+
+==========================================================
+      NPM & PACKAGE MANAGEMENT (Installation & Knowledge)
+==========================================================
+
+1. WHAT IS NPM?
+---------------
+- Full Name: Node Package Manager.
+- Description: It is the world's largest "Library" or "Store" for 
+  JavaScript. If you need a tool (like a calculator, a database 
+  connector, or a web framework), you download it via npm.
+
+2. NPM INIT (The Birth of a Project)
+------------------------------------
+- Command: npm init
+- Purpose: It creates a 'package.json' file.
+- How it works: It asks you a series of questions (Name, Version, 
+  Description). This file acts as the "Identity Card" for your project.
+
+3. NPM INIT -Y (The Fast Track)
+-------------------------------
+- Command: npm init -y
+- Purpose: The "-y" stands for "YES". 
+- How it works: It automatically answers "Yes" to all the questions 
+  and creates the 'package.json' file instantly with default 
+  settings. It saves time.
+
+4. INSTALLING EXPRESS (The Speed Booster)
+-----------------------------------------
+- Command: npm install express
+- What is Express?: In your header.js, you used the 'http' module. 
+  It is powerful but takes many lines of code. 
+- Express is a "Framework" built on top of 'http'. It makes 
+  creating routes and handling headers much faster and cleaner.
+
+5. NODE_MODULES FOLDER
+----------------------
+- Description: When you install a package like Express, npm 
+  creates a folder called 'node_modules'. 
+- Warning: Never edit this folder manually. It contains all the 
+  code that makes your downloaded tools work.
+
+==========================================================
