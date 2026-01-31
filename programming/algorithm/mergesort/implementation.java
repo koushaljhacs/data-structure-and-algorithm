@@ -3,51 +3,60 @@ package programming.algorithm.mergesort;
 import java.util.Scanner;
 
 public class implementation {
-    public static void mergeTwoSortedArray(int[] arr, int[] brr, int[] crr) {
-        int i=0, j=0, k=0;
-        while(i < arr.length && j < brr.length) {
-            if(arr[i] <= brr[j]) {
-                crr[k++] = arr[i++];
-            } else {
-                crr[k++] = brr[j++];
-            }
-        }
-
-        while(j == brr.length && i < arr.length) {
-            crr[k++] = arr[i++];
-        }
-        while(i == arr.length && j < brr.length) {
-            crr[k++] = brr[j++];
-        }
-    }
     public static void printArray(int[] arr) {
-        for(int ele: arr) {
+        for (int ele : arr) {
             System.out.print(ele + " ");
         }
-        System.out.println();
     }
+
+    public static void mergeTwoArray(int[] arr, int[] brr, int[] ans) {
+        int i = 0; // arr -> first partion
+        int j = 0; // brr -> second partion
+        int k = 0; // ans -> original array arr
+
+        while (i < arr.length && j < brr.length) {
+            if (arr[i] <= brr[j]) {
+                ans[k] = arr[i];
+                i++;
+            } else {
+                ans[k] = brr[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < arr.length) {
+            ans[k] = arr[i];
+            k++;
+            i++;
+        }
+        while (j < brr.length) {
+            ans[k] = brr[j];
+            k++;
+            j++;
+        }
+    }
+
     public static void mergeSort(int[] arr) {
-        if(arr.length <= 1) return;
-        int[] a = new int[arr.length/2];
-        for(int i=0; i<a.length; i++) {
-            a[i] = arr[i];
+        if (arr.length == 1)
+            return;
+        int[] firstPartition = new int[arr.length / 2];
+        for (int i = 0; i < firstPartition.length; i++) {
+            firstPartition[i] = arr[i];
         }
-        int[] b = new int[arr.length - arr.length/2];
-        for(int j=a.length; j<arr.length; j++){
-            b[j-a.length] = arr[j];
+
+        int[] secondPartition = new int[arr.length - arr.length / 2];
+        for (int j = 0; j < secondPartition.length; j++) {
+            secondPartition[j] = arr[j + firstPartition.length];
         }
-        mergeSort(a);
-        mergeSort(b);
-        mergeTwoSortedArray(a, b, arr);
+
+        mergeSort(firstPartition);
+        mergeSort(secondPartition);
+        mergeTwoArray(firstPartition, secondPartition, arr);
     }
+
     public static void main(String[] args) {
-        Scanner obj = new Scanner(System.in);
-        System.out.print("Enter the size of the array: ");
-        int size = obj.nextInt();
-        int[] arr = new int[size];
-        for(int i=0; i<arr.length; i++) {
-            arr[i] = obj.nextInt();
-        }
+        int[] arr = { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
 
         mergeSort(arr);
         printArray(arr);
