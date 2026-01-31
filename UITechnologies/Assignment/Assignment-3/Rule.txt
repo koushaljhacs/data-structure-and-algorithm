@@ -1,0 +1,321 @@
+================================================================================
+Assignment - 3: Registration Form Design
+================================================================================
+AUTHOR: KOUSHAL JHA 
+MANAGED BY: OctNov 
+
+IMPORTANT: If you don't follow these EXACT instructions, your assignment will be REJECTED
+
+===============================================================================
+CLONING & SUBMISSION INSTRUCTIONS (MUST FOLLOW)
+===============================================================================
+
+STEP 1: CLONE THE REPOSITORY
+1. Open VS Code
+2. Press Ctrl+K then O (or File → Open Folder)
+3. Select your "SDE" folder
+4. Open terminal in VS Code (Ctrl + `)
+5. Check your current path (should be SDE/)
+6. Navigate to clone directory:
+   cd koushal-clone
+   cd octnov
+7. Pull the latest changes:
+   git pull
+
+STEP 2: COPY ASSIGNMENT FOLDER
+9. Copy the ENTIRE "Assignment-3" folder from:
+   SDE/koushal-clone/OctNov/UITechnologies/Assignment/Assignment-3/
+
+STEP 3: PASTE IN YOUR WORKSPACE
+10. Navigate to your workspace:
+    cd .. (from OctNov folder)
+    cd .. (from koushal-clone folder)
+    cd OctNov
+    cd UITechnologies
+    cd Assignment
+11. Paste the ENTIRE "Assignment-3" folder here
+
+STEP 4: COMPLETE YOUR WORK
+12. Open the Assignment-3 folder in VS Code
+13. Complete the assignment as per requirements below
+14. DO NOT modify folder structure
+15. DO NOT rename any files
+
+WARNING: If you skip any step or modify folder structure, your assignment will be REJECTED.
+
+Deadline: 2nd Feb, 2026
+Total Marks: 20
+Objective: Design a complete registration form using HTML & CSS
+
+===============================================================================
+FOLDER STRUCTURE
+===============================================================================
+
+Your Assignment-3 folder MUST have this EXACT structure:
+
+Assignment-3/
+│   Rule.txt                 (This file - DO NOT MODIFY)
+│
+└───public
+    │   index.html           (Main HTML file)
+    │   style.css            (CSS styles file)
+    │
+    └───assets
+            reference.png    (Design reference - DO NOT MODIFY)
+
+===============================================================================
+FILE REQUIREMENTS
+===============================================================================
+
+1. index.html MUST:
+   • Start with EXACT code below
+   • DO NOT add any CSS except basic reset in <style>
+   • Link to style.css
+   • Create 5 form sections inside body
+
+   START OF index.html:
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <title>Registration-Form</title>
+       <style>
+           * {
+               margin: 0;
+               padding: 0;
+               box-sizing: border-box;
+           }
+           
+           body {
+               font-family: Arial, sans-serif;
+               background-color: lightgray;
+               padding: 20px;
+           }
+       </style>
+       <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+       <!-- YOUR FORM CODE HERE -->
+   </body>
+   </html>
+
+2. style.css MUST:
+   • Start with this header comment
+   • Contain ALL CSS for the form
+   • Use ONLY color names (no hex codes)
+   • Use ONLY px and % units
+
+   START OF style.css:
+   /* 
+       UI Technologies - Assignment 3
+       Registration Form
+       Student: [Your Name]
+       
+       Instructions:
+       1. Write all your CSS styles here
+       2. Make sure to follow the design requirements
+       3. Use comments to explain your code
+       4. Test your design at different screen sizes
+   */
+
+   /* Add your CSS code below this line */
+
+3. assets/reference.png:
+   • Contains design reference screenshot
+   • Match your design to this reference
+
+===============================================================================
+DESIGN REQUIREMENTS
+===============================================================================
+
+1. FORM STRUCTURE (Create in index.html):
+   • Container div with class "container"
+   • Header with title and subtitle
+   • Form with id="registrationForm", action="/register", method="POST"
+   • 5 sections with class "form-section":
+      Section 1: Personal Information (Required fields)
+      Section 2: Contact Information
+      Section 3: Demographic Information
+      Section 4: Professional Information
+      Section 5: Terms and Conditions
+   • Submit button
+   • Footer with copyright
+
+2. COLOR SPECIFICATIONS (USE COLOR NAMES ONLY):
+   • Page background: lightgray
+   • Main container background: white
+   • Form section background: whitesmoke
+   • Section title color: darkblue
+   • Required field marker: red
+   • Button background: blue
+   • Button hover background: darkblue
+   • Input border: gray
+   • Input focus border: blue
+   • Helper text color: gray
+   • Footer text color: gray
+   • Footer border: lightgray
+
+3. LAYOUT SPECIFICATIONS:
+
+   A. MAIN CONTAINER:
+      • Width: 90% of screen
+      • Maximum width: 800px
+      • Center horizontally
+      • Padding: 30px
+      • Border radius: 10px
+      • Box shadow: 0px 4px 8px gray
+
+   B. HEADER:
+      • Center aligned text
+      • Bottom border: 2px solid blue
+      • Title font size: 32px
+      • Subtitle font size: 18px
+      • Margin bottom: 30px
+      • Padding bottom: 20px
+
+   C. FORM SECTIONS:
+      • Background: whitesmoke
+      • Margin bottom: 25px
+      • Padding: 20px
+      • Border radius: 8px
+      • Section title font size: 22px
+      • Section title margin bottom: 15px
+
+   D. FORM ROWS & INPUTS:
+      • Form row margin bottom: 20px
+      • Input group width: 100%
+      • Labels: bold, black color, font size 16px
+      • All inputs width: 100%
+      • Input padding: 12px
+      • Input border: 2px solid gray
+      • Input border radius: 5px
+      • Input font size: 16px
+      • Textarea height: 100px, resize vertical only
+      • Helper text font size: 14px, margin top: 5px
+
+   E. BUTTON:
+      • Center aligned
+      • Background: blue, text: white
+      • No border
+      • Padding: 15px top/bottom, 40px left/right
+      • Font size: 18px
+      • Border radius: 5px
+      • Cursor: pointer
+      • Width: 100%, maximum width: 300px
+      • Hover background: darkblue
+
+   F. FOOTER:
+      • Center aligned text
+      • Top border: 1px solid lightgray
+      • Margin top: 30px
+      • Padding top: 20px
+      • Font size: 14px
+
+4. RESPONSIVE DESIGN (Mobile):
+   • When screen width is 600px or less:
+      - Container width: 95%
+      - Container padding: 15px
+      - Title font size: 24px
+      - Form section padding: 15px
+
+5. FORM CONTROLS REQUIRED:
+   • Text input for Full Name (required)
+   • Email input for Email (required)
+   • Password input for Password (required)
+   • Telephone input for Phone Number
+   • Textarea for Address
+   • Select dropdown for Gender (Male, Female, Other)
+   • Date input for Date of Birth
+   • Select dropdown for Country (India, USA, UK, Canada)
+   • Select dropdown for Occupation (Student, Employed, etc.)
+   • Select dropdown for Education (High School, Bachelor's, etc.)
+   • Checkbox for Terms & Conditions (required)
+   • Submit button
+
+===============================================================================
+HTML CLASS NAMES TO USE
+===============================================================================
+
+Use these EXACT class names:
+
+1. Container & Header:
+   .container, .header, .title, .subtitle
+
+2. Form Sections:
+   .form-section, .section-title
+
+3. Form Layout:
+   .form-row, .input-group, .input-label
+
+4. Form Controls:
+   .text-input, .textarea-input, .select-input
+   .required, .helper-text
+
+5. Button & Footer:
+   .button-container, .submit-button
+   .footer
+
+===============================================================================
+IMPORTANT RULES
+===============================================================================
+
+DO NOT:
+   • Add JavaScript
+   • Add CSS in index.html (except basic reset)
+   • Use hex colors (#ff0000) or RGB
+   • Use rem/em/vw/vh units (use only px and %)
+   • Copy code from others
+   • Use AI tools to generate code
+
+DO:
+   • Write ALL CSS in style.css
+   • Use only color names (blue, red, gray, etc.)
+   • Use exact class names provided
+   • Write clean, commented code
+   • Test in multiple browsers
+   • Match the reference.png design
+   • Make it responsive
+
+===============================================================================
+SUBMISSION CHECKLIST
+===============================================================================
+
+Before submitting, verify:
+   ✓ Folder structure is EXACT as shown
+   ✓ index.html has only basic CSS reset
+   ✓ style.css has all styling
+   ✓ All 5 form sections are implemented
+   ✓ All required fields marked with red *
+   ✓ Form has proper action and method
+   ✓ Colors use names only
+   ✓ Mobile responsive works
+   ✓ Button has hover effect
+   ✓ Inputs have focus states
+   ✓ Design matches reference.png
+   ✓ Code is properly commented
+
+===============================================================================
+GRADING CRITERIA (20 Marks)
+===============================================================================
+
+1. Exact folder structure               - 2 marks
+2. HTML structure (5 sections)          - 4 marks
+3. CSS in separate file                 - 3 marks
+4. Design matches reference             - 4 marks
+5. Responsive design                    - 3 marks
+6. Code quality & comments              - 2 marks
+7. Following all rules                  - 2 marks
+
+===============================================================================
+HINTS
+===============================================================================
+
+1. Use Chrome DevTools to test responsiveness
+2. Validate HTML at: https://validator.w3.org/
+3. Validate CSS at: https://jigsaw.w3.org/css-validator/
+4. Test form submission works (even without backend)
+5. Check tab navigation works properly
+6. Ensure good contrast for accessibility
+
+================================================================================
+GOOD LUCK!
+================================================================================
