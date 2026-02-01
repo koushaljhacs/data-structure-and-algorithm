@@ -1,0 +1,11 @@
+class Solution {
+    public char nextGreatestLetter(char[] sortedLetters, char targetLetter) {
+        for (char letter : sortedLetters) {
+            if (letter > targetLetter) {
+                return letter;
+            }
+        }
+        // If no letter is greater, return the first letter (wrap around)
+        return sortedLetters[0];
+    }
+}
