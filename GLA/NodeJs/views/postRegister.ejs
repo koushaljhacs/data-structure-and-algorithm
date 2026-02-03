@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Register</title>
+</head>
+<body>
+    <h1>Register Form</h1>
+
+    <% if (error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+
+    <form action="/postRegister" method="post">
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" value="<%= data.name || '' %>" />
+        </div>
+
+        <br>
+
+        <div>
+            <label>Field:</label>
+            <input type="text" name="field" value="<%= data.field || '' %>" />
+        </div>
+
+        <br>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" />
+        </div>
+
+        <br>
+
+        <div>
+            <label>Confirm Password:</label>
+            <input type="password" name="confirmPassword" />
+        </div>
+
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
