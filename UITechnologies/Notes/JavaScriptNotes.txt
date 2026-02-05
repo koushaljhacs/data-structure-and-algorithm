@@ -1,0 +1,314 @@
+											JavaScript
+									---------------------------
+Introduction:
+=============
+
+- JavaScript is light weight, JIT [Just-in-Time] compiled programming language.
+  
+    what is JIT?
+	There are 2 type of compiling techniques
+	    a) JIT 	[Just-in-Time]		JIT compiles logic in browser.
+    	    b) AOT	[Ahead-of-Time]		AOT compile logic at app level.
+
+- JavaScript supports various programming language techniques and approaches
+    a) Functional Programming
+    b) Structural Programming
+    c) Imperative Programming
+    d) Object Oriented Programming etc.
+
+- JavaScript is not an OOP language, it supports only few features of OOP.
+- JavaScript is used 
+    a) Client Side		HTML
+    b) Server Side		Node.js
+    c) Database			MongoDB
+    d) Animations		ActionScript, Flash, 3DS Max etc.	
+				CAD
+
+Evolution of JavaScript:
+========================
+
+- The first browser was "Mosaic"
+    - GML, SGML		presentation
+    - ECMA script	Client Side
+
+- 1990's Tim Berners Lee introduced HTML
+- 1994 Netscape Communication - Developed browser 
+    "Netscape Communicatior"
+	-HTML
+	- ECMA Script
+	- Netscape appointed "Brendan Eich"	[CERN]
+	- Mocha ---> Live Script
+	- SUN Micro Systems - JavaScript
+
+- 1998 Microsoft Win-98 - Free Apps
+    |__Internet Explorer
+
+- 2004  	= Netscape stopped its browser, JavaScript  => ECMS
+- ECMA Script	= JavaScript = ES4 -- ES20 [ECMA Script 2020]
+
+										JavaScript with HTML
+										  [ Client Side ]
+									-------------------------------------
+
+- JavaScript is used client side in order to reduce burden on server.
+- JavaScript can reduce burden on sever by
+    - Handling Validations Client Side
+    - Handling Interactions Client Side
+    - DOM Manipulations
+	    a) Adding Elements								
+	    b) Removing Elements									
+	    c) Rendering new Data into Elements		 
+	    d) Update data in elements etc..
+
+            <img style="display:none">
+            is it there in page?
+            no, just hide, but it can't remove it by CSS
+
+            FAQ: what is the role of JavaScript with HTML?
+            ans: DOM Manipulations.
+
+Integrating JavaScript into page
+================================
+
+1. Inline							                        2. Embedded							                |    3. External File
+---------------------------------------------------------|------------------------------------------------------|----------------------------------------------------------------
+<!DOCTYPE html>						                     |   <!DOCTYPE html>							        |        step:1 create a new file
+<html>								                     |   <html>								                |        "printing.js"
+    <head>							                     |   <head>							                    |            function PrintPage()
+        <title>JavaScript - Inline</title>			     |       <title>JavaScript = Inline</title>			    |            {
+    </head>							                     |       <script type="text/javascript">				|                    window.print();
+    <body>								                 |           function PrintPage() {			  	        |            }
+        <h1>Click Print button print page.</h1>			 |	            window.print();                         |
+        <button onclick="window.print()">print</button>	 |	        }							                |    step:2 Link to HTML page
+    </body>								                 |       </script>						                |        <script src="printing.js"></script>
+</html>								                     |   </head>						                    |            <button onclick="PrintPage()">Print</button>
+								                         |   <body>                                             |
+									                     |       <h1> Click print button print page.</h1>		|        NOTE: Always use "Minified"
+                                                         |       <button onclick="window.print()">print</button>|               jsminifier.com 
+                                                         |       </body>
+                                                         |   </html>
+
+
+How JavaScript Refers HTML elements?
+1. JavaScript can refer HTML elements by using DOM hierarchy.
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        window.document.images[0].src = "../assets/laptop.png";
+                        window.document.forms[0].elements[1].value = "Register";
+                        window.document.forms[1].elements[1].value = "Login";
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <img width="120" height="100" border="1">
+                <div>
+                    <form>
+                        <h2>Register</h2>
+                        User Name: <input type="text"> <input type="button">
+                    </form>
+                </div>
+                <div>
+                    <form>
+                        <h2>Login</h2>
+                        Email: <input type="email"> <input type="button">
+                    </form>
+                </div>
+            </body>
+        </html>
+
+    - if we change the position of any element in page, then every time we have to update its position in code.
+    - it is faster in rendering [generating output].
+
+
+2. JavaScript can refer elements by using "name".
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        pic.src = "../assets/laptop.png";
+                        frmRegister.btnRegister.value = "Register";
+                        frmLogin.btnLogin.value = "Login";
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <img width="120" height="100" border="1" name="pic">
+                <div>
+                    <form name="frmRegister">
+                        <h2>Register</h2>
+                        User Name: <input type="text" name="txtName"> <input type="button" name="btnRegister">
+                    </form>
+                </div>
+                <div>
+                    <form name="frmLogin">
+                        <h2>Login</h2>
+                        Email: <input type="email" name="txtEmail"> <input type="button" name="btnLogin">
+                    </form>
+                </div>
+            </body>
+        </html>
+
+    - We can access any element directly by using its refernce name.
+    - We can't access child elements directly.
+    - We have to refer both parent and child hierarchy.
+
+
+3. We can refer by using "ID"
+    document.getElementById("idName");
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        document.getElementById("pic").src = "../assets/phone.png";
+                        document.getElementById("btnRegister").value = "Register";
+                        document.getElementById("btnLogin").value = "Login";
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <img width="120" height="100" border="1" name="pic"id="pic">
+                <div>
+                    <form name="frmRegister">
+                        <h2>Register</h2>
+                        User Name: <input type="text" name="txtName"> <input type="button" name="btnRegister" id="btnRegister">
+                    </form>
+                </div>
+                <div>
+                    <form name="frmLogin">
+                        <h2>Login</h2>
+                        Email: <input type="email" name="txtEmail"> <input type="button" name="btnLogin" id="btnLogin">
+                    </form>
+                </div>
+            </body>
+        </html>
+
+    - Every element can be configured with only one ID.
+    - ID have conflict with CSS reference.
+    - ID is not required if we are accessing any direct docuemnt element.
+
+4. JavaScript can refer any element by using CSS selectors [type, id, class selector]
+    document.querySelector("selectorName");
+
+    syntax:
+        document.querySelector("h2")	= type selector
+        document.querySelector("#pic")	= id selector
+        document.querySelector(".pic")	= class selector
+
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        document.querySelector("#pic").src = "../assets/laptop.png";
+                        document.querySelector(".btn-register").value = "Register";
+                        document.querySelector(".btn-login").value = "Login";
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <img width="120" height="100" border="1" name="pic"id="pic">
+                <div>
+                    <form name="frmRegister">
+                        <h2>Register</h2>
+                        User Name: <input type="text" name="txtName"> <input type="button" name="btnRegister" id="btnRegister" class="btn-register">
+                    </form>
+                </div>
+                <div>
+                    <form name="frmLogin">
+                        <h2>Login</h2>
+                        Email: <input type="email" name="txtEmail"> <input type="button" name="btnLogin" id="btnLogin" class="btn-login">
+                    </form>
+                </div>
+            </body>
+        </html>
+
+    - Query selector can apply only to the first element
+    - How ever it can handle data for multiple elements.
+    - It can also handle styles for multiples elements.
+
+5. JavaScript can refer all elements having common name 
+    document.getElementsByName("elementName");
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        result = document.getElementsByName("pay");
+                        alert("Total Number of Payments Methods: " + result.length);
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <fieldset>
+                    <legend>Payment Method</legend>
+                    <input type="radio" name="pay"> Cash
+                    <input type="radio" name="pay"> UPI
+                    <input type="radio" name="pay"> Credit Card
+                </fieldset>
+            </body>
+        </html>
+
+6. JavaScript can refer all elements having common class name
+    document.getElementsByClassName("className")
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        result = document.getElementsByClassName("form-check-input");
+                        alert("Raios With Input Class : " + result.length);
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <fieldset>
+                    <legend>Payment Method</legend>
+                    <input type="radio" class="form-check-input" name="pay"> Cash
+                    <input type="radio" class="form-check-input" name="pay"> UPI
+                    <input type="radio" class="form-check-input" name="pay"> Credit Card
+                </fieldset>
+            </body>
+        </html>
+
+7. JavaScript can refer all elements by using Tag Name
+    document.getElementsByTagName()
+    Example: 01
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>DOM Element</title>
+                <script>
+                    function bodyload() {
+                        result = document.getElementsByTagName("h2");
+                        alert("Total no. of Headings : " + result.length);
+                    }
+                </script>
+            </head>
+            <body onload="bodyload()">
+                <fieldset>
+                    <h2>Register</h2>
+                    <legend>Payment Method</legend>
+                    <input type="radio" class="form-check-input" name="pay"> Cash
+                    <input type="radio" class="form-check-input" name="pay"> UPI
+                    <input type="radio" class="form-check-input" name="pay"> Credit Card
+                </fieldset>
+                <h2>Login</h2>
+            </body>
+        </html>
