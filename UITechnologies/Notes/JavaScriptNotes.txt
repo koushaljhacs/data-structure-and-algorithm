@@ -8,7 +8,7 @@ Introduction:
     what is JIT?
 	There are 2 type of compiling techniques
 	    a) JIT 	[Just-in-Time]		JIT compiles logic in browser.
-    	    b) AOT	[Ahead-of-Time]		AOT compile logic at app level.
+    	b) AOT	[Ahead-of-Time]		AOT compile logic at app level.
 
 - JavaScript supports various programming language techniques and approaches
     a) Functional Programming
@@ -34,7 +34,7 @@ Evolution of JavaScript:
 - 1990's Tim Berners Lee introduced HTML
 - 1994 Netscape Communication - Developed browser 
     "Netscape Communicatior"
-	-HTML
+	- HTML
 	- ECMA Script
 	- Netscape appointed "Brendan Eich"	[CERN]
 	- Mocha ---> Live Script
@@ -312,3 +312,744 @@ How JavaScript Refers HTML elements?
                 <h2>Login</h2>
             </body>
         </html>
+
+                                                            JAVASCRIPT OUTPUT techniques
+                                                            =============================
+- alert()   : displays message in alert box
+            : it has no cancel button only have ok button
+            : it is used for debugging purpose 
+            : it is a blocking method
+            : it stops execution until user click ok button
+            : syntax:  
+                alert("message");
+
+                Example: 01
+                    <script>
+                        alert("Welcome to JavaScript");
+                    </script>
+
+                output:
+                    Alert Box with message "Welcome to JavaScript" and OK button
+    
+- confirm() : confirm is same as alert 
+            : displays message in confirm box in pop-up dialouge box return boolean value i.e. true or false
+            : it has ok and cancel button
+            : it is used to get user confirmation
+            : it is a blocking method
+            : it stops execution until user click ok or cancel button
+            : syntax:
+                confirm("message");
+
+                Example: 01
+                    <script>
+                        var result = confirm("Do you want to proceed?");
+                        if(result == true) {
+                            document.write("User Clicked OK button");
+                        } else {
+                            document.write("User Clicked Cancel button");
+                        }
+                    </script>
+                    
+                    output:
+                        Confirm Box with message "Do you want to proceed?" and OK and Cancel button
+
+- console.log() : it is used to print message in console window
+                : it is used for debugging purpose
+                : it is not blocking method
+                : it doesn't stop execution
+                : syntax:
+                    console.log("message");
+
+                    Example: 01
+                        <script>
+                            console.log("Welcome to JavaScript");
+                        </script>
+
+                        output:
+                            prints message in console window "Welcome to JavaScript"
+
+- console.warn(): it is used to print warning message in console window
+                : it is used for debugging purpose
+                : it is not blocking method
+                : it doesn't stop execution
+                : syntax:
+                    console.warn("message");
+
+                    Example: 01
+                        <script>
+                            console.warn("This is warning message");
+                        </script>
+
+                        output:
+                            prints warning message in console window "This is warning message"
+
+- console.success() : it is used to print success message in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.success("message");
+
+                        Example: 01 
+                            <script>
+                                console.success("This is success message");
+                            </script>
+
+                            output:
+                                prints success message in console window "This is success message"
+
+- console.error()   : it is used to print error message in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.error("message");
+                        Example: 01
+                            <script>
+                                console.error("This is error message");
+                            </script>
+
+                            output: 
+                                prints error message in console window "This is error message"
+
+- console.info()    : it is used to print info message in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.info("message");
+
+                        Example: 01
+                            <script>
+                                console.info("This is info message");
+                            </script>
+                            output:
+                                prints info message in console window "This is info message"
+
+- console.table()   : it is used to print data in tabular format in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.table(data);
+
+                        Example: 01
+                            <script>
+                                var emp = { "Name": "Koushal", "Age": 25, "City": "Mumbai" };
+                                console.table(emp);
+                            </script>
+
+                            output:
+                                prints data in tabular format in console window
+                                Name     Age     City
+                                -----------------------
+                                Koushal   25    Mumbai
+
+- console.count()   : it is used to print number of times a message is printed in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.count("message");
+                        
+                        Example: 01
+                            <script>
+                                for(var count in [1,2,3,4,5]) {
+                                    console.count("Loop Iteration");
+                                }
+                            </script>
+                            output:
+                                prints number of times "Loop Iteration" is printed in console window
+                                Loop Iteration: 1
+                                Loop Iteration: 2
+                                Loop Iteration: 3
+                                Loop Iteration: 4
+                                Loop Iteration: 5
+
+- console.clear()   : it is used to clear the console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.clear();
+                        
+                        Example: 01
+                            <script>
+                                console.log("Welcome to JavaScript");
+                                console.clear();
+                            </script>
+
+                            output:
+                                Welcome to JavaScript
+                                clears the console window
+
+- console.trace()   : it is used to print the stack trace in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.trace("message");
+
+                        Example: 01
+                            <script>
+                                function f1() {
+                                    f2();
+                                }
+                                function f2() {
+                                    f3();
+                                }
+                                function f3() {
+                                    console.trace("Stack Trace");   
+                                }
+                                f1();
+                            </script>
+
+                            output:
+                                prints the stack trace in console window
+                                Stack Trace
+                                f1()
+                                f2()
+                                f3()
+
+- console.time()    : it is used to start a timer in console window
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.time("timerName");
+                        console.timeEnd("timerName");
+                        
+                        Example: 01
+                            <script>
+                                console.time("Loop Timer");
+                                for(var i=0; i<1000; i++) {
+                                    // some code
+                                }
+                                console.timeEnd("Loop Timer");
+                            </script>
+
+                            output:
+                                prints the time taken to execute the loop in console window
+                                Loop Timer: 5ms
+
+                                ms: milliseconds
+
+- console.group()   : it is used to group messages in console window
+                    : it is used for debugging purpose  
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.group("groupName");
+                        console.groupEnd("groupName");
+
+                        Example: 01
+                            <script>
+                                console.group("User Details");
+                                console.log("Name: Koushal");
+                                console.log("Age: 25");
+                                console.log("City: Mumbai");
+                                console.groupEnd("User Details Ended");
+                            </script>
+
+                            output:
+                                User Details
+                                    Name: Koushal
+                                    Age: 25
+                                    City: Mumbai
+                                User Details Ended
+
+- console.groupCollapsed()  : it is used to group messages in console window in collapsed mode
+                            : it is used for debugging purpose
+                            : it is not blocking method
+                            : it doesn't stop execution
+                            : syntax:
+                                console.groupCollapsed("groupName");    
+                                console.groupEnd("groupName");
+                                
+                                Example: 01
+                                    <script>
+                                        console.groupCollapsed("User Details");
+                                        console.log("Name: Koushal");
+                                        console.log("Age: 25");
+                                        console.log("City: Mumbai");
+                                        console.groupEnd("User Details Ended");
+                                    </script>
+
+                                    output:
+                                        User Details (collapsed)
+                                            Name: Koushal
+                                            Age: 25
+                                            City: Mumbai
+                                        User Details Ended
+
+- console.assert()  : it is used to print message in console window if the condition is false   
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.assert(condition, "message");
+
+                        Example: 01
+                            <script>
+                                var x = 10;
+                                console.assert(x > 20, "x is not greater than 20");
+                            </script>
+
+                            output:
+                                prints message in console window "x is not greater than 20"
+
+- console.dir()     : it is used to print an interactive list of the properties of a specified JavaScript object
+                    : it is used for debugging purpose
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : syntax:
+                        console.dir(object);
+
+                        Example: 01
+                            <script>
+                                var emp = { "Name": "Koushal", "Age": 25, "City": "Mumbai" };
+                                console.dir(emp);
+                            </script>
+
+                            output:
+                                prints an interactive list of the properties of emp object in console window
+
+- innerHTML     : it is used to get or set the HTML content inside an element
+                : it is used to dynamically update the content of HTML elements
+                : it is not blocking method
+                : it doesn't stop execution
+                : it can render text, HTML tags, data from variables etc.
+                : we can refer element by using id, name, class, query selector etc.
+                : syntax:
+                    element.innerHTML = "content"; // to set content
+                    let content = element.innerHTML; // to get content
+
+                    Example: 01
+                        <script>
+                            document.getElementById("demo").innerHTML = "<strong>Hello World!</strong>";
+                        </script>
+
+                        HTML:
+                        <div id="demo"></div>
+
+                        output:
+                            renders "Hello World!" in bold inside the div element
+
+                    Example: 02
+                        <script>
+                            let fruits = ["Apple", "Banana", "Orange"];
+                            let listHTML = "<ul>";
+                            fruits.forEach(fruit => {
+                                listHTML += `<li>${fruit}</li>`;
+                            });
+                            listHTML += "</ul>";
+                            document.getElementById("fruitList").innerHTML = listHTML;
+                        </script>
+
+                        HTML:
+                        <div id="fruitList"></div>
+
+                        output:
+                            renders an unordered list with all fruits inside the div element
+
+                    Example: 03
+                        <script>
+                            // Getting innerHTML content
+                            let content = document.getElementById("container").innerHTML;
+                            console.log(content);
+                        </script>
+
+                        output:
+                            prints the HTML content of the container element to console
+
+outerHTML       : it is used to get or set the HTML content including the element itself
+                : it replaces the entire element along with its content
+                : it is not blocking method
+                : it doesn't stop execution
+                : it includes the opening tag, content, and closing tag of the element
+                : we can refer element by using id, name, class, query selector etc.
+                : syntax:
+                    element.outerHTML = "content"; // to set content
+                    let content = element.outerHTML; // to get content  
+
+                    Example: 01
+                        <script>
+                            document.getElementById("demo").outerHTML = "<div id='new'><p>Replaced content</p></div>";
+                        </script>
+
+                        HTML (before):
+                        <div id="demo">Original content</div>
+
+                        HTML (after):
+                        <div id="new"><p>Replaced content</p></div>
+
+                        output:
+                            replaces the entire div element with new HTML structure
+
+                    Example: 02
+                        <script>
+                            let element = document.querySelector(".item");
+                            console.log(element.outerHTML);
+                        </script>
+
+                        HTML:
+                        <div class="item"><span>Hello</span> World</div>
+
+                        output:
+                            prints "<div class="item"><span>Hello</span> World</div>" to console
+
+                    Example: 03
+                        <script>
+                            // Transforming an element
+                            let header = document.getElementById("title");
+                            header.outerHTML = "<h1 class='new-title'>" + header.innerHTML + "</h1>";
+                        </script>
+
+                        HTML (before):
+                        <div id="title">Page Title</div>
+
+                        HTML (after):
+                        <h1 class="new-title">Page Title</h1>
+
+                        output:
+                            changes the div element to h1 while preserving the inner content            
+
+FAQ: DIFFERENCE BETWEEN innerHTML AND outerHTML
+
+    innerHTML
+        - Gets/sets ONLY the content INSIDE the element
+        - Does NOT include the element's own tags
+        - Modifies only children/content
+        - Original element REMAINS in DOM
+
+    outerHTML  
+        - Gets/sets content INCLUDING the element itself
+        - Includes element's opening tag + content + closing tag
+        - Replaces ENTIRE element in DOM
+        - Original element is REMOVED and REPLACED
+
+    Example: 01
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>innerHTML vs outerHTML Examples</title>
+        </head>
+        <body>
+            <h1>innerHTML vs outerHTML Demonstration</h1>
+
+            <!-- Original HTML Structure -->
+            <div id="container" class="box">
+                <p>Hello World</p>
+                <span>Text here</span>
+            </div>
+
+            <hr>
+
+            <!-- innerHTML Examples -->
+            <div id="innerHTML-example">
+                <h2>innerHTML Operations:</h2>
+                
+                <button onclick="getInnerHTML()">Get innerHTML</button>
+                <button onclick="setInnerHTML()">Set innerHTML</button>
+                
+                <div id="innerHTML-result"></div>
+            </div>
+
+            <hr>
+
+            <!-- outerHTML Examples -->
+            <div id="outerHTML-example">
+                <h2>outerHTML Operations:</h2>
+                
+                <button onclick="getOuterHTML()">Get outerHTML</button>
+                <button onclick="setOuterHTML()">Set outerHTML</button>
+                
+                <div id="outerHTML-result"></div>
+            </div>
+
+            <script>
+                // innerHTML OPERATIONS
+                
+                function getInnerHTML() {
+                    // GET innerHTML:
+                    let inner = document.getElementById("container").innerHTML;
+                    // Returns: "<p>Hello World</p><span>Text here</span>"
+                    
+                    document.getElementById("innerHTML-result").innerHTML = 
+                        "<strong>GET innerHTML Result:</strong><br>" + 
+                        "Returns: " + escapeHtml(inner);
+                }
+
+                function setInnerHTML() {
+                    // SET innerHTML:  
+                    document.getElementById("container").innerHTML = "<h1>New Content</h1>";
+                    // Result: <div id="container" class="box"><h1>New Content</h1></div>
+                    
+                    document.getElementById("innerHTML-result").innerHTML = 
+                        "<strong>SET innerHTML Result:</strong><br>" + 
+                        "Now the container has: &lt;div id=\"container\" class=\"box\"&gt;&lt;h1&gt;New Content&lt;/h1&gt;&lt;/div&gt;";
+                }
+
+                // outerHTML OPERATIONS
+
+                function getOuterHTML() {
+                    // GET outerHTML:
+                    let outer = document.getElementById("container").outerHTML;  
+                    // Returns: '<div id="container" class="box"><p>Hello World</p><span>Text here</span></div>'
+                    
+                    document.getElementById("outerHTML-result").innerHTML = 
+                        "<strong>GET outerHTML Result:</strong><br>" + 
+                        "Returns: " + escapeHtml(outer);
+                }
+
+                function setOuterHTML() {
+                    // SET outerHTML:
+                    document.getElementById("container").outerHTML = "<section id='new-container'><h1>Complete Replacement</h1></section>";
+                    // Result: <section><h1>Complete Replacement</h1></section>
+                    
+                    document.getElementById("outerHTML-result").innerHTML = 
+                        "<strong>SET outerHTML Result:</strong><br>" + 
+                        "Now the container is replaced with: &lt;section id=\"new-container\"&gt;&lt;h1&gt;Complete Replacement&lt;/h1&gt;&lt;/section&gt;";
+                }
+
+                // Helper function to escape HTML for display
+                function escapeHtml(unsafe) {
+                    return unsafe
+                        .replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;");
+                }
+            </script>
+        </body>
+        </html>
+
+    COMPARISON TABLE:
+        +------------------------------------------------------------------------------+
+        | ASPECT         | innerHTML                    | outerHTML                    |
+        |----------------|------------------------------|------------------------------|
+        | SCOPE          | Content inside element       | Entire element + itself      |
+        | GET OPERATION  | Returns children only        | Returns element + children   |
+        | SET OPERATION  | Updates content only         | Replaces entire element      |
+        | DOM IMPACT     | Element stays                | Element gets replaced        |
+        | USE CASE       | Update content dynamically   | Change element type/structure|
+        +----------------+------------------------------+------------------------------+
+
+    WHEN TO USE:
+
+        +---------------------------------+--------------------------------+
+        | Use innerHTML WHEN:              | Use outerHTML WHEN:           |
+        +----------------------------------+-------------------------------|
+        | • Update text/content            | • Change element type         |
+        | • Add/remove child elements      | • Replace entire structure    |
+        | • Modify existing content        | • Transform element tag       |
+        | • Keep element attributes        | • Complete element overhaul   |`
+        +----------------------------------+-------------------------------+
+
+- document.write()  : document.write() : it is used to write content directly to the HTML document
+                    : it can write text, HTML tags, or variables
+                    : it is not blocking method
+                    : it doesn't stop execution
+                    : if used after page load, it will overwrite the entire document
+                    : syntax:
+                        document.write(content);
+
+                        Example: 01
+                            <script>
+                                let currentTime = new Date();
+                                document.write("<h1>Current Time:</h1>");
+                                document.write("<p>" + currentTime + "</p>");
+                            </script>
+
+                            output:
+                                renders the heading and current time directly in the HTML document
+
+                                                            JAVASCRIPT INPUT techniques
+                                                            =============================
+
+- prompt()      : form input elements 
+                : it is like alert with input.
+                : by defualt prompt is empty.
+                : it returns 
+                    null    ->  on CANCEL 
+                    ""      ->  on OK without value
+                    value   ->  on OK with value 
+                : syntax:
+                    prompt("Our Message", "Default Value");
+                
+                Example: 01
+                    <!DOCTYPE html>
+                    <html>
+                        <head>
+                            <title>Prompt</title>
+                            <script>
+                                function CreateClick() {
+                                    foldername = prompt("Enter Folder Name", "New_folder");
+                                    if(foldername == null) {
+                                        document.write("you cancelled..");
+                                    } else if(foldername == "") {
+                                        document.write("Please provide folder name..");
+                                    } else {
+                                        document.querySelector("p").innerHTML += "Folder Created : " + foldername + "<br>";
+                                    }
+                                }
+                            </script>
+                        </head>
+                        <body>
+                            <button onclick="CreateClick()">Create Folder</button>
+                            <p></p>
+                        </body>
+                    </html>
+
+- form input elements
+    - we can use form input elements like textbox, password, number, email, radio, checkbox, listbox, dropdown etc.
+    - Every form element must have a reference ID.
+
+        <input type="text" id"txtName">
+        <select id="lstCities">
+        <input type="checkbox" id="optStock">
+
+    - We can access element and use its properties
+
+        document.getElementById("txtName").value;
+        document.getElementById("lstCities").value;
+        docuemnt.getElementById("optStock").checked == true / false;
+
+    Example:
+        <!DOCTYPE html>
+        <html>
+
+        <head>
+            <title>Form Input Elements</title>
+            <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+            <script>
+                function SubmitClick() {
+                    document.getElementById("detailsContainer").style.display = "block";
+                    document.getElementById("registerContainer").style.display = "none";
+                    
+                    document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+                    document.getElementById("lblPrice").innerHTML = document.getElementById("txtPrice").value;
+                    document.getElementById("lblCity").innerHTML = document.getElementById("lstCities").value;
+
+                    stock = "";
+                    stockCheckBox = document.getElementById("optStock");
+                    if(stockCheckBox.checked) {
+                        stock = "Available";
+                    } else {
+                        stock = "Out of Stock";
+                    }
+                    document.getElementById("lblStock").innerHTML = stock;
+                }
+            </script>
+        </head>
+
+        <body class="container-fluid">
+            <div class="mt-3" id="registerContainer">
+                <button data-bs-target="#registerProduct" data-bs-toggle="modal" class="btn btn-primary">Register New Product</button></h2>
+            </div>
+
+            <div class="modal fade" id="registerProduct">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Register new Product</h2>
+                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <dl>
+                                <dt>Name</dt>
+                                <dd><input type="text" id="txtName" class="form-control"></dd>
+
+                                <dt>Price</dt>
+                                <dd><input type="text" id="txtPrice" class="form-control"></dd>
+
+                                <dt>Shipped To</dt>
+                                <dd>
+                                    <select id="lstCities" class="form-select">
+                                        <option>Delhi</option>
+                                        <option">Hyderabad</option>
+                                    </select>
+                                </dd>
+
+                                <dt>Stock</dt>
+                                <dd class="form-switch">
+                                    <input type="checkbox" id="optStock" class="form-check-input"> Available
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" onclick="SubmitClick()" data-bs-dismiss="modal">Submit</button>
+                            <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div id="detailsContainer" style="display: none;">
+                <h2>Product Details</h2>
+                <dl class="row">
+                    <dt class="col-3">Name</dt>
+                    <dd class="col-9" id="lblName"></dd>
+                    <dt class="col-3">Price</dt>
+                    <dd class="col-9" id="lblPrice"></dd>
+                    <dt class="col-3">Shipped To</dt>
+                    <dd class="col-9" id="lblCity"></dd>
+                    <dt class="col-3">Stock</dt>
+                    <dd class="col-9" id="lblStock"></dd>
+                </dl>
+                <button class="btn btn-info" data-bs-target="#registerProduct" data-bs-toggle="modal">Edit</button>
+            </div>
+            <script src="../node_modules/jquery/dist/jquery.js"></script>
+            <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        </body>
+
+        </html>
+
+FAQ: What is the difference between prompt() and an HTML <input>?"
+ans: Prompt: It is blocking. The browser stops executing all other scripts until the user responds. It is also un-stylable.
+     HTML Input: It is non-blocking. The user can interact with the rest of the page while the input is visible, and it can be fully styled with CSS.
+     
+FAQ: what is strict mode of JavaScript?
+ans: Strict mode for JavaScript allows to reduce code in-consistency
+     so that developers have to follow coding standards
+
+        <script>
+            "use strict";
+            x = 10;                         --->    invalid : x is not defined
+            document.write("x = " + x);
+        </script>
+
+        <script>
+            "use script";
+            var x = 10;                     --->    valid
+            document.write("x = " + x);
+        </script>
+
+    PMD - Code Analysis
+            
+FAQ: How to write JavaScript for Legacy Browser [Old version]
+ans:  By enclosing the code in "HTML Comments"
+
+    syntax:
+        <script>
+            <!--
+                "use strict";
+                var x = 10;
+                document.write("x = " + x);
+            -->
+        </script>
+        <body>
+            <!-- HTML Comments -->
+        </body>
+
+FAQ: How to add JavaScript Comments?
+ans: 
+        //          single line comment 
+        /* */       multi line comment
+        ///         XML comment 
+        <!---->     HTML comment
