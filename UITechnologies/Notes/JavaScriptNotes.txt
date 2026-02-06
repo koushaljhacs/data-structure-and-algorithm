@@ -1053,3 +1053,258 @@ ans:
         /* */       multi line comment
         ///         XML comment 
         <!---->     HTML comment
+
+
+                                                                JAVASCRIPT LANGUAGE BASICS
+                                                            ==========================
+<script>                                        output: 
+    document.write(prompt("Enter Name"));           Enter Name: Koushal
+</script>                                           print: Koushal
+    
+variables:
+    - variables are storage locations in memory where you can store a value and use it as a part of any expression.
+    - JavaScript allows to use variable directly if it is not in strict mode.
+        Example: 01
+            <script>
+                username = prompt("Enter Name");
+                document.write("Hello ! " + username);
+                document.write("How are you today ? " + username);
+            </script>
+
+    - In strict mode variable configuration comprises of 3 phases
+
+            a) Declaration            -------->         var x;
+            b) Assignment               ------>         x = 10;
+            c) Initialization               -->         var y = 20;
+
+            - Declaring is defining scope and name for variable.
+                var username;
+
+            - Assigning is rendering a value into variable after declaring.
+                username = "Hitanshu"
+            
+            - Initialization is rendering a value into a variable while declaring.
+                var username = "Hitanshu"
+
+            NOTE: Declaring or initialization of variable is mandatory if JavaScript is in strict module. 
+
+    Variables in JavaScript can be declared by using
+
+        a) var
+        b) let
+        c) const
+
+        var:
+            - it defines function scope variable 
+            - we can declare in any block of a function and access from any another block in fucntion.
+
+                <script>
+                    function f1() {
+                        var x;
+                        x = 10;
+                        if(x==10) {
+                            var y = 20;
+                        }
+                        document.write("x= " + x + "<br>" + "y= " + y);
+                    }
+                    f1();
+                </script>
+
+            - var allows declaring, assigning and initialization
+            - var allows shadowing
+
+                FAQ: what is shadowing?
+                ans: it is the process of re-declaring same name identifier within the scope.
+
+                    <script>
+                        function f1() {
+                            var x;
+                            x = 10;
+                            if(x==10) {
+                                var y = 20;
+                                var y = 30; // shadowing
+                            }
+                            document.write("x= " + x + "<br>" + "y= " + y);
+                        }
+                        f1();
+                    </script>
+
+        - var allows hoisting
+
+        FAQ: what is hoisting?
+        ans: it is a compiling technique, where compiler can find decalration of variable before using it. Hence, you can use a variable before declaring (only with it is var)
+        <script>
+            "use strict"
+            function f1() {
+                x = 10;
+                document.write("X=" + x);
+                var x; // hoisting
+            }
+            f1();
+        </script>
+
+
+        let:
+            - it is used to define block scope variable.
+            - it is accessible only in block where it is declared or to its inner blocks.
+
+                <script>
+                    "use strict";
+                    function f1() {
+                        let x ;
+                        x = 10;
+                        if(x==10) {
+                            let y = 20;
+                        }
+                        document.write("x=" + x + "<br>" + "y=" + y);
+                    }
+                    f1();
+                </script>
+
+                what is the output: 
+                    a) x = 10   b) x = 10   c) error    d) error 
+                       y = 20      error       y = 20      error  
+
+            - it allows declarring, assigning and initialization.
+            - it will not allow shadowing.
+            - it will not allow hoisting.
+
+                <script>
+                    "use strict";
+                    function f1() {
+                        let x ;
+                        x = 10;
+                        if(x==10) {
+                            var y = 20;
+                            let y = 30;
+                            document.write("x=" + x + "<br>" + "y=" + y);
+                        }
+                    }
+                    f1();
+                </script>
+
+
+        const:
+            - it is used to define block scope variable.
+            - it will allow only initialization.
+            - no declaring
+            - no assigning 
+            - no shadowing
+            - no hoisting
+
+                Example: 01
+                    <script>
+                        "use strict";
+                        function f1() {
+                            const x;
+                            x = 10;
+                            document.write("x=" + x);
+                        }
+                        f1();
+                    </script>
+
+                    output: 
+                        SyntaxError: Missing initializer in const declaration
+
+                Example: 02
+                    <script>
+                        "use strict";
+                        function f1() {
+                            const x = 10;
+                            document.write("x=" + x);
+                        }
+                        f1();
+                    </script>
+
+                    output: 
+                        x = 10
+
+                Example: 03
+                    <script>
+                        "use strict";
+                        function f1() {
+                            const username = prompt("Enter your name");
+                            document.write("Hellow ! " + username);
+                        }
+                        f1();
+                    </script>
+
+                    Output: Hello ! Hitanshu
+
+                FAQ: why we need a const?
+                ans: const is required to initalize memory.
+                    at the time of loading application or component memory is intitalized with some default value.
+
+                    NOTE: If intitalization is missing then by defualt value will be "undefined".
+
+                        Example: 04
+                            <script>
+                                "use strict";                           const x;        // invalid
+                                function f1() {                         x = 10;         // invalid 
+                                    var x;                              const x = 10;   // valid
+                                    document.write("x=" + x);
+                                }
+                                f1();
+                            </script>
+
+                            Output: undefined
+
+                FAQ: Can't const change its value?
+                ans: Dynamically yes.
+
+
+GLOBAL SCOPE FOR VARIABLE:
+    -   You can declare a variable in module scope. So that it is global and accessible to all functions in module.
+
+        <script>
+            var x = 10;
+            function f1() {
+                document.write("x in function-1: " + x);    
+            }
+            function f2() {
+                document.write("x in function-2: " + x);
+            }
+            f1();
+            f2();
+        </script>  
+
+        FAQ: can we declare a global variable inside function?
+        ans: Yes, by using browser "window" object.  
+
+        Example: 01
+            <script>
+                var x = 10;
+                function f1() {
+                    var y = 20;
+                    document.write("x in function-1: " + x + "<br> y in function-1: " + y + "<br>");    
+                }
+                function f2() {
+                    document.write("x in function-2: " + x + "<br> y in function-2: " + y + "<br>");
+                }
+                f1();
+                f2();
+            </script>
+
+            output:
+                x in function-1: 10
+                y in function-1: 20
+
+        Example: 02
+            <script>
+                var x = 10;
+                function f1() {
+                    window.y = 20;
+                    document.write("x in function-1: " + x + "<br> y in function-1: " + y + "<br>");    
+                }
+                function f2() {
+                    document.write("x in function-2: " + x + "<br> y in function-2: " + y + "<br>");
+                }
+                f1();
+                f2();
+            </script>
+
+            output: 
+                x in function-1: 10
+                y in function-1: 20
+                x in function-2: 10
+                y in function-2: 20
