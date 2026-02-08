@@ -1308,3 +1308,779 @@ GLOBAL SCOPE FOR VARIABLE:
                 y in function-1: 20
                 x in function-2: 10
                 y in function-2: 20
+
+
+VARIABLE NAMING:    
+    - variable name must start with alphabet or underscore.
+
+        var usrename;       // valid 
+        var _username;      // valid
+        var 2021Sales;      // invalid 
+        var Sales2021;      // valid 
+        var Sales 2021;     // invalid 
+        var sales$2021;     // invalid
+        var Sales_2021;     // valid 
+
+    - The special character "_" is used to indicate that variable not implemented. It requires further implementation.
+    - Variable name can't exceed more that 255 chars.
+    - Don't use language keywords for variable name.
+
+        var class = "UI"
+        var object = "";
+
+    - Always variable must speak what it is.
+
+        var emp = new Employee();       // not good
+        var prod = new Product();       // not good
+        var x = 1000;                   // not good 
+
+        var employee = new Employee();  
+        var product = new Product();
+        var temporaryEmployee = new TemporaryEmployee();
+
+==============================================================================================================================
+
+                                                            DATA TYPES
+                                                            ---------
+
+- It defines data structure.
+- Data type determines the size and type of data.
+- Data types are classified into 2 types:
+
+    1) Primitive Data Types 
+    2) Non-Primitive Data Types 
+
+    Primitive Data Types:
+        - Primitive types are immutable types.
+        - thier structure will not change.
+        - they have fixed range for value.
+        - value range can't change.
+        - they use memory stack.
+        - stack uses "LIFO" [Last-In-First-Out] mechanism
+        - JavaScript Primitive Types are:
+
+            a) number 
+            b) string
+            c) boolean
+            d) null
+            e) undefined 
+
+            Example: 01
+                <script>
+                    var x = 10;
+                    document.write(`Min=${Number.MIN_SAFE_INTEGER}<br>Max=${Number.MAX_SAFE_INTEGER}`);
+                </script>
+
+                Min=-9007199254740991
+                Max=9007199254740991
+
+            NOTE: JavaScript is not strongly typed, it is implicitly typed.
+
+                Example: 01
+
+                <script>
+                        var x = 10;
+                        document.write(`x is ${typeof x} <br>`);
+                        var x = "Koushal";
+                        document.write(`x is ${typeof x} <br>`);
+                        var x = true;
+                        document.write(`x is ${typeof x}`);
+                    </script>
+
+                    x is number
+                    x is string
+                    x is boolean
+
+
+            Nubmer Types:
+                - JavaScript number type refers to 
+
+                    signed integer          -->     -10
+                    unsigned integer        -->      10
+                    floating point          -->      24.53
+                    double                  -->      345.45, 45.563
+                    decimal                 -->      4560.55, 45.5695 [29 decimal places]
+                    exponent                -->      2e3 [2 x 10 ^ 3]
+                    binary                  -->      0b
+                    octa                    -->      0o742
+                    hexa                    -->      00fd
+
+                    Example: 01
+                        <script>
+                            var x = 10;
+                            document.write(`x is ${typeof x} = ${x} <br>`);
+                            var x = -10;
+                            document.write(`x is ${typeof x} = ${x} <br>`);
+                            var x = 2e3;
+                            document.write(`x is ${typeof x} = ${x} <br>`);
+                            var x = 0b1110;
+                            document.write(`x is ${typeof x} = ${x} <br>`);
+                            var x = 0o45;
+                            document.write(`x is ${typeof x} = ${x} <br>`);
+                        </script>
+
+
+                - JavaScript uses "isNaN()" method to verify the number type
+
+                    Example: 01
+                        <script>
+                            var Age = prompt("Enter age");
+                            if (isNaN(Age)) {
+                                document.write("Please Enter a numeric value");
+                            }
+                            else {
+                                document.write("Age = " + Age);
+                            }
+                        </script>
+
+                - JavaScript can't identify a numeric value in string format, we have to explicitly convert into number by using following mehtods:
+
+                    a) parseInt()
+                    b) parseFloat()
+
+
+                    Example: 01 [run without using parseInt()]
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>Data Types</title>
+                                <script>
+                                    function SubmitClick() {
+                                        var age = document.getElementById("lstAge").value;
+                                        document.write("You will be " + (age + 1) + "next year");
+                                    }
+                                </script>
+                            </head>
+                            <body>
+                                <dl>
+                                    <dt>Select Age</dt>
+                                    <dd>
+                                        <select id="lstAge">
+                                            <option value="15">15</option>
+                                            <option value="20">20</option>
+                                            <option value="25">25</option>
+                                        </select>
+                                    </dd>
+                                    <button onclick="SubmitClick()">Submit</button>
+                                </dl>
+                            </body>
+                        </html>
+
+                        Example: 02 [Run using parseInt()]
+                            <!DOCTYPE html>
+                            <html>
+                                <head>
+                                    <title>Data Types</title>
+                                    <script>
+                                        function SubmitClick() {
+                                            var age = document.getElementById("lstAge").value;
+                                            document.write("You will be " + (parseInt(age) + 1) + " next year");
+                                        }
+                                    </script>
+                                </head>
+                                <body>
+                                    <dl>
+                                        <dt>Select Age</dt>
+                                        <dd>
+                                            <select id="lstAge">
+                                                <option value="15">15</option>
+                                                <option value="20">20</option>
+                                                <option value="25">25</option>
+                                            </select>
+                                        </dd>
+                                        <button onclick="SubmitClick()">Submit</button>
+                                    </dl>
+                                </body>
+                            </html>
+
+                        Example: 03
+                            <script>
+                                var a = "10AB";
+                                var b = 20;
+                                document.write(parseInt(a) + b); 
+
+                                document.write("<br>");
+                                
+                                var c = "20AB30";
+                                var d = 20;
+                                document.write(parseInt(c) + d);
+
+                                document.write("<br>");
+
+                                var e = "AB10";
+                                var f = 10;
+                                document.write(parseInt(e) + f);
+
+                                var g = true;
+                                var h = 10;
+                                document.write(g+h);
+                            </script>
+
+            String Types:
+                - String is a literal with group of chars enclosed in 
+
+                    a) Single Quote     ''
+                    b) Double Quote     ""
+                    c) Back Tick        ``
+
+                    - Single and Double quote are used to configure inner and outer string combination.
+                        var link = "<a href='home.html'>Home</a>";
+
+                    - Back Tick allows a string with embedded expression "${}" [Data Binding Expression].
+
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title>Data Types</title>
+                            <script>
+                                function SubmitClick() {
+                                    var username = prompt("Enter your name");
+                                    var age = document.getElementById("lstAge").value;
+                                    var msg1 = "Hello !" + " " + username + " " + "you will be" + " " + (parseInt(age) + 1) + " " + "next year.";
+                                    var msg2 = `Hello ! ${username} you will be ${parseInt(age)+1} next year`;
+                                    document.write(msg1);
+                                    document.write(msg2);
+                                }
+                            </script>
+                        </head>
+
+                        <body>
+                            <dl>
+                                <dt>Select Age</dt>
+                                <dd>
+                                    <select id="lstAge">
+                                        <option value="15">15</option>
+                                        <option value="20">20</option>
+                                        <option value="25">25</option>
+                                    </select>
+                                </dd>
+                                <button onclick="SubmitClick()">Submit</button>
+                            </dl>
+                        </body>
+
+                        </html>
+
+                Escape Sequences Issues:
+                    - Special chars in a string can escape printing.
+                    - You have to print the non-printable chars by using "\".
+
+                        \n          -->         New line in console
+                        <br>        -->         New line in HTML 
+
+
+                String Handling in JavaScript:
+                    - JavaScript provides a set of methods and properties to format and manipulate string.
+                    - String formatting methods:
+
+                        bold()
+                        italic()
+                        sup()
+                        sub()
+                        fontcolor()
+                        fontsize()
+                        toUpperCase()
+                        toLowerCase()
+
+                String Property:
+                    length  :   returns the total number of chars [count of chars]
+
+                    Example: 01
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>String Demo</title>
+                                <script>
+                                    function VerifyUser() {
+                                        var username = document.getElementById("textName").value;
+                                        var msg = document.getElementById("msg");
+                                        if(username.length >= 4 && username.length <= 10) {
+                                            msg.innerHTML = "User Name Verified".bold().fontcolor('green').italics();
+                                        } else {
+                                            msg.innerHTML = "Invalid - User Name 4 to 10 chars only". italics().fontcolor('red');
+                                        }
+                                    }
+                                    function ChangeCase() {
+                                        var username = document.getElementById("textName").value;
+                                        document.getElementById("textName").value = username.toUpperCase();
+                                    }
+                                </script>
+                            </head>
+                            <body>
+                                <h2>Register User</h2>
+                                <dl>
+                                    <dt>User Name</dt>
+                                    <dd><input type="text" placeholder="Block Letters" id="textName" onkeyup="VerifyUser()" onblur="ChangeCase()"></dd>
+                                    <dd id="msg"></dd>
+                                </dl>
+                                <button onclick="VerifyUser()">Submit</button>
+                            </body>
+                        </html>
+                            
+                        Events we used above in Example: 01
+
+                            onkeyup         :           actions to perform when key is released
+                            onblur          :           actions to perform when control is blured [lost focus]
+                            onclick         :           actions to perform when clicked
+                            onload          :           actions to perform on page or image load 
+
+                    Example: 02 [Formatting a String Dynamically using String Format Function]
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>String Demo</title>
+                                <script>
+                                    function ChangeColor() {
+                                        alert(document.querySelector("select").value);
+                                        document.querySelector("p").innerHTML = "Welcome to JavaScript".fontcolor(document.querySelector("select").value);
+                                    }
+                                </script>
+                            </head>
+                            <body>
+                                <fieldset>
+                                    <legend>Choose Effects</legend>
+                                    <dl>
+                                        <dt>Font Color</dt>
+                                        <dd>
+                                            <select onchange="ChangeColor()">
+                                                <option>Red</option>
+                                                <option>Green</option>
+                                                <option>White</option>
+                                                <option>Yellow</option>
+                                            </select>
+                                        </dd>
+                                    </dl>
+                                </fieldset>
+                                <p></p>
+                            </body>
+                        </html>
+
+                    Example: 03 [Formatting string by using styles]
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>String Demo</title>
+                                <script>
+                                    function ChangeColor() {
+                                        document.querySelector("p").style.color = document.querySelector("select").value;
+                                    }
+                                </script>
+                            </head>
+                            <body>
+                                <fieldset>
+                                    <legend>Choose Effects</legend>
+                                    <dl>
+                                        <dt>Font Color</dt>
+                                        <dd>
+                                            <select onchange="ChangeColor()">
+                                                <option>Red</option>
+                                                <option>Green</option>
+                                                <option>White</option>
+                                                <option>Yellow</option>
+                                            </select>
+                                        </dd>
+                                    </dl>
+                                </fieldset>
+                                <p>Welcome to JavaScript</p>
+                            </body>
+                        </html>
+
+                    Example: 04 [Dynamically applying CSS Class]
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title>String Demo</title>
+                            <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+                            <script>
+                                function ChangeTheme() {
+                                    var themeCheckBox = document.getElementById("theme");
+                                    var formContainer = document.getElementById("formContainer");
+                                    if(themeCheckBox.checked) {
+                                        formContainer.className = "dark-theme";
+                                        document.querySelector("button").className = "btn btn-dark w-100"
+                                    } else {
+                                        formContainer.className = "light-theme";
+                                        document.querySelector("button").className = "btn btn-primary w-100"
+                                    }
+                                }
+                            </script>
+                            <style>
+                                .form {
+                                    border: 2px solid black;
+                                    padding: 20px;
+                                    width: 290px;
+                                    margin-top: 20px;
+                                }
+                                .dark-theme {
+                                    background-color: black;
+                                    color: white;
+                                    border: 2px solid black;
+                                    padding: 20px;
+                                    width: 290px;
+                                    margin-top: 20px;
+                                }
+                                .light-theme {
+                                    background-color: white;
+                                    color: black;
+                                    border: 2px solid black;
+                                    padding: 20px;
+                                    width: 290px;
+                                    margin-top: 20px;
+                                }
+                            </style>
+                        </head>
+
+                        <body class="container-fluid">
+                            <div class="form" id="formContainer">
+                                <div class="form-switch">
+                                    <input type="checkbox" id="theme" onchange="ChangeTheme()" class="form-check-input"> Dark Theme
+                                </div>
+                                <h2>Register User</h2>
+                                <dl>
+                                    <dt>User Name</dt>
+                                    <dd><input type="text"></dd>
+                                    <dt>Password</dt>
+                                    <dd><input type="password"></dd>
+                                    <dt>Email</dt>
+                                    <dd><input type="email"></dd>
+                                </dl>
+                                <button class="btn w-100">Login</button>
+                            </div>
+                        </body>
+
+                        </html>
+
+                        NOTE: We can define styles and classes Dynamically to any element.
+                            syntax:
+                                document.querySelector("p").style.color = "green";
+                                document.querySelector("button").className = "btn btn-primary";
+                                Example: 04 
+
+                String Manipulations
+
+                    charAt()            : It returns the character at specified index.
+                    charCodeAt()        : It return the character ASCII code present at specified index.
+                    slice()             : It can extract chars between specified index.
+                    substr()            : It can return the specified number of chars from given index.
+                    substring()         : It can return the chars from specific index in any direction.
+
+                        Example: 01 [using charAt()]
+                            <!DOCTYPE html>
+                            <html>
+                                <head>
+                                    <title>String</title>
+                                    <script>
+                                        function ChangeCase() {
+                                            var username = document.getElementById("textName").value;
+                                            var firstChar = username.charAt(0);
+                                            var restChars = username.substring(1);
+                                            var sentence = firstChar.toUpperCase() + restChars.toLowerCase();
+                                            document.getElementById("textName").value = sentence;
+                                        }
+                                    </script>
+                                </head>
+                                <body>
+                                    <fieldset>
+                                        <legend>Test</legend>
+                                        <div>
+                                            <input type="text" id="textName" onblur="ChangeCase()">
+                                        </div>
+                                    </fieldset>
+                                </body>
+                            </html>
+
+                        FAQ: what is charCodeAt()?
+                        ans: charAt() returns char at specified index 
+                            charCodeAt() return its character code as per UTF standards
+                                A = 65, Z = 90
+
+                                Example: 02 [using charCodeAt()]
+                                    <!DOCTYPE html>
+                                    <html>
+                                        <head>
+                                            <title>String</title>
+                                            <script>
+                                                function VerifyName() {
+                                                    var username = document.getElementById("textName").value;
+                                                    if(username.charCodeAt(0) >= 65 && username.charCodeAt(0) <= 90) {
+                                                        document.querySelector("p").innerHTML = "";
+                                                    } else {
+                                                        document.querySelector("p").innerHTML = "Name must start with uppercase letter".fontcolor('red');
+                                                    }
+                                                }
+                                            </script>
+                                        </head>
+                                        <body>
+                                            <fieldset>
+                                                <legend>User Name</legend>
+                                                <div>
+                                                    <input type="text" size="40" placeholder="Name must start with uppercase letter" id="textName" onkeyup="VerifyName()"">
+                                                    <p></p>
+                                                </div>
+                                            </fieldset>
+                                        </body>
+                                    </html>
+                        
+                        FAQ: what is the difference between slice(), substr() & substring() ?
+                        ans: slice()    :   it can read the chars between specified start and end index.
+                                            If end is not defined, then it will read upto end of string.
+                                            end index must be GREATER than start index.
+
+                                                msg.slice(0,7)          ------->        0 to 7
+                                                msg.slice(7)            ------->        7 to end 
+                                                msg.slice(7,0)          ------->        invalid 
+
+                                                syntax: 
+                                                    slice(startIndex, endIndex)
+
+                                                Example: 01
+                                                    <script>
+                                                        var msg = "Welcome to JavaScript";
+                                                        document.write(msg.slice(0));
+                                                    </script>
+
+                            substr()   :   it can read specified number fo chars from given index number.
+
+                                                msg.substr(7,3)         ------->        from 7 index it will read 3 chars
+
+                                                syntax:
+                                                    substr(startIndex, countOfChars);
+
+                                                Example: 01
+                                                    <script>
+                                                        var msg = "Welcome to JavaScript";
+                                                        document.write(msg.substr(0,5));
+                                                    </script>
+
+                            substring():   it can read from specified index to any direction.
+
+                                                msg.substring(0,7)      ------->        0 to 7 chars 
+                                                msg.substring(7)        ------->        7 to end 
+                                                msg.substring(7,0)      ------->        7 to start [0]
+
+                                                syntax:
+                                                    substring(startIndex, endIndex);
+                                                    NOTE: endIndex can be less than start index.
+
+                                                Example: 01
+                                                    <script>
+                                                        var msg = "Welcome to JavaScript";
+                                                        document.write(msg.substring(7,0));
+                                                    </script>
+
+                IndexOf() & lastIndexOf():
+                    - These are the functions, whcih can find any character in a string and return its index position.
+                    - if character not found then it returns -1
+                    - lastIndexOf() will return the last occurrence index.
+
+                        Welcome     ------>         indexOf("e")        -------->   1
+                        Welcome     ------>         lastIndexOf("e")    -------->   6
+
+                        Example: 01
+                            <!DOCTYPE html>
+                            <html>
+                                <head>
+                                    <title>String</title>
+                                    <script>
+                                        function VerifyEmail() {
+                                            var email = document.getElementById("txtEmail").value;
+                                            var msg = document.querySelector("h2");
+                                            var atPos = email.indexOf("@");
+                                            if(atPos < 2) {
+                                                msg.innerHTML = "Invalid Email";
+                                            } else {
+                                                msg.innerHTML = "Email Verfied";
+                                            }
+                                        }
+                                    </script>
+                                </head>
+                                <body>
+                                    <fieldset>
+                                        <legend>Your Email</legend>
+                                        <input type="text" id="txtEmail"> <button onclick="VerifyEmail()">Submit</button>
+                                    </fieldset>
+                                    <h2></h2>
+                                </body>
+                            </html>            
+
+                startsWith() & endsWith():
+                    - These are the functions used to verify the starting and ending chars in a string.
+                    - These functions return boolean true when string is starting or ending with specified chars.
+
+                    syntax:
+                        msg.startsWith(chars);
+                        msg.endsWith(chars);
+
+                    Example: 01
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>String</title>
+                                <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+                                <script>
+                                    function VerifyCard() {
+                                        var cardNumber = document.getElementById("txtCard").value;
+                                        var cardImg = document.getElementById("cardImg");
+                                        if(cardNumber.startsWith("444")) {
+                                            cardImg.src = "../public/images/master.png";
+                                        } else if(cardNumber.startsWith("555")) {
+                                            cardImg.src = "../public/images/visa.png";
+                                        } else {
+                                            carImg.src = "";
+                                            cardImg.alt = "N/A";
+                                        }
+                                    }
+                                    function VerifyEmail() {
+                                        var email = document.getElementById("txtEmail").value;
+                                        if(email.endsWith("gmail.com")) {
+                                            document.getElementById("msg").innerHTML = "Email Verified";
+                                        } else {
+                                            document.getElementById("msg").innerHTML = "Invalid Email";
+                                        }
+                                    }
+                                </script>
+                            </head>
+                            <body class="container-fluid">
+                                <fieldset>
+                                    <legend>Verify Details</legend>
+                                    <div>
+                                        <h3>Card Number</h3>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="txtCard" onkeyup="VerifyCard()">
+                                            <img class="input-group-text" id="cardImg" class="img-fluid" width="100" height="30">
+                                        </div>
+                                        <h3>Your Gmail</h3>
+                                        <div>
+                                            <input type="text" id="txtEmail" class="form-control" onkeyup="VerifyEmail()">
+                                            <div id="msg">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </body>
+                        </html>
+
+                match():
+                    - it is used to verify and compare given string with any reqular expression. 
+                    - it returns true if string format is as per regular expression.
+                    - in JavaScript regular expression is enclosed in "//".
+
+                    syntax:
+                        var regExp = /pattern/;
+                        var string = "";
+                        if(string.match(regExp) {
+
+                        }
+
+                    Example: 01
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title>MatchDemo</title>
+                            <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+                            <style>
+                                meter {
+                                    height: 30px;
+                                }
+                            </style>
+                            <script>
+                                function VerifyPassword() {
+                                    var password = document.getElementById("txtPwd").value;
+                                    var regExp = /(?=.*[A-Z])\w{4,15}/;
+                                    var msg = document.getElementById("msg");
+                                    var grade = document.getElementById("grade");
+
+                                    function ShowGrade(min, max, value, low, high) {
+                                        grade.min = min;
+                                        grade.max = max;
+                                        grade.value = value;
+                                        grade.low = low;
+                                        grade.high = high;
+                                    }
+
+                                    if (password == "") {
+                                        msg.innerHTML = "Password Required";
+                                        msg.className = "text-danger";
+                                    } else {
+                                        if (password.match(regExp)) {
+                                            msg.innerHTML = "Strong Password";
+                                            msg.className = "text-success";
+                                            ShowGrade(1, 100, 100, 0, 0);
+                                        } else {
+                                            if (password.length < 4) {
+                                                msg.innerHTML = "Poor Password";
+                                                msg.className = "text-danger";
+                                                ShowGrade(1, 100, 20, 60, 80);
+                                            } else {
+                                                msg.innerHTML = "Weak Password";
+                                                msg.className = "text-warning";
+                                                ShowGrade(1, 100, 70, 40, 80);
+                                            }
+                                        }
+                                    }
+                                }
+                                function VerifyMobile() {
+                                    var mobile = document.getElementById("txtMobile").value;
+                                    var mobileExpression = /\+91\d{10}/;
+                                    var mobileError = document.getElementById("mobileError");
+                                    if (mobile.match(mobileExpression)) {
+                                        mobileError.innerHTML = "";
+                                    } else {
+                                        mobileError.innerHTML = "Invalid Mobile";
+                                        mobileError.className = "text-danger";
+                                    }
+                                }
+                            </script>
+                        </head>
+
+                        <body class="container-fluid">
+                            <h2>Verify Password</h2>
+                            <input type="password" id="txtPwd" class="form-control" onkeyup="VerifyPassword()">
+                            <div id="msg"></div>
+                            <div>
+                                <meter id="grade" min="1" max="100" class="w-100"></meter>
+                            </div>
+                            <h2>Verify Mobile</h2>
+                            <input type="text" id="txtMobile" class="form-control" onkeyup="VerifyMobile()">
+                            <div id="mobileError"></div>
+                        </body>
+
+                        </html>
+                
+                trim() & split():
+                    - trim() is used to remove the leading spaces in a string.
+
+                    Example: 01
+                        <!DOCTYPE html>
+                        <html>
+                            <head>
+                                <title>Trim demo</title>
+                                <script>
+                                    function VerifyPassword() {
+                                        var pwd = document.getElementById("txtPwd").value;
+                                        if (pwd.trim() == "admin") {
+                                            document.querySelector("h2").innerHTML = "verified";
+                                        } else {
+                                            document.querySelector("h2").innerHTML = "Invalid Password";
+                                        }
+                                    }
+                                </script>
+                            </head>
+                            <body>
+                                Your Password :
+                                <input type="text" id="txtPwd"> <button onclick="VerifyPassword()">submit</button>
+                                <h2></h2>
+                            </body>
+                        </html>
+
+                    - split() is used to split the string at specified delimeter (separator) and return an array.
+
+                    Example: 01
+                        <script>
+                            var mobileNumbers = "1234567890, 9087654321, 1234561234";
+                            var result = mobileNumbers.split(',');
+                            document.write(result[0]);
+                        </script>
