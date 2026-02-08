@@ -1,0 +1,19 @@
+class Solution {
+    public int minimumDeletions(String s) {
+        int bCount = 0; // b's encountered so far
+        int deletions = 0; // minimum deletions needed
+        
+        for (char c : s.toCharArray()) {
+            if (c == 'b') {
+                bCount++;
+            } else { // c == 'a'
+                // Two choices:
+                // 1. Delete this 'a' (cost = deletions + 1)
+                // 2. Delete all previous 'b's (cost = bCount)
+                deletions = Math.min(deletions + 1, bCount);
+            }
+        }
+        
+        return deletions;
+    }
+}
