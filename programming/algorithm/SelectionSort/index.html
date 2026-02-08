@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection Sort Simulator - Koushal Jha</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .code-font { font-family: 'Fira Code', monospace; }
+
+        .array-container {
+            height: 220px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 6px;
+            padding-bottom: 20px;
+        }
+
+        .bar {
+            width: 32px;
+            background-color: #cbd5e1;
+            border-radius: 6px 6px 0 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        /* States mapping to Code */
+        .bar-scanning { background-color: #fbbf24 !important; } /* Amber - line 4 */
+        .bar-min { background-color: #f97316 !important; transform: translateY(-5px); box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3); } /* Orange - line 5 */
+        .bar-sorted { background-color: #22c55e !important; } /* Green */
+        .bar-active { background-color: #3b82f6 !important; border: 2px solid #1d4ed8; } /* Blue - line 2 */
+
+        .line-highlight {
+            background-color: rgba(59, 130, 246, 0.15);
+            border-left: 3px solid #3b82f6;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .snapshot-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            min-width: fit-content;
+        }
+
+        .snapshot-item {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 700;
+            border-radius: 4px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+        }
+
+        .panel-shadow {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+
+        input[type="range"] { accent-color: #3b82f6; }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <header class="flex flex-col xl:flex-row justify-between items-start xl:items-center mb-8 border-b border-slate-200 pb-6 gap-6">
+            <div>
+                <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Selection Sort Analysis</h1>
+                <p class="text-slate-500 text-sm font-medium">Author: <span class="text-blue-600">Koushal Jha</span> | Logic-to-Code Synchronized</p>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-6 bg-white p-4 rounded-2xl border border-slate-200 panel-shadow">
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Array Size</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="sizeInput" min="2" max="25" value="8" class="w-14 border border-slate-200 rounded px-2 py-1 text-sm font-bold text-slate-700 focus:ring-1 focus:ring-blue-500 outline-none">
+                        <button id="generateBtn" class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1 rounded text-[10px] font-bold uppercase transition-all">New</button>
+                    </div>
+                </div>
+                
+                <div class="w-px h-10 bg-slate-200"></div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Simulation Speed</label>
+                    <div class="flex items-center gap-3">
+                        <span class="text-[10px] text-slate-400 font-bold">Slow</span>
+                        <input type="range" id="speedInput" min="50" max="1500" value="600" step="50" class="w-32 cursor-pointer">
+                        <span class="text-[10px] text-slate-400 font-bold">Fast</span>
+                    </div>
+                </div>
+
+                <div class="w-px h-10 bg-slate-200"></div>
+
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Controls</label>
+                    <div class="flex gap-2">
+                        <button id="stepBtn" class="bg-blue-50 hover:bg-blue-100 text-blue-600 px-4 py-1.5 rounded text-[10px] font-bold uppercase border border-blue-200 transition-all">Step</button>
+                        <button id="playBtn" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-1.5 rounded text-[10px] font-bold uppercase shadow-lg shadow-blue-200 transition-all">Play</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Simulation & History Area -->
+            <div class="lg:col-span-8 flex flex-col gap-8">
+                
+                <!-- Main Visualizer -->
+                <div class="bg-white rounded-3xl border border-slate-200 p-8 flex flex-col items-center justify-center panel-shadow relative overflow-hidden min-h-[380px]">
+                    <div class="absolute top-4 left-6 text-[10px] font-bold text-slate-300 uppercase">Interactive Simulation</div>
+                    <div id="arrayContainer" class="array-container w-full"></div>
+                </div>
+
+                <!-- Analysis History (Passes) -->
+                <div class="flex flex-col gap-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-sm font-bold text-slate-800 uppercase tracking-widest flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                            </svg>
+                            Pass-by-Pass Analysis
+                        </h3>
+                        <span class="text-[10px] text-slate-400 font-bold">STATIONARY SNAPSHOTS</span>
+                    </div>
+                    
+                    <div id="analysisContainer" class="flex gap-4 overflow-x-auto pb-4 scroll-hidden min-h-[100px]">
+                        <!-- Snapshots injected here -->
+                        <div id="emptyAnalysis" class="flex-grow flex items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl py-8 text-slate-300 text-xs italic">
+                            Waiting for the first pass to complete...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code & Logic Panel -->
+            <div class="lg:col-span-4 flex flex-col gap-6">
+                
+                <!-- Active Log -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6 panel-shadow border-l-4 border-blue-500">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Execution Log</h3>
+                        <div id="passIndicator" class="text-[9px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-bold">PASS: 0</div>
+                    </div>
+                    <p id="logicLog" class="text-slate-600 text-[13px] leading-relaxed font-medium">Ready to trace. Adjust speed and click Play.</p>
+                </div>
+
+                <!-- Pseudo Code -->
+                <div class="bg-[#0f172a] rounded-3xl p-6 text-slate-300 panel-shadow border border-slate-800">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="flex gap-1">
+                            <div class="w-2 h-2 rounded-full bg-red-500"></div>
+                            <div class="w-2 h-2 rounded-full bg-amber-500"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                        </div>
+                        <h3 class="text-[10px] font-bold text-slate-500 uppercase tracking-widest ml-2">SelectionSort.java</h3>
+                    </div>
+                    <div class="code-font text-[11px] space-y-2">
+                        <div id="line-1" class="px-2 py-0.5 rounded transition-colors duration-200">for (int i = 0; i < n - 1; i++) {</div>
+                        <div id="line-2" class="px-2 py-0.5 rounded ml-4 transition-colors duration-200">int minIdx = i;</div>
+                        <div id="line-3" class="px-2 py-0.5 rounded ml-4 transition-colors duration-200 text-slate-500">for (int j = i + 1; j < n; j++) {</div>
+                        <div id="line-4" class="px-2 py-0.5 rounded ml-8 transition-colors duration-200 text-amber-400/90">if (arr[j] < arr[minIdx]) {</div>
+                        <div id="line-5" class="px-2 py-0.5 rounded ml-12 transition-colors duration-200 text-amber-400/90">minIdx = j;</div>
+                        <div id="line-6" class="px-2 py-0.5 rounded ml-8 transition-colors duration-200">}</div>
+                        <div id="line-7" class="px-2 py-0.5 rounded ml-4 transition-colors duration-200">}</div>
+                        <div id="line-8" class="px-2 py-0.5 rounded ml-4 transition-colors duration-200 text-blue-400">swap(arr, i, minIdx);</div>
+                        <div id="line-9" class="px-2 py-0.5 rounded transition-colors duration-200">}</div>
+                    </div>
+                </div>
+
+                <!-- Legend Card -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5 panel-shadow">
+                    <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4 text-center">Color Mapping</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2 text-[10px] text-slate-600">
+                            <div class="w-3 h-3 rounded bg-blue-500"></div> i (Index)
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-600">
+                            <div class="w-3 h-3 rounded bg-amber-400"></div> j (Scanning)
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-600">
+                            <div class="w-3 h-3 rounded bg-orange-500"></div> Current Min
+                        </div>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-600">
+                            <div class="w-3 h-3 rounded bg-green-500"></div> Sorted
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let array = [];
+        let steps = [];
+        let currentStepIdx = -1;
+        let isPlaying = false;
+        let playTimeout = null;
+        let passCounter = 0;
+
+        // --- Logic Handlers ---
+
+        function generateArray() {
+            const size = parseInt(document.getElementById('sizeInput').value);
+            if (size < 2 || size > 25) {
+                alert("Please enter a size between 2 and 25 for optimal visualization.");
+                return;
+            }
+            
+            array = [];
+            for (let i = 0; i < size; i++) {
+                array.push(Math.floor(Math.random() * 60) + 10);
+            }
+            
+            stopPlayback();
+            steps = calculateSteps([...array]);
+            currentStepIdx = -1;
+            passCounter = 0;
+            
+            // Clear analysis
+            document.getElementById('analysisContainer').innerHTML = `
+                <div id="emptyAnalysis" class="flex-grow flex items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl py-8 text-slate-300 text-xs italic">
+                    Waiting for the first pass to complete...
+                </div>
+            `;
+            
+            renderBars(array);
+            updateUI(null);
+            document.getElementById('passIndicator').innerText = `PASS: 0`;
+            document.getElementById('logicLog').innerText = `Array of size ${size} generated. Ready to trace Selection Sort.`;
+        }
+
+        function calculateSteps(arr) {
+            const history = [];
+            const n = arr.length;
+            let currentPass = 0;
+
+            for (let i = 0; i < n - 1; i++) {
+                currentPass++;
+                history.push({
+                    type: 'init-i',
+                    i: i,
+                    arr: [...arr],
+                    line: 1,
+                    pass: currentPass,
+                    msg: `New Pass Started. Setting boundary 'i' at index ${i}.`
+                });
+
+                let minIdx = i;
+                history.push({
+                    type: 'set-min',
+                    i: i,
+                    minIdx: minIdx,
+                    arr: [...arr],
+                    line: 2,
+                    pass: currentPass,
+                    msg: `Assumed minimum index 'minIdx' is ${i} (Value: ${arr[i]}).`
+                });
+
+                for (let j = i + 1; j < n; j++) {
+                    history.push({
+                        type: 'compare',
+                        i: i,
+                        j: j,
+                        minIdx: minIdx,
+                        arr: [...arr],
+                        line: 4,
+                        pass: currentPass,
+                        msg: `Comparing arr[${j}] (${arr[j]}) < arr[minIdx] (${arr[minIdx]}).`
+                    });
+
+                    if (arr[j] < arr[minIdx]) {
+                        minIdx = j;
+                        history.push({
+                            type: 'new-min',
+                            i: i,
+                            j: j,
+                            minIdx: minIdx,
+                            arr: [...arr],
+                            line: 5,
+                            pass: currentPass,
+                            msg: `Found a smaller value! Updating minIdx to ${minIdx} (${arr[minIdx]}).`
+                        });
+                    }
+                }
+
+                // Swap Logic
+                if (minIdx !== i) {
+                    let temp = arr[i];
+                    arr[i] = arr[minIdx];
+                    arr[minIdx] = temp;
+                    history.push({
+                        type: 'swap',
+                        i: i,
+                        minIdx: minIdx,
+                        arr: [...arr],
+                        line: 8,
+                        pass: currentPass,
+                        msg: `Pass ${currentPass} complete. Swapping index ${i} with ${minIdx}.`
+                    });
+                } else {
+                    history.push({
+                        type: 'no-swap',
+                        i: i,
+                        arr: [...arr],
+                        line: 8,
+                        pass: currentPass,
+                        msg: `Pass ${currentPass} complete. Index ${i} was already the minimum.`
+                    });
+                }
+            }
+            
+            history.push({
+                type: 'done',
+                arr: [...arr],
+                line: 9,
+                pass: currentPass,
+                msg: "Sorting Finished. Final sorted array verified."
+            });
+
+            return history;
+        }
+
+        // --- Visual Renderers ---
+
+        function renderBars(currentArr, i = -1, j = -1, minIdx = -1, isDone = false) {
+            const container = document.getElementById('arrayContainer');
+            container.innerHTML = '';
+            
+            currentArr.forEach((val, idx) => {
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = `${val * 2.5}px`;
+                
+                const label = document.createElement('div');
+                label.className = 'bar-label';
+                label.innerText = val;
+                bar.appendChild(label);
+
+                if (isDone) {
+                    bar.classList.add('bar-sorted');
+                } else {
+                    if (idx < i && i !== -1) bar.classList.add('bar-sorted');
+                    else if (idx === i) bar.classList.add('bar-active');
+                    else if (idx === minIdx) bar.classList.add('bar-min');
+                    else if (idx === j) bar.classList.add('bar-scanning');
+                }
+                container.appendChild(bar);
+            });
+        }
+
+        function createPassSnapshot(arr, passNum) {
+            const empty = document.getElementById('emptyAnalysis');
+            if (empty) empty.remove();
+
+            const card = document.createElement('div');
+            card.className = 'snapshot-card flex flex-col gap-2 shrink-0';
+            card.innerHTML = `
+                <div class="flex justify-between items-center px-1">
+                    <span class="text-[9px] font-black text-slate-800 uppercase">After Pass ${passNum}</span>
+                </div>
+                <div class="flex gap-1">
+                    ${arr.map((v, idx) => `
+                        <div class="snapshot-item ${idx < passNum ? 'bg-green-100 border-green-200 text-green-700' : ''}">${v}</div>
+                    `).join('')}
+                </div>
+            `;
+            document.getElementById('analysisContainer').appendChild(card);
+            
+            // Auto scroll to right
+            const cont = document.getElementById('analysisContainer');
+            cont.scrollLeft = cont.scrollWidth;
+        }
+
+        function updateUI(step) {
+            document.querySelectorAll('[id^="line-"]').forEach(line => line.classList.remove('line-highlight'));
+            
+            if (step) {
+                const activeLine = document.getElementById(`line-${step.line}`);
+                if (activeLine) activeLine.classList.add('line-highlight');
+                
+                document.getElementById('logicLog').innerText = step.msg;
+                document.getElementById('passIndicator').innerText = `PASS: ${step.pass}`;
+                
+                renderBars(step.arr, step.i, step.j, step.minIdx, step.type === 'done');
+
+                // Check for pass completion (line 8 is the end of an outer iteration)
+                if ((step.type === 'swap' || step.type === 'no-swap') && step.pass > passCounter) {
+                    passCounter = step.pass;
+                    createPassSnapshot(step.arr, step.pass);
+                }
+            }
+        }
+
+        // --- Controller Handlers ---
+
+        function handleNextStep() {
+            if (currentStepIdx < steps.length - 1) {
+                currentStepIdx++;
+                updateUI(steps[currentStepIdx]);
+            } else {
+                stopPlayback();
+            }
+        }
+
+        function stopPlayback() {
+            isPlaying = false;
+            if (playTimeout) clearTimeout(playTimeout);
+            document.getElementById('playBtn').innerText = 'Play';
+            document.getElementById('playBtn').classList.replace('bg-rose-600', 'bg-blue-600');
+        }
+
+        function play() {
+            if (currentStepIdx >= steps.length - 1) {
+                // If it finished, reset for a re-play
+                currentStepIdx = -1;
+                passCounter = 0;
+                document.getElementById('analysisContainer').innerHTML = '';
+            }
+            
+            isPlaying = true;
+            document.getElementById('playBtn').innerText = 'Stop';
+            document.getElementById('playBtn').classList.replace('bg-blue-600', 'bg-rose-600');
+            
+            const loop = () => {
+                if (isPlaying && currentStepIdx < steps.length - 1) {
+                    handleNextStep();
+                    const speed = 1550 - parseInt(document.getElementById('speedInput').value);
+                    playTimeout = setTimeout(loop, speed);
+                } else {
+                    stopPlayback();
+                }
+            };
+            loop();
+        }
+
+        // --- Event Listeners ---
+        document.getElementById('generateBtn').addEventListener('click', generateArray);
+        document.getElementById('stepBtn').addEventListener('click', handleNextStep);
+        document.getElementById('playBtn').addEventListener('click', () => {
+            if (isPlaying) stopPlayback();
+            else play();
+        });
+        document.getElementById('resetBtn').addEventListener('click', generateArray);
+
+        // Initialize
+        window.onload = generateArray;
+    </script>
+</body>
+</html>
