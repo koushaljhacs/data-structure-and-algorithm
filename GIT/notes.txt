@@ -1,142 +1,492 @@
-======================================================================
-UNIX, GIT, & JAVASCRIPT MASTER GUIDE
-======================================================================
+									GIT FOR DEVOPS STUDY MATERIAL
+										OctNoV Batch
+============================================================================================================================================================================================
 
------------------------------------------------------------
-SECTION 1: UNIX COMMANDS (The Foundation)
------------------------------------------------------------
-Location: D:/MY_PROJECT
+********************************************************************************************************************************************************************************************								 _______________________________________
+								|					|	
+								|		TOPIC - 1		|
+								|	 INTRODUCTION TO DEVOPS		|
+								=========================================
+============================================================================================================================================================================================
+1.1) What is Devops?
+1.2) Water Fall Model
+1.3) Agile Model
+1.4) Water fall vs Scrum
+1.5) Devops vs Agile Models
+1.6) Top Important points about DevOps
 
-1. LS (List) - SEEING THE TREE
-   - Syntax: ls [options]
-   - Theory: Used to view files. 
-   - Implementation:
-     ls -l   (Long format: shows permissions like -rwxr-xr-x)
-     ls -a   (All: shows hidden files like .git)
 
-2. MKDIR & CD - GROWING THE TREE
-   - mkdir: Creates a folder. 
-   - cd: Moves the "current location".
-   - Implementation: 
-     mkdir JS_TEST
-     cd JS_TEST
+1.1) What is DevOps?
 
-3. TOUCH, ECHO, & CAT - CREATING & READING
-   - touch <file>: Creates an empty file.
-   - echo "text" > <file>: Writes text into a file (Overwrites).
-   - echo "text" >> <file>: Adds text to the end (Appends).
-   - cat <file>: Shows all text in the terminal.
-   - Implementation:
-     echo "Study Hard" > exam.txt
+    . Devops is not a new tool/Technology in the market.
+    . It is a new culture or process to develop,release and maintain software products/projects/applications with high quality in very faster way.
+    . We can achieve this in devops by using several automation tools.
+    . For any software development,release and maintenance, there are two groups ofengineers will work in the company.
 
-4. HEAD & TAIL - PARTIAL READING
-   - Syntax: head -n <number> <file> / tail -n <number> <file>
-   - Implementation:
-     head -n 5 log.txt   (Shows top 5 lines)
-     tail -n 3 log.txt   (Shows last 3 lines)
+	1) Development Group
+	2) Non-Development Group or Operations Group or Administrators Group.
 
-5. CP, RM, MV - MOVING & DELETING
-   - cp <src> <dest>: Copy.
-   - rm <file>: Delete file.
-   - rm -r <folder>: Delete folder (Recursive).
-   - mv <old> <new>: Rename or Move.
+	Again this classification can be divided into small sets of groups
 
-6. GREP & WHOAMI - SEARCHING
-   - grep "word" <file>: Searches for a string.
-   - whoami: Displays current user.
-   - Implementation: grep "Error" server.log
+	1) Development Group:
+	---------------------
+	    . The people who are envolving in 			Ex: 
+		(1) Planning					    - Business Analyst (BA)
+		(2) Coding					    - System Analyst (SA)
+		(3) Build					    - Developers / Coders
+		(4) Testing					    - Build Engineer
+								    - Test Engineer / QA
+	      are condidered as Development Group
 
-7. CHMOD, SUDO, VIM, NANO - SYSTEM & EDITORS
-   - sudo: Run as Admin (SuperUser Do).
-   - chmod: Change permissions (4-Read, 2-Write, 1-Execute).
-     Example: chmod 755 script.js
-   - nano/vim: Terminal text editors.
 
------------------------------------------------------------
-SECTION 2: GIT COMMANDS (The Version Control)
------------------------------------------------------------
+	2) Operations Group: 
+	--------------------
+	    . The people who are envolving in 			Ex:
+		(1) Release					    - Configuration Engineer
+		(2) Deploy					    - System Admin
+		(3) Operations					    - Database Admin
+		(4) Monitoring					    - Network Admin
+		
+	      are considered as Operations Group.
 
-1. INITIALIZATION & SETUP
-   - git init: Creates the hidden .git folder.
-   - git config --global user.name "YourName"
-   - git config --global user.email "you@example.com"
+    . Devops is a combination of development and Operations. 
+    . The main objective of devops is to implement collaboration between development and operation teams.
+    . The undestand this new Devops culture, we have to aware already existing SDLC Models.
+	
+	SDLC : Software Development Life Cycle
+	    
+  	    1. Waterfall Model
+	    2. Prototype Model
+	    3. Incremental / Iterative Model
+	    4. Spiral Model
+	    5. RAD Model
+	    6. Big-Bang Model
+	    7. Fish Model
+	    8. V Model
+ 	    9. Agile Model
+	   10. Devops Culture
 
-2. TRACKING CHANGES (The Workflow)
-   - git status: Shows which files are changed/untracked.
-   - git add <file>: Moves file to the Staging Area.
-   - git commit -m "msg": Saves snapshot to Local Repo.
+	    1. Water Fall Model:
+	    -------------------
+	    	Requirement Gathering / Collection
+		    Requirement Analysis
+		    	Design
+			    Coding
+			    	Testing
+				    Release
+				    	Maintenance
 
-3. BRANCHING (Parallel Universes)
-   - git branch <name>: Creates a new branch.
-   - git checkout <name>: Switches to that branch.
-   - git branch -m <new-name>: Renames a branch.
-   - git merge <name>: Combines <name> into your current branch.
-   - git branch -d <name>: Deletes a branch.
+	    	. also known as Linear Sequential Model
 
-4. REMOTE (Internet)
-   - git clone <url>: Downloads a repo to your PC.
-   - git push origin <branch>: Sends local saves to GitHub.
-   - git pull origin <branch>: Downloads and merges from GitHub.
-   - git fork: (On GitHub) Copies someone's repo to your account.
+		Advantages:
+		-----------
+		- It is very simple and easy to implement
+		- Best suitable if requirement are fixed.
+		- Best suitable for small projects
 
------------------------------------------------------------
-SECTION 3: JAVASCRIPT & NPM (The Logic)
------------------------------------------------------------
+	    	Limitations:
+		------------
+		- Development time will be increases
+		- Cost of development will be increases
+		- It won't accept requirement changes in the middle
+		- Bug fixing is very costly b'z we cannot identify bugs in early stages of life cycle.
+		- Not at all suitable if requirements  keep on changing
+		- Not suitablefor for large projects
 
-1. VARIABLES & OBJECTS
-   - let: Block-scoped variable (can change).
-   - Object: { key: value } pairs.
-   - JSON: A string format of an object.
-   - Implementation:
-     let person = { "name": "Hitanshu" }; 
-     let jsonStr = JSON.stringify(person); // Object to JSON
 
-2. NPM (Node Package Manager)
-   - npm init: Sets up project.
-   - -y option: Skips questions, sets defaults.
-   - npm install <pkg>: Downloads a tool.
+	   10. Agil Model:
+	   ---------------
+	   - This was the most frequently used and hot cake model in software development.
+	   - Agile Model is divided into multiple sub models
 
-3. FUNCTIONS (Parameters vs Arguments)
-   - Parameter: The variable in the definition (x).
-   - Argument: The real value passed (5).
-   - Implementation:
-     function greet(msg) { console.log(msg); } // msg is Parameter
-     greet("Hello!"); // "Hello!" is Argument
+		1. Rational Unify Process (RUP)
+		2. Adaptive Software Development (ASD)
+		3. Feature Driven Development (FDD)
+		4. Crystal Clear
+		5. Dynamic Software Development Method (DSDM)
+		6. EXtreme Programming (XP)
+		7. SCRUM
+		   etc.
 
-4. ASYNCHRONOUS PROMISES & .THEN()
-   - Promise: An object that will finish later.
-   - .then(): Runs only if successful.
-   - Implementation:
-     const myPromise = new Promise((resolve, reject) => {
-         let success = true;
-         if(success) resolve("Success!");
-         else reject("Error!");
-     });
-     myPromise.then((data) => console.log(data)).catch((err) => console.log(err));
+		Among all these models SCRUM model is most popular and frequently used model.
+		
+		Agile -> Speed
+		- SCRUM is Agile based model
+		- It is not linear sequential model.
+		- It is iterative model
+		- Total software product will be developed increment by increment and each increment is called a sprint.
 
-5. FILE SYSTEM (fs module) - REQUIRE, READ, WRITE, DELETE
-   - REQUIRE: Imports the tool.
-   - Implementation:
-     const fs = require('fs');
-     
-     // WRITE (Sync)
-     fs.writeFileSync('test.txt', 'Hello World');
-     
-     // READ (Sync)
-     let content = fs.readFileSync('test.txt', 'utf8');
-     console.log(content);
-     
-     // DELETE (Sync)
-     fs.unlinkSync('test.txt');
+		
+		- SCRUM is derived from Rugby Game
+		- In every spring 7 to 9 members will work
+		- each sprint will be delivered from one week to 3 weeks time
 
------------------------------------------------------------
-FINAL TREE VISUALIZATION
------------------------------------------------------------
-D:/MY_PROJECT
-├── .git/               (git init)
-├── node_modules/       (npm install)
-├── package.json        (npm init -y)
-├── app.js              (touch app.js)
-└── data.txt            (fs.writeFileSync)
 
-======================================================================
+    Why we should go for DevOps?
+    ----------------------------
+    DevOps and Agile both are different models.
+
+	Similarities:
+	-------------
+	1. Both are software development methodologies.
+	2. Both models concentrating on rapid software development with team collaboration.
+
+	Differences:
+	------------
+	1. The difference will come once development of the project completed.
+	
+	    Agile model talks about only development but not operations.
+	    DevOps model talks about complete product life cycle like development and operations.
+
+	2. In Agile model, seprate people are responsible for development, testing, deployment etc.
+	   But in DevOps, the DevOps engineer is responsible for everything like development to operations and operations to development.
+
+		DevOps Generalist
+
+	3. Agile model won't force us to use automation tools.
+	   But DevOps model is completely based on automation.
+	
+	4. Agile is always giving highest priority only for speed.
+	   But DevOps giving the priority for both quality and speed.
+
+	5. In Agile, client is responsible to give the feedback for the sprint.
+	   But in DevOps, immediate feedback is available from the monitoring tools.
+
+
+What is Devops?
+
+    - Devops is not a new Tool/Technology in the market.
+    - It is a new culture or process to develop,release and maintain software products/projects/applications with high quality in very faster way with automation tools.
+    - Devops is combination of development and operations.
+    - The main objective of devops is to implement collaboration between development and operations teams.
+    - It is the process of continuous development, continuous build, continuous test, continuous release of the software with high quality in very faster way with automation tools.
+
+Top Important points about DevOps:
+
+    1) Devops is not a new Tool/Technology in the market.
+    2) It is a new culture or process to develop,release and maintain software products.
+    3) DevOps is combination of Development and Operations.
+    4) The main objective of devops is to implement collaboration between development and operations teams.
+    5) The beauty of DevOps is everything is automated and we can use several automation tools for development and operations.
+    6) Devops Engineer is All Rounder. He should aware everything. Hence his role is considered as Devops Generalist.
+    7) Devops is not Agile model and it is more than that because it covers both Development and operations, where as Agile covers only Development but not operations.
+    8) Devops Cycle is an Infinite Loop where everything is continuous.
+
+
+							 _______________________________________________________
+							|							|
+							|			TOPIC - 2			|
+							|	INTRODUCTION TO VERSION CONTROL SYSTEM		|
+							=========================================================
+============================================================================================================================================================================================
+2.1) Need of Version Control System?
+2.2) How version control system will work?
+2.3) The basic terminology of version control system
+2.4) Benefits of Version Control System
+2.5) Types of Version Control Systems
+     2.5.1) Centralized Version Control System
+     2.5.2) Distributed Version Control Systems
+
+
+
+version control system is also known as Software Configuration Management (SCM) or Source Code Management (SCR)
+
+2.1: Need of Version Control System?
+------------------------------------
+    - Being a developer we have to write several files which contains source code.
+
+    	Developer -->  Write Code -->  Files
+
+    - Client gave requirement to us to develop a project
+
+    	client project
+    	|-- 100 files developed
+    	|-- client suggested some changes
+	|-- I changed some files source code to meet client requirement
+	|-- I gave the demo and client suggested some more changes
+    	|-- I changed some files source code to meet client requirement
+    	|-- I gave demo 3rd time
+    	|-- Client asked for first version only
+    	|-- My Face with big ????
+
+    - We should not overwrite our code.
+    - Every version we have to maintain.
+
+    	1) Maintaining multiple versions manually is very complex activity.
+	2) Dev-A and Dev-B working on the code. At last we have to merge the code developed by both developers and we have to deliver to the client. If both developers developed a file 	   named with Util.java, then one copy will overwrite with another copy, which creates abnormal behaviour. We should not overwrite our code.	
+
+ 	3) Every change should be tracked like
+	       . who did the change
+	       . when he did the change
+	       . which changes he did etc
+ 	   and all changes should be maintained.
+
+	3) Overwriting of the code should not be happend.
+	4) Developers have to share their code to peer developers, so that multiple developers will work in collaborative way.
+	5) Parallel development must be required
+
+
+2.2: How Version Control System will work?
+------------------------------------------
+    - Version control system always talks about files which contain source code.
+    - Everyone required version control system to maintain different versions of their document.
+
+	tester --->  To maintain different versions of test script
+	Architect --->  To maintain different versions of Documents
+	Project Manager --->  To maintain different versions of Excel sheets
+	etc.
+    				 
+
+		 _______________________________________________________________________________
+		|                    		    REPOSITORY                         		|
+		|              		     (under version control)           		 	|	      
+		|									        |
+		|    ----------------------------------------------------------------------     |
+		|   |	 _________________      ________________      _________________    |    |
+		|   |	|       c1        |    |       c2       |    |       c3        |   |    |
+		|   |	|    version-1    |    |    version-2   |    |    version-3    |   |    |
+		|   |	|_________________|    |________________|    |_________________|   |    |
+		|   |									   |    |
+		|    ----------------------------------------------------------------------     |                                             		      
+		|        	 | commit                      checkout ↑    			|
+		|        	 ↓                                      |       		|
+		|________________|______________________________________|_______________________|
+		          	 |                                      |
+		          	 |                                      |
+		         ________|______________________________________|______
+			|	 |					|      | 
+			|        ↓                                      ↑      |
+			|    ______________________________________________    |
+                 	|   |		       CLIENT APP                  |   | 
+			|   |_____________________|________________________|   |
+			|         	 	  |                            |
+			|			  |			       |
+			|	 ----------------------------------------      |	
+			|	|  ________	 ________     ________   |     |
+			|	| | A.java |	| B.java |   | C.java |	 |     |
+		        |       | |________|    |________|   |________|  |     |
+			|	|	                                 |     |  
+ 			|	 ----------------------------------------      |
+			|						       |
+			┌─────────────────────────────────────────────────────┐
+			│             		   WORKING DIRECTORY          │
+			│               	      (Work Space)            │
+			└─────────────────────────────────────────────────────┘
+
+
+2.3: The Basic Terminology of Version Control System:
+-----------------------------------------------------
+    - Working Directory:
+	
+	. Where developers are required to create/modify files.
+	. Here version control is not applicable. Here we won't use the work like version-1, version2 etc
+
+    - Repository:
+
+	. Where we have to store files and metadata.
+	. Here version control is applicable.
+	. Here we can talk about versions like version-1, version-2 etc
+
+    - Commit:
+	
+	. The process of sending files from working directory to the repository.
+
+    - Checkout:
+	
+	. The process of sending files from repository to working directory.
+
+
+
+2.4: Benefits of Version Control System:
+----------------------------------------
+    1) We can maintain different versions and we can choose any version based on client requirement.
+    2) With every version/commit we can maintain metadata like  commit message
+	- who did changes
+	- when he did the change
+	- what changes he did
+
+    3) Developers can share the code to the peer developers in very easy way.
+    4) Multiple developers can work in collaborative way
+    5) Parallel development.
+    6) We can provide access control like
+	 who can read code
+	 who can modify code
+
+
+2.5: Types of Version Control Systems:
+--------------------------------------
+    - There are 2 types of VCSs
+	1) Centralized Version Control System
+	2) De Centralized/Distributed Version Control System
+
+
+	2.5.1: Centralized Version Control System:
+	------------------------------------------
+	    - The name itself indicates that, this type contains only one central repository and every developer should be connected to that repository.
+	    - The total project code will be stored in the central repository.
+	    - If 4 developers are there, still we have only one repository.
+	    - This type of VCS is very easy to setup and use.
+	    Eg: CVS, SVN, Perforce, TFS, Clearcase etc
+
+	Problems with Centralized VCSs:
+	-------------------------------
+	    1) Central Repository is the only place where everything is stored, which causes single point of failure. If something goes wrong to the central repository then recovery is 
+	       very difficult.
+	    2) All commit and checkout operations should be performed by connecting to the central repositoty via network. If network outage, then no version control to the developer. i.e 
+	       in this type, developer work space and remote repository server should be connected always.
+	    3) All commit and checkout operations should be performed by connecting to the central repositoty via network and hence these operations will become slow, which causes 
+	       performance issues. No local operations and every version control operation should be remote operation.
+	    4) Oranization of central repository is very complex if number of developers and files increases.
+	    etc
+
+	2.5.2: Distributed Version Control Systems:
+	-------------------------------------------
+	    - The name itself indicates the respository is distributed and every developers workspace contains a local copy of the repository. There is no question of central repository.
+	    - If 4 developers are there then 4 repositories will be there.
+		
+		1) The checkout and commit operations will be performed locally. Hence performance is more.
+		2) To perform checkout and commit operations network is not required. Hence if there is any network outage, still version control is applicable.
+		3) If something goes wrong to any repository there is a chance to recover. There is no question of single point of failure.
+		4) To perform push and pull operations network must be required, but these operations are not most common operations and we are performing very rarely.
+		
+		Note:
+		    1) commit and checkout operations will be performed between workspace and repository.
+			 work space – commit ----> Repository
+			 Repository – checkout ----> workspace
+		    
+		    2) push and pull operations will be performed between repositories.
+			 one repository ---push ----> other repository
+			 one repository <---- pull----other repository
+
+	Remote Repository is not Central Repository:
+	--------------------------------------------
+	    1) Every developer has his own local copy of repository. It is not centralized and it is distributed only.
+	    2) commit and checkout operations won't be performed on remote repository and these will be performed on local repository only.
+
+	    The main job of remote repository is just to share our work to peer developers.
+		- High availability, Speed and there is no single point of failure are main reasons for popularity of this model.
+		Eg: Git, Mercurial, Fossil
+
+
+
+						 ---------------------------------------
+						|		TOPIC: 3		|
+						|   FEATURES AND ARCHITECTURE OF GIT	|
+						 =======================================
+============================================================================================================================================================================================
+
+3.1) What is GIT?
+3.2) Features of GIT
+3.3) GIT Architecture
+
+
+3.1) What is GIT?
+
+    ✽ Git is Distributed Version Control System Tool.
+    ✽ Git is not acronym and hence no expansion.But most of the people abbreviated as
+    ✽ "Global Information Tracker".
+    ✽ GIT is developed by Linus Torvalds(Finnish software engineer), who also developed Linux Kenel.
+    ✽ Most of the companies like Microsoft,Facebook,Yahoo,LinkedIn,Intel using Git as Version Control System Tool.
+
+
+3.2) Features of GIT:
+
+     Git is very popular because of the following features:
+	1) Distributed
+	    - Git is developed based on Distributed Version Control System Architecture.
+	    - Because of Distributed Architecture it has several advantages:
+		A) Every Developer has his own local repository. All the operations can be performed locally.Hence local repo and remote repo need not be connected always.
+		B) All operations will be performed locally, and hence peformance is high when compared with other VCSs. i.e it is very speed
+		C) Most of operations are local. Hence we can work offline most of the times.
+		D) There is no single point failure as Every Developer has his own local repository.
+		E) It enables parellel development & automatic-backups. 
+
+	2) Staging Area:
+	    - It is also known as index area.
+	    - There is logical layer/virtual layer in git between working directory and local repository.
+
+	    	Working Directory → Staging Area → Local Repository
+
+	    - We cannot commit the files of working directory directly. First we have to add to the staging area and then we have to commit.
+	    - This staging area is helpful to double check/cross-check our changes before commit.
+	    - This type of layer is not available in other Version Control Systsem Tools like CVS, SVN etc
+	    - Git stores files in repository in some hash form, which saves space.
+	    - GIT will uses internally snapshot mechanism for this. All these conversions and taking snapshots of our data will be happened in staging area before commit.
+	      Eg: If a sample repository takes around 12 GB space in SVN where as in GIT it takes hardly 420 MB.
+	    - Hence Staging Area is the most important Strength of GIT.
+
+	3) Branching and Merging:
+	    - We can create and work on multiple branches simultaneously and all these are branches are isolated from each other. It enables multiple work flows.
+	    - We can merge multiple braches into a single brach. We can commit branch wise also.
+
+	4) Moving files in GIT is very easy as GIT automatically tracks the moves. Whereas in other VCS we need to create a new file & then delete the old one.
+	5) Freeware and Open Source
+	6) It provides support for multiple platforms.
+
+
+3.3) Git Architecture
+
+         -------------------------------			 -------------------------------			 -------------------------------			 -------------------------------
+	|	Working Directory 	|			|	Staging area		|			|	Local Repository	|			|	Remote Repository	|
+	 -------------------------------			 -------------------------------			 -------------------------------			 -------------------------------
+	 		|							|							|							|
+			|							|							|							|
+			|							|							|							|
+			|							|							|							|
+			|			git add				|							|							|
+			|------------------------------------------------------>|			git commit 			|							|
+										|------------------------------------------------------>|			git push			|
+										|							|------------------------------------------------------>|
+										|							|<------------------------------------------------------|																	|							|
+																				git pull			|
+																								|
+    GIt contains 2 types of repositories:
+	1) Local Repository
+	2) Remote Repository
+
+	- For every developer, a separate local repository is available. Developer can perform all checkout and commit operations wrt local repository only.
+	- To perform commit operation, first he has to add files to staging area by using git add command, and then he has to commit those changes to the local repository by using git commit command. Hence commit in GIT is a 2-step process.
+	- commit is applicable only for staging area files but not for working directory files.
+	- If the developer wants to share his work to the peer developers then he has to push his local repository to the remote repository by using git push command.
+	- Remote repository contains total project code, which can be accessible by all developers.
+	- New developer can get local repository by cloning remote repository.For this we have to use git clone command.
+	- A developer can get updates from the remote repository to the local repository by using git pull command.
+
+	git add → To add files from working directory to staging area.
+	git commit → To commit changes from staging area to local repository.
+	git push → To move files from local repository to remote repository.
+	git clone → To create a new local repository from the remote repository.
+	git pull → To get updated files from remote repository to local repository.
+
+
+
+						 ---------------------------------------
+						|		TOPIC: 4		|
+						|   LIFE CYCLE OF FILE IN GIT		|
+						 =======================================
+============================================================================================================================================================================================
+
+Every file in GIT is in one of the following states:
+    1)Untracked:
+	The files which are newly created in working directory and git does not aware of these files are said to be in untracked state.
+
+    2)Staged:
+	✽ The files which are added to staging area are said to be in staged state.
+	✽ These files are ready for commit.
+
+    3)In Repository/ Committed:
+	Any file which is committed is said to be In Repository/Committed State.
+
+    4)Modified:
+	Any file which is already tracked by git, but it is modified in working directory is said to be in Modified State.
+
+
+	 ---------------------------		 -----------------------	 	 -----------------------
+	|			    |		|			|		|			|
+	|	  untracked 	    |		|	staged		|		|in repository commited |
+	|	  modified 	    |		|			|		|			|
+	|  			    |		|  			|		|			|
+	 ---------------------------		 -----------------------		 -----------------------
+	     working Directory				Staging Area			     Local Repository
+
+
