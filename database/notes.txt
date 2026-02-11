@@ -1,0 +1,423 @@
+LECTURE: 01 | 9th Feb, 2026 | 17:30 am. 
+****************************************
+what is Oracle
+    - It is a Database Software / BackEnd tool / RDBMS product (ORDBMS)
+    - by using Oracle s/w we will design and develop Back end application in real time
+
+In IT field user  can interact with two types of applications.
+Those are:
+    1. Front End Application
+    2. Back End Application
+
+    what is Front end application?
+    	- It is an application where the user can directly interacting.
+    	- by using front end form we can send request to web server and also sending data to database. 
+	Ex: UI technologies (HTML, CSS, JS, JQuery.....etc.)
+
+    what is Back end application?
+    	- It is an application where we store end users data / information.
+    	- to establish the connection between front end application (UI) and backend application (DB)
+    	Ex: Oracle, mysql, SQLServer, db2, sybase, postgressSQL.... etc.
+
+where we use Oracle Database in real time
+    - Oracle can be used in differnt applications in real time
+      > Banking Applications
+      > Healthcare Applications
+      > Education Applications
+      > HR management system Applications
+      > Sales & Productions system Applications
+      > Transport system Applications
+      etc.
+
+who want to learn Oracle?
+    - any paltform / any person
+    Ex:
+	Java, Oracle SQL Developer, Oracle PL/SQL programs, Oracle Fusion, PowerBI, AWS, Python, Data Analyst, Oracle DBA etc.
+
+Jobs on Oracle Database
+    - SQL Developer
+    - PL / SQL programmer
+    - DB Developer / Oracle Developer
+
+===========================================================================================================================================================================
+LECTURE: 02 | 12th Sep, 2025 | 6:00 am. | Friday
+**************************************************
+any frontend technologies form can integrate with backend and vice-versa
+java - oracle
+MySQL - python
+
+UI TECHNOLOGIES			BUSINESS LOGIC			DATABASE		CLOUD			PROJECT
+---------------			--------------			--------		------			-------
+. HTML				. CORE JAVA			. ORACLE		. AWS			. SBI BANKING
+. CSS				. ADV. JAVA			. POSTGRESS SQL		. GOOGLE CLOUD		. STUDENT DASBOARD
+. JS				. SPRING						. DOCKERS		. MY WEBSITE
+. BOOTSTRAP			. SPRINGBOOT						. KUBERNET		. REAL TIME PROBLEM PROJECT
+. REACTJS			. DSA
+
+
+
+COURSE DETAILS
+--------------
+Cource Name        :        Oracle19c
+Duration           :        69 session
+
+
+COURSE CONTENT
+--------------
+
+
+===========================================================================================================================================================================
+LECTURE: 03 | 13th Sep, 2025 | 3:00 pm. | Saturday
+**************************************************
+what is data?
+-------------
+	- it is a rawfact i.e. character, numbers, special character.....etc
+	- data is never give meaningfull statements.
+	Ex:
+		SMITH			10021
+		ALLEN			10022
+		WARD			10023
+		MILLER			10024
+		
+
+what is information?
+--------------------
+	- processing of data is called as information
+	- it is always provide a meaningful statements
+	Ex:
+		E_Name			E-ID
+		------			-----
+		SMITH			10021
+		ALLEN			10022
+		WARD			10023
+		MILLER			10024
+
+
+what is Dtabase?
+----------------
+	- it is memory which is used to store the collection of inter-related data or information about an organization or company.
+	Ex:
+		DB_SBI (organization)
+			> Group of branches (bCode, bName, bLoc, ifsc.....)
+				> Group of departments (deptNo, deptName, type....)
+					> Group of employees (eId, eName, sal, doj....)
+						> Group of customers (cName, cAc, cAdd....)
+  					  
+					  inter-related
+					  -------------
+
+		No departments = No employees		no products  = no customers
+		No employees   = No department		no customers = no product
+
+
+Types of database
+------------------
+	- there are two types of databases in the world
+		1. OLTP (Online Transaction Processing)				
+		2. OLAP (Online Analytical Processing)
+
+		1. OLTP (Online Transaction Processing)
+		---------------------------------------
+			- OLTP databases are used to store 'day-to-day' transactional information
+			- OLTP databases are used for "running business" i.e. Live transaction (insert, update, delete, select)
+			- source : application 
+			Ex:
+				oracle, sqlserver, mysql, db2, postgresql...etc.
+
+		2. OLAP (Online Analytical Processing)
+		--------------------------------------
+			- OLAP databases are used to store "historical data or information" i.e. big data
+			- it supports "select" command only (reading data)
+			- source: OLTP
+			Ex:
+				DataWarehouse (DWH)
+
+===========================================================================================================================================================================
+LECTURE: 04 | 14th Sep, 2025 | 10:00 am. | Sunday
+************************************************
+what is data storage
+--------------------
+	- it is a location where we want to store data or information.
+	- there are three methods to store data or information.
+		1. Paper & Books (Before computers)
+		2. Flatfiles or Text file (from computers)
+		3. DBMS (software)					
+
+		2. Flatfiles or Test File
+		-------------------------
+			- data can be stored in files with the help of operating system.
+			
+			Advantages:	
+			-----------
+				- it is computerized system
+				- less man power
+				- less cost
+
+			Disadvantages:
+			--------------
+				- Data redundancy
+				- Data inconsistency
+				- Data retrieval
+				- Data integrity
+				- Data security
+				- Data indexing
+
+				Data redundancy
+				----------------
+					- storing same information in multiple files in computer
+
+				Data inconsistency
+				------------------
+					- irregular data (different values)
+					- it can occur when we have duplicate data i.e. no redundancy = no inconsistency
+
+				Data retrieval
+				--------------
+					- retrieving the required data from flatfiles is highly complex because we need to develop an application program by using 
+					  "c language" whereas retrieving the required data from database is very simple (easy) by using "sql-language".
+
+				Data integrity
+				--------------
+					- to validating data is not possible in files whereas possible in database.
+
+				Data security
+				-------------
+					- flatfiles are give poor security for data compare to database.
+
+				Data indexing
+				-------------
+					- flatfiles are not supporting indexing mechanism whereas database supports indexing mechanism so that retrieving data is faster
+					  than flatfiles.
+
+===========================================================================================================================================================================
+LECTURE: 05 | 15th Sep, 2025 | 6:00 am. | Monday
+************************************************
+
+what is DBMS
+------------	
+	- it is a software tools which is used to manage and maintain data or information in database.
+	- by using DBMS software we can perform the following operations are:
+		> create database memory
+		> create tables
+		> inserting data
+		> updating data
+		> selecting data
+		> deleting data
+
+	user <----------------------> DBMS software <-----------------------------> Database
+				      ( interface )
+
+Models of DBMS
+--------------
+	(1) Hierarchical Database Management System (HDBMS)
+	    Ex:
+		IMS software (Information Management System)
+	
+	(2) Network Database Management System (NDBMS)				NOTE: HDBMS, NDBMS models are outdated in realtime
+	    Ex:
+		IDBMS software (Integrated Database Management System)
+
+	(3) Relational Database Management System (RDBMS)
+		(3.1) Object Relational DBMS (ORDBMS)
+		(3.2) Object Oriented DBMS (OODBMS)
+
+		
+		(3.1) Object Relational DBMS (ORDBMS)
+		--------------------------------------
+			- data can be stored in "table" format.
+				table   : collection of row and columns
+					  - rows or records or tuples 
+					  - columns or fields or attributes 
+		
+				row     : group of columns
+				columns : group of rows
+
+			- completely depends on "SQL"
+			  Ex:
+				Oracle, MySQL, PostgreSQL, SQLServer....etc
+
+		(3.2) Object Oriented DBMS (OODBMS)
+		-----------------------------------
+			- data can be stored in "object" format.
+			- completely depends on "OOPS" concept.
+			- not depends on "SQL" so that these databases are called as "No SQL" databases.
+			  Ex:
+				MongoDB, Cassandra.....etc.
+
+
+										ORACLE
+									========================
+- Oracle is a RDBMS (ORDBMS) product whcih was introduced by "oracle corporation" in 1979. It is used to store data or information of a particulat organization  
+  permanently along with security.
+- the first version of oracle is "oracle 1.0" to "oracle19c" version
+- the latest version of oracle is "oracle 21c"
+									VERSION OF ORACLE
+				 -----------------------------------------------------------------------------------------------
+				|    YEAR	|	 VERSION 	|		FEATURES				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1979	|	Oracle 1.0	|	Not public released				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1980	|	Oracle 2.0	|	First public released, Basic SQL Functionalities|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1982	|	Oracle 3.0	|	First Portable Database				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1984	|	Oracle 4.0	|	Introduced read consistency			|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1986	|	Oracle 5.0 	|	Introduced client-server architecture		|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1988	|	Oracle 6.0	|	Introduced PL / SQL				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   		|			|	Integrity constraints introduced Varchar data	|
+				|   1992	|	Oracle 7.0	|   	type changed into Varchar2, stored procedures,	|
+				|		|			|	functions and tiggers.				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1997	|	Oracle 8.0	|	Object Oriented Features, Table partitioning,	|
+				|		|			|	instead Triggers				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   1998	|	Oracle 8i	|	Rollup, cube methods, Columns increased per a	|
+				|		|	(Internet)	|	table up to 1000				|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   2001	|	Oracle 9i	|	Renaming Column, ANSI Joins			|
+				|---------------|-----------------------|-------------------------------------------------------|	
+				|   2004	|	Oracle 10g	|	Introduced Admin side operations, flashback 	|
+				|		|  (grid technologies)	|	query, Indicate of clauses, regular expressions	|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   		|			|	Read only tables, virtual tables, integer data 	|
+				|   2007	|	Oracle 11g	|	type, using sequence, enables and disable	|
+				|		|			|	triggers.					|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   2013	|	Oracle 12c	|	Truncate table cascasde, multiple indexes,	|
+				|		|   (cloud technology)	|	invisible column, sequence session, new auto 	|
+				|		|			|	increment by using identity.			|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   2018	|	Oracle 18c	|	Polymorphic Table functions, Active Directory	|
+				|		|			|	Integration.					|
+				|---------------|-----------------------|-------------------------------------------------------|
+				|   2019	|	Oracle 19c	|	Active data guard DML redirection, Automatic	|
+				|		|			|	index creation, SQL Queries on Object stores.	|
+				 -----------------------------------------------------------------------------------------------
+
+Working with Oracle
+-------------------
+    - Oracle software is having two editions
+	1. Oracle Express Edition
+	2. Oracle Enterprise Edition
+
+	1. Oracle Express Edition
+	-------------------------
+	    - It supporting partially features (not completely).
+	    Ex: 
+		recyclybin, flaskback, purge, partition table.... etc. are not supporting in oracle express edition
+
+	2. Oracle Enterprise Edition
+	-----------------------------
+	    - It supporting all features.
+	    Ex: recyclebin, flashback, purge, partition table.... etc. are supporting in oracle enterprise edition.
+
+
+HOW TO DOWNLOAD ORACLE19c ENTERPRISE EDITION
+--------------------------------------------
+https://www.oracle.com/database/technologies/oracle21c-windows-downloads.html
+
+Note: Once we installed oracle19c software internally there are two componenets are installed in the system
+	1. Oracle client
+	2. Oracle server
+
+1. Oracle Client:
+-----------------
+    - this client tool is used to perform the following three operations:
+	step 1: connect to oracle DB server.
+	step 2: sending request to oracle DB server.
+	step 3: get response from oracle DB server
+
+    Ex: 
+	sqlplus, sql developer, toad, pl/sql developer.
+
+2. Oracle Server:
+-----------------
+    - It is having two more sub-components are
+	1. Instance
+	2. Database
+
+	1. Instance:
+	------------
+	    - It is a temporary memory.
+	    - this memory is allocating by system from RAM.
+	    - data can be stored temporarly.
+
+	2. Database:
+	------------
+	    - it is a permanent memory.
+	    - this memory is allocating by system from HD.
+	    - data can be stored permanently.
+
+	NOTE: When we want to work on Oracle DB then we follow the following 2 steps procedure:
+	    step 1: connect to Oracle
+	    step 2: communicate with Oracle DB
+
+	    step 1: connect to Oracle:
+	    --------------------------
+		- when user want to connect to oracle DB server we need a DB tool is called as "SQL PLUS / SQL DEVELOPER / TOAD...".
+
+	    step 2: communicate with DB
+	    ---------------------------
+		- when user want to communicate with DB we need a DB language is called as "SQL".
+
+
+SQLPLUS vs SQL:
+----------------
+
+				SQLPLUS							SQL
+		 -----------------------------------------------|-----------------------------------------------
+		| 1. It is a DB tool which was introduced	| 1. It is a DB language which was introduced 	|	
+		|    by "Oracle Corporation".			|    by "IBM".					|
+		|-----------------------------------------------|-----------------------------------------------|
+		| 2. It is used to coonect to Oracle server	| 2. It is used to communicate with DB.		|
+		|-----------------------------------------------|-----------------------------------------------|
+		| 3. It will act as an editor for writing &	| 3. It will provide sub-languages are "DDL, 	|
+		|    executing SQL commands and PL/SQL		|    DML, DQL / DRL, TCL, DCL" used to  perform |
+		|    programs.					|    operations over database.			|
+		 -----------------------------------------------------------------------------------------------
+
+
+HOW TO CONNECT TO ORACLE DB SERVER:
+-----------------------------------
+    1. press window button at the bottom
+    2. search "SQL PLUS" or "sql plus" and click on that
+    3. Enter username: system (Default username)
+    4. Enter password: system
+    connected
+
+    NOTE: Here username is not a case-sensitive but password is a case-sensitive.
+
+
+CONNECTIVITY PROBLEMS:
+----------------------
+    Problem 1:						Solution:
+    ----------						---------
+	Enter username: system				    . go to services				Enter username: system
+	Enter password: system				    . go to oracleserviceORCL			Enter password: system
+	ERROR					  	    . click on it				connected
+	ORA-12560: TNS:protocol adapter error		    . select startup type is "automatic"
+   							    . click start button
+							    . click on apply and ok button
+		
+											
+    Problem 2:						Solution:							How to lock / unlock a user in Oracle DB:
+    ----------						---------							-----------------------------------------
+	Enter username: system				    . Enter username: \sys as sysdba (default username)		    syntax:
+	Enter password: system				    . Enter password: sys (default password)			    -------
+	ERROR:						    . connected							        ALTER USER <USERNAME> ACCOUNT LOCK / UNLOCK
+	ORA-28000: The account is locked.		    . ALTER USER SYSTEM ACCOUNT UNLOCK;
+							    . User altered
+							    . CONN
+							    . Enter username: system
+							    . Enter password: system
+							    . connected
+
+                                                                                                                                                                          
+    Problem 3:						Solution:
+    ----------						--------- 
+	Enter username: \sys as sysdba			    . Re-installation required
+	Enter password: sys
+	ERROR: uable to connect
