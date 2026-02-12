@@ -25,7 +25,8 @@ public class standardBubbleSortImplementation {
     /**
      * Swaps two elements in an array given their indices.
      * * @param array The array where elements need to be swapped.
-     * @param firstIndex Index of the first element.
+     * 
+     * @param firstIndex  Index of the first element.
      * @param secondIndex Index of the second element.
      */
     public static void swapElements(int[] array, int firstIndex, int secondIndex) {
@@ -48,20 +49,20 @@ public class standardBubbleSortImplementation {
 
         // Outer loop: Controls the number of passes through the array
         for (int pass = 0; pass < totalElements; pass++) {
-            
+
             // Optimization: Track if any swap happened in this pass
             boolean wasAnyElementSwapped = false;
 
             // Inner loop: Compares adjacent neighbors
             // We subtract 'pass' because the largest elements are already at the end
             for (int currentIndex = 0; currentIndex < totalElements - 1 - pass; currentIndex++) {
-                
+
                 // If the current element is larger than the next one, they are out of order
                 if (array[currentIndex] > array[currentIndex + 1]) {
-                    
+
                     // SWAP the neighbors (This was the fix!)
                     swapElements(array, currentIndex, currentIndex + 1);
-                    
+
                     // Set flag to true because we made a change
                     wasAnyElementSwapped = true;
                 }

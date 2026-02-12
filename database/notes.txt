@@ -421,3 +421,170 @@ CONNECTIVITY PROBLEMS:
 	Enter username: \sys as sysdba			    . Re-installation required
 	Enter password: sys
 	ERROR: uable to connect
+
+
+HOW TO CREATE A NEW USER ACCOUNT IN ORACLE DB SERVER:
+-----------------------------------------------------
+syntax:
+    CREATE USER <USERNAME> IDENTIFIED BY <PASSWORD>;
+
+SQL> CONNECT
+     Enter username: koushal
+     Enter password: 1234
+     Connected
+									 -----------------------------------------------------------------------------------------------
+SQL> ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;				|	NOTE: In oracle every new user is called as "DUMMY" user (i.e. no permission).		|
+Session altered.							|	      if a user want to connect to oracle server then the user required permission	|
+									|	      from DBA.										|
+SQL> CREATE USER practice IDENTIFIED BY 123;				 -----------------------------------------------------------------------------------------------
+User created.
+
+SQL> CONNECT
+Enter user-name: practice/123
+ERROR:
+ORA-01045: user PRACTICE lacks CREATE SESSION privilege; logon denied
+
+
+How to give 'connect' permission to user:
+-----------------------------------------
+syntax:
+    GRANT <previlege name> TO <username>
+											 SQL> CONNECT
+SQL> CONNECT										 Enter username: practice
+Enter username: system		----->   SQL> GRANT CONNECT TO practice;	-------> Enter password: 123
+Enter password: system			 Grant succeeded.				 Connected
+Connected										 
+											 
+
+How to change password for user:			
+---------------------------------			
+syntax:
+    SQL> CONNECT					SQL> CONNECT	
+    Enter username: 					Enter username: practice			> SQL> CONNECT
+    Enter password:					Enter password: 123				  Enter username: practice
+					-------> 							  Enter password: abc	
+    SQL> PASSWORD; 					SQL> PASSWORD;			------> 	  Connected
+    Changing password for <USERNAME>;			Changing password for practice
+    old password:					old password: 123
+    new password: 					new password: abc
+    Re-type password: 					Retype new password: abc
+    password status					password changed
+
+				
+How to re-create a new password for user (practice) if we forgot:
+-----------------------------------------------------------------
+syntax:
+    SQL> CONNECT							SQL> CONEECT
+    Enter username: system						Enter username: system
+    Enter password: Tiger			-----------------> 	Enter password: Tiger
+    connected								Connected
+	
+    SQL> ALTER USER <USERNAME> IDENTIFIED BY <new password>;		SQL> ALTER USER practice IDENTIFIED BY ABC;
+    user altered							user altered
+	
+									SQL> CONEECT
+									Enter username: practice
+									Enter password: ABC
+									Connected.
+ 
+How to re-create a new password for admin (system) if we forgot:
+-----------------------------------------------------------------
+syntax:
+	SQL> CONNECT (super admin)						SQL> CONNECT
+	Enter username: /sys as sysdba				------->	Enter username: /sys as sysdba 
+	Enter password: sys							Enter password: sys
+	connected.								Connected.
+
+	SQL> ALTER USER <USERNAME> IDENTIFIED BY <NEW PASSWORD>;		SQL> ALTER USER SYSTEM IDENTIFIED BY system;
+										user altered.
+
+										SQL> CONNECT
+										Enter username: SYSTEM
+										Enter password: system
+										connected.
+
+
+How to view username if we forgot?
+----------------------------------
+syntax: 						
+    SQL> CONNECT								SQL> CONNECT
+    Enter username: system (admin)						Enter username: SYSTEM
+    Enter password: system							Enter password: system
+    Connected									Connected.
+							----------> 
+    SQL> SELECT USERNAME FROM ALL_USERS;	 				SQL> SELECT USERNAME FROM ALL_USERS;
+    Display all username 							DISPLAY all username;
+								
+
+How to drop the user from Oracle DB:
+------------------------------------							SQL> CONNECT
+    1. connect to admin (SYSTEM)							Enter username: SYSTEM
+    2. Enter username: 									Enter password: system
+       Enter password:									Connected.
+       status: 						--------------> 
+    3. DROP USER <USERNAME> CASCADE;							SQL> ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE:
+	ERROR										Session altered	
+	ORA-28104: cannot drop administrative user or role
+    4. set the session again 								SQL> DROP USER PRACTICE;
+	ALTER SESSION SET "_ORACLE_SCRIPT" = TRUE;					User dropped
+    5. DROP USER <USERNAME> CASCADE;
+    6. User dropped
+
+
+How to clear SQLPLUS editor:			How to disconnect from oracle server:
+----------------------------			-------------------------------------
+syntax:						syntax:
+	CL SCR;						EXIT:
+
+
+
+									SQL
+							----------------------------------
+- SQL stands for Structure Query Language. which was introuduced by "IBM" with name of "SEQUEL" and later renamed as a "SQL".
+- SQL is used to communicate with databases such as Oracle, SQLServer, MYSQL, DB2, SYBASE, PostgrSQL....etc.
+- SQL queries / statements are not a case sensitive i.e. we can write SQL queries in upper case / lowe case characters.
+Ex:
+	SELECT * FROM Employee; --------> Executed
+	select * from employee; --------> Executed
+	SeLeCt * fROM employee; --------> Executed
+
+	SQL Query should not ends with a semi-colon ";".
+
+
+SUB-LANGUAGES OF SQL:
+---------------------
+1. DATA DEFINITION LANGUAGE (DDL):
+----------------------------------
+    > CREATE
+    > ALTER
+	. ALTER - MODIFY			New Features:
+	. ALTER - ADD				-------------
+	. ALTER - RENAME			    > RECYCLEBIN
+	. ALTER - DROP				    > FLASHBACK
+    > RENAME					    > PURGE
+    > TRUNCATE
+    > DROP
+
+2. DATA MANIPULATION LANGUAGE (DML):
+------------------------------------
+    > INSERT					New Features:
+    > UPDATE					-------------
+    > DELETE					    > INSERT ALL
+						    > MERGE
+
+3. DATA RETRIEVAL / QUERY LANGUAGE (DRL / DQL):
+-----------------------------------------------
+    > SELECT
+
+4. TRANSACTION CONTROL LANGAUGE (TCL):
+--------------------------------------
+    > COMMIT
+    > ROLLBACK
+    > SAVEPOINT
+   
+5. DATA CONTROL LANGAUGE (DCL):
+-------------------------------
+    > GRANT
+    > REVOKE
+
+

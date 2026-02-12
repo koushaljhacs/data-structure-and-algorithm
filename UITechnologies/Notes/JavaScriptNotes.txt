@@ -2084,3 +2084,80 @@ VARIABLE NAMING:
                             var result = mobileNumbers.split(',');
                             document.write(result[0]);
                         </script>
+
+            Boolean Types:
+                - Boolean tyeps are used in decision making.
+                - Boolean type in JavaScript can handle 2 values
+
+                    a) true
+                    b) false
+
+                - Boolean conditions JavaScript can use 1 for true and 0 for false 
+
+                    true = 1
+                    false = 0
+
+                Example: 01
+                    <script>
+                        var Name = "Samsung TV";
+                        var Stock = false;
+                        var status;
+                        if(Stock == 1) {
+                            status = "Available";
+                        } else {
+                            status = "Out of Stock";
+                        }
+                        document.write(`Name = ${Name} <br> Stock = ${status}`);
+                    </script>
+
+            
+            Undefined Types:
+                - It specifies that value is not supplied into reference.
+                - Undefined type is verified by using "undefined" keyword.
+                - It indicates that value is not defined into given reference.
+
+                Example: 01
+                    <script>
+                        var Name = "Samsung TV";
+                        var price;
+                        if(price == undefined) {
+                            document.write(`Name = ${Name}`);
+                        } else {
+                        document.write(`Name = ${Name} <br> price = ${price}`);
+                        }
+                    </script>
+
+                    FAQ: what is the difference between undefined and not-defined?
+                    ans: undefined   :                  reference is there but value is not defined.
+                            var price;                  price is undefined
+                        
+                         not-defined   :                reference  is not there defined.
+                            document.write(price);      price is not-defined
+
+                            Example: 
+                                <script>
+                                    var x;
+                                    document.write(`x: ${x}, y: ${y}`);
+                                </script>
+
+                                output:
+                                    x: undefined, y: ReferenceError: y is not defined
+
+            Null Types: 
+                - It is an exception type.
+                - Exception occurs at run time when value is null.
+                - Null indicates that value is not supplied during run time.
+                - Null is verified by using "null" keyword.
+
+                Example: 01
+                    <script>
+                        var username = prompt("Please enter your name:");
+                        if(username==null) {
+                            document.write("You cancelled the prompt.");
+                        } else if(username.trim() === "") {
+                            document.write("Name can't be empty.");
+                        }
+                        else {
+                            document.write(`Hello ! ${username}`);
+                        }
+                    </script>

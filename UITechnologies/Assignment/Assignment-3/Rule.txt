@@ -20,7 +20,8 @@ STEP 1: CLONE THE REPOSITORY
    cd koushal-clone
    cd octnov
 7. Pull the latest changes:
-   git pull
+   git pull 
+8. check commit id matched or not: f901b85
 
 STEP 2: COPY ASSIGNMENT FOLDER
 9. Copy the ENTIRE "Assignment-3" folder from:
@@ -319,3 +320,4 @@ HINTS
 ================================================================================
 GOOD LUCK!
 ================================================================================
+
