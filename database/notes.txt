@@ -588,3 +588,79 @@ SUB-LANGUAGES OF SQL:
     > REVOKE
 
 
+								DATA DEFINITION LANGUAGE (DDL)
+							-----------------------------------------------
+CREATE:
+-------
+- to create a new DB objects such as tables, views, synonyms, procedure, functions, triggers.....etc.
+
+    DataTypes in Oracle:
+    --------------------
+    - It is an attribute which is used to store the type of data into a column in a table.
+    - Oracle supports the following datatypes are:
+	1. Numeric Data types
+	2. Character / String Data types
+	3. Long Data types
+	4. Date Data Types
+	5. Raw and Long Raw Data types
+	6. LOB Data types
+
+	1. Numeric Data types:
+	----------------------
+	There are two types of numeric data types:-
+	    1.1) INT
+	    1.2) NUMBER (P,S)
+
+	    1.1. INT:
+	    ---------
+	    - storing integer format values.
+	    Ex:
+		SNO INT ---------> SNO NUMBER (38)
+			 convert
+
+		SNO INT (NUMBER(4))
+		--------------------		
+		0	=> Except			NOTE: When we use "INT" data type on a column internally oracle server is converting into "NUMBER" data type
+		11	=> Except			      with maximum size is 38 digits.
+		48	=> Except
+		999	=> Except
+		9999	=> Except
+		99999	=> Reject
+
+	    1.2. NUMBER (p,S):
+	    ------------------
+	    - storing INTEGER and also FLOAT values.
+	    - when we use 
+		NUMBER(P)   : store INTEGER values only
+	    	NUMBER(P,S) : store INTEGER and FLOAT values
+
+		Precision (P):
+		--------------
+		- counting all digits including left and right sides of a decimal expression.
+		Ex:
+		    45.12 	=> precision ---> 4				PRICE NUMBER (6,2)
+		    8967.34	=> precision ---> 6				------------------
+										0.0	 => Except
+		Scale (S):							25.12	 => Except
+		----------							36.457	 => Error
+		- counting the right side digits only.				36.45	 => Except
+		Ex:								2500.00	 => Except
+		    45.12	=> precision ---> 4				35000.00 => Error
+				   scale     ---> 2				9999.99	 => Except
+
+		    8967.342	=> precision ---> 7
+				   scale     ---> 3 
+
+	
+	2. Character / String DataTypes:
+	--------------------------------
+	- storing String foramt data only.
+	- String can be represent with '<STRING>'.
+	Ex:
+	    
+	    ENAME CHAR (10):
+	    ----------------
+	    SMITH	=> Error
+	    'SMITH'	=> Except
+	    1021	=> Error
+	    '1021'	=> Except
