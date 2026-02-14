@@ -664,3 +664,115 @@ CREATE:
 	    'SMITH'	=> Except
 	    1021	=> Error
 	    '1021'	=> Except
+
+	- These are two types:-
+	    2.1. Non-Unicode DataTypes
+		- to store localized data only i.e. English language only.
+		    2.1.1. CHAR (size)
+		    2.1.2. VARCHAR2 (size)
+
+	    2.2. Unicode DataTypes
+		- to store globalized data i.e. all national languages.
+		    2.2.1. NCHAR (size)
+		    2.2.2. NVARCHAR (size)	Here, "N" represent national language.
+
+
+		    2.1.1. CHAR (size):
+		    -------------------
+		    - It is fixed datatypes (static)
+		    - will store non-unicode character in the form of 1 char = 1 byte
+		    - Maximum size is 2000 Byte (200 character)
+		    Ex:
+				SNAME CHAR (10)
+				---------------
+			'Hello'	-----> Hello	------> 5 Bytes / 10 Bytes -----> 5 Bytes wasted
+			'Hel'	-----> Hel	------> 3 Bytes / 10 Bytes -----> 7 Bytes wasted
+			'He' 	-----> He	------> 2 Bytes / 10 Bytes -----> 8 Bytes wasted
+
+		    	Disadvantage:
+			-------------
+			- Memory Wasted
+		
+   	  	    2.1.2. VARCHAR2 (size):
+		    -----------------------
+		    - It is a dynamic datatype.
+		    - will store non-unicode character in the form of 1 char = 1 byte
+		    - Maximum size is 4000 Bytes (4000 character)
+		    Ex:
+				SNAME VARCHAR2 (10)
+				-------------------
+			'Hello'	-----> Hello	------> 5 Bytes / 5 Bytes -----> 0 Bytes wasted
+			'Hel'	-----> Hel	------> 3 Bytes / 3 Bytes -----> 0 Bytes wasted
+			'He' 	-----> He	------> 2 Bytes / 2 Bytes -----> 0 Bytes wasted
+
+			Advantage:
+			----------
+			- Memory Saved
+
+
+		    2.2.1. NCHAR (size):
+		    --------------------
+		    - It is fixed datatypes (static)
+		    - will store unicode character in the form of 1 char = 1 byte
+		    - Maximum size is 2000 Byte (200 character)
+
+		    	Disadvantage:
+			-------------
+			- Memory Wasted
+
+		    2.2.2. NVARCHAR2 (size):
+		    ------------------------
+		    - It is a dynamic datatype.
+		    - will store unicode character in the form of 1 char = 1 byte
+		    - Maximum size is 4000 Bytes (4000 character)
+
+			Advantage:
+			----------
+			- Memory Saved
+
+
+	3. LONG DataTypes:
+	------------------
+	- It is a dynamic data type
+	- will store unicode and non-unicode character in the form of 1 char = 1 Byte
+	- Maximum size is 2 GB.
+	- a table is having only one long data type column.
+	Ex:
+		CAdrress LONG (2GB)
+		-------------------
+		Mr. Smith,		1024 KB = 1 MB
+		H.no:12/45-123,		1024 MB = 1 GB
+		Madhapur,		
+		Hyderabad-500023 .
+
+	
+	4. DATE DataTypes:
+	------------------
+	- are storing Date and Time information.
+	- There are two types of DataTypes:-
+	    4.1. DATE
+	    4.2. TIMESTAMP
+	- The range of DATE DataType is from '01-JAN-4712BC' to '31-DEC-9999AD'.
+
+	    4.1. DATE:
+	    ----------
+	    - it will store DATE and TIME information of a particular day but TIME is optional. If user not INSERT time by default Oracle server will take '00:00:00AM'.
+	    - the default date format of oracle is 'DD-MON-YY / YYYY HH:MI:SS'.
+			DD-MON-YY / YYYY HH:MI:SS
+			1   1     2      1   1  1	---> 7 Bytes (Fixed Memory)
+	    - it allocate maximum size is 7 bytes.
+	    Ex:
+			Transaction Date
+			-----------------
+	 	'26-DEC-2022 10:31:23'	--> Error
+		'26-DEC-2022		--> Allowed
+		SYSDATE			--> 26-DEC-2022 10:43:34
+
+
+	    4.2. TIMESTAMP:
+	    ---------------
+	    - It will store data and time information along with miliseconds.
+			'DD-MON-YY/YYYY HH:MI:SS.MS'
+			 1   1    2     1  1  1  4	---> 11 Bytes (Fixed Memory)
+	    Ex:
+		'27-DEC-2022 9:29:23.0000'
