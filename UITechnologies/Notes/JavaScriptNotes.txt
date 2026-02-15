@@ -2161,3 +2161,534 @@ VARIABLE NAMING:
                             document.write(`Hello ! ${username}`);
                         }
                     </script>
+                    
+
+    Non-Primitive Types:
+        - They are mutable types.
+        - They can change the structure according to state and situation.
+        - There is no fixed range for value.
+        - Value range varies according to memory avaialale.
+        - They are store in heap memory..
+        - JavaScript non-primitive types are:
+
+            a) Array 
+            b) Object
+            c) Map 
+
+            Array:
+                - Array means organizing in order and accessing in random order.
+                - Stack means organizing in order and accessing in LIFO order.
+                - Queue means organizing in order and accessing in FIFO order.
+
+                Q. what is the purpose of array?
+                ans: - array is used in computer programming to reduce overhead and complexity.
+                     - Arrays will reduce overhead by storing values in sequential order.
+                     - Arrays will reduce complexity by storing multiple values under one name.
+                     - Arrays can handle any type of values.
+                     - Arrays size can changed dynamically.
+
+                        Example:
+                            <script>
+                                var values = new Array(2);
+                                values[0] = 10;
+                                document.write(values + "<br>");
+                                document.write(values.length + "<br>");
+
+                                values[1] = 20;
+                                document.write(values + "<br>");
+                                document.write(values.length + "<br>");
+
+                                values[2] = 30;
+                                document.write(values + "<br>");
+                                document.write(values.length + "<br>");
+
+                                values[3] = 40;
+                                document.write(values + "<br>");
+                                document.write(values.length + "<br>");
+
+                                values[4] = 50;
+                                document.write(values + "<br>");
+                                document.write(values.length + "<br>");
+                            </script>
+
+                     NOTE: Few technologies can't allocate various types of memory in sequential order. Hence, they restrict array to same type of values and size can't be changed dynamically.
+                           Example: C, C++, Java etc.,
+
+                Configure Array:
+                    1. Declaring Array
+                    2. Initialization of Memory for Array 
+
+                    1. Declaring Array:
+                        var arrayName;
+                        var products;
+                        var categories;
+
+                    2. Intitialization of Memory:
+                        var arrayName = [];             var arrayName = Array();
+                        var products = [];              var cztegories = new Array();
+
+                    NOTE: we can also assign memory for array.
+                          var arrayName = new Array(size);
+                          var products = new Array(5);
+
+                            <script>
+                                var products;
+                                products = new Array();
+                                products[0] = "TV";
+                                products[1] = "Mobile";
+                                document.write(products[0]);
+                            </script>
+                   
+                            output:
+                                TV
+                    FAQ: What is the difference between Array "[]" meta character and "Array()" constructor?
+                    ans: Array() constructor can define size for array. How ever size can be changed dynamically.
+
+                            Example: 01 [using Array() constructor]
+                                <script>
+                                    var products = new Array(3);
+                                    products[0] = "TV";
+                                    products[1] = "Mobile";
+                                    products[2] = "Laptop";
+                                    document.write(products[2]);
+                                </script>
+
+                                output:
+                                    Laptop
+
+                         [] meta character can't define size for array.
+
+                            Example: 02 [using [] meta character]
+                                <script>
+                                    var products = [];
+                                    products[0] = "TV";
+                                    products[1] = "Mobile";
+                                    products[2] = "Laptop";
+                                    document.write(products[0]);
+                                </script>
+
+                                output:
+                                    TV
+
+                Storing Values into Array:
+                    - values are stored and accessed from an array by using property.
+                    - Property maps to index in memory.
+
+                    syntax:
+                        let values = [];
+                        let values[0] = 10;         valid 
+                        let values["1"] = 20;       valid
+
+                        docuemnt.write(values["0"]);
+                        docuemnt.write(values[1]);;
+
+                        output:
+                            10
+                            20
+
+                    syntax: Intialization of values 
+                        let values = [10, 20, 30];
+                        let values = new Array(10, 20, 30);  
+
+                Reading Value from array:
+                    - we can use the reference of property.
+                        values[0]
+                        values["1"]
+
+                    - By using Array methods 
+                    
+                        toString()      :   reads and returns all array elements in a string format[,]
+                        join()          :   reads and returns all elements with custom delimeter [our own seprator]
+                        slice()         :   reads elements between specified index
+                        filter()        :   returns all elements that match given condition.
+                        find()          :   returns only the first occurence element that match given condition.
+                        map()           :   It is an iterator for presenting elements.
+                                            software design pattern used to present elements in a specific format.
+                                            It doesn't require any condition, initialization and counter.
+
+
+                        Example: 01 [ toString() ]
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                document.write(sales.toString());
+                            </script>
+
+                            output:
+                                34000,32000,60000,42500,52000
+
+                        Example: 02 [ join() ]
+
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                document.write(sales.join(" --> "));
+                            </script>
+
+                            output:
+                                34000 --> 32000 --> 60000 --> 42500 --> 52000
+
+                        Example: 03 [ slice() ]
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                document.write(sales.slice(1,4));
+                            </script>
+
+                            output:
+                                32000,60000,42500
+
+                        Example: 04 [ filter() ]
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                let result = sales.filter(function(value) {return value > 40000});
+                                document.write(result);
+                            </script>
+
+                            output:
+                                60000,42500,52000
+
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                function GetData(value) {
+                                    return value > 50000;
+                                }
+                                var result = sales.filter(GetData);
+                                document.write(result);
+                            </script>
+
+                            output:
+                                52000,60000
+
+                        Example: 05 [ find ]
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                document.write(sales.find(function(value) {return value > 50000}));
+                            </script>
+                            output:
+                                60000
+
+                        Example: 06 [ for ]
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000];
+                                for(var i=0; i<sales.length; i++) {
+                                    document.write(`<li>${sales[i]}</li>`);
+                                }
+                            </script>
+
+                            output:
+                               . 34000
+                               . 32000
+                                60000
+                                42500
+                                52000
+
+                            <script>
+                                let sales = [34000, 32000, 60000, 42500, 52000, 80000, 90000];
+                                sales.map(function(value) {
+                                    document.write(`<li>${value}</li>`);
+                                })
+                            </script>
+
+                            output:
+                                34000
+                                32000
+                                60000
+                                42500
+                                52000
+                                80000
+                                90000
+
+                    - Reading values by using loops and external iterators
+
+                        for()           ]
+                        while()         ]   loops
+                        do..while()     ]
+                        for..in()       ]   iterator of properties (index positions)
+                        for..of()       ]   iterator of values
+
+                        syntax: for loop
+                            for(initialization; condition; iteration) {
+                                // code block
+                            }
+
+                            Example: 01 [ for loop ]
+                                <script>
+                                    let sales = [34000, 32000, 60000, 42500, 52000];
+                                    for(let i=0; i<sales.length; i++) {
+                                        document.write(sales[i] + "<br>");
+                                    }
+                                </script>
+
+                                output:
+                                    34000
+                                    32000
+                                    60000
+                                    42500
+                                    52000
+
+                            Example: 02 [ iterator - for..in ]
+                                <script>
+                                    let sales = [34000, 32000, 60000, 42500, 52000, 56000];
+                                    for (var property in sales) {
+                                        document.write(property + "<br>");
+                                    }
+                                </script>
+                                output:
+                                0
+                                1
+                                2
+                                3
+                                4
+                                5
+
+                            Example: 03 [ iterator - for..of ]
+                                <script>
+                                    let sales = [34000, 32000, 60000, 42500, 52000, 56000];
+                                    for (var value of sales) {
+                                        document.write(value + "<br>");
+                                    }
+                                </script>
+
+                                output:
+                                34000
+                                32000
+                                60000
+                                42500
+                                52000
+                                56000
+
+                            Example: 04 [ both for..in and for..of ]
+                                <script>
+                                    let sales = [34000, 32000, 60000, 42500, 52000, 56000];
+                                    for (var property in sales) {
+                                        document.write(`[${property}] ${sales[property]} <br>`);
+                                    }
+                                </script>
+
+                                output:
+                                [0] 34000
+                                [1] 32000
+                                [2] 60000
+                                [3] 42500
+                                [4] 52000
+                                [5] 56000
+
+                            FAQ: What is the difference between for..in and for..of iterators?
+                            ans: of will print all the values
+                                 in will print all the index positions or properties
+
+                    [pending]
+                    Dynamically Creating and Adding DOM elements using Array:
+                        1. we can create any HTML element with JavaScript by using
+                            document.createElement("elementName");
+                            document.createElement("h2");
+                            docuemnt.createElement("img");
+
+                        2. we can add element dynamically into page by using the method 
+                            appendChild();
+                            append()
+                            prepend()
+
+                            Example: 01
+                                <!DOCTYPE html>
+                                <html>
+                                    <head>
+                                        <title>Dynamic</title>
+                                        <script>
+                                            function AddImage() {
+                                                var pic = document.createElement("img");
+                                                pic.src = "../public/images/neckbank.png";
+                                                pic.width = 100;
+                                                pic.height = 100;
+                                                pic.border = 5;
+                                                document.getElementById("container").appendChild(pic);
+                                            }
+                                        </script>
+                                    </head>
+                                    <body>
+                                        <div>
+                                            <button onclick="AddImage()">Add Image to Page</button>
+                                        </div>
+                                        <div id="container">
+
+                                        </div>
+                                    </body>
+                                </html>
+
+                            Example: 02
+                                <!DOCTYPE html>
+                                <html>
+                                    <head>
+                                        <title>Dynamic</title>
+                                        <script>
+                                            var products = ["../public/images/neckband.png", "../public/images/speaker.png", "../public/images/watch.png"];
+                                            function bodyload() {
+                                                var pic = document.createElement("img");
+                                                pic.src = path;
+                                                pic.width = 200;
+                                                pic.height = 200;
+                                                docuement.getElementById("container").appendChild(pic);
+
+                                                var option = docuement.createElement("option");
+                                                option.text = path;
+                                                document.querySelector("select").appendChild(option);
+
+                                                var li = document.createElement("li");
+                                                li.innerHTML = path;
+                                                document.querySelector("ol").appendChild(li);
+                                            }
+                                        </script>
+                                    </head>
+                                    <body onload="bodyload()">
+                                    <div id="container">
+
+                                    </div> 
+                                    <h2>Select Path</h2>
+                                    <select>
+
+                                    </select>
+
+                                    <h2>Image Path List</h2>
+                                    <ol>
+
+                                    </ol>
+                                    </body>
+                                </html>
+
+                Reading Values from Array and Presenting:
+                    - Creating a new Element 
+                        docuemnt.createElement("elementName");
+                    - Adding element into page
+                        appendChild(elementReference);
+
+                    Example: 01
+                        <!DOCTYPE html>
+                        <html>
+
+                        <head>
+                            <title></title>
+                            <script>
+                                var categories = ["Electronics", "Footwear", "Fashion"];
+                                function bodyload() {
+                                    for (var category of categories) {
+                                        var li = document.createElement("li");
+                                        li.innerHTML = category;
+                                        document.querySelector("ol").appendChild(li);
+
+                                        var option = document.createElement("option");
+                                        option.text = category;
+                                        document.querySelector("select").appendChild(option);
+
+                                        var tr = document.createElement("tr");
+                                        var td = document.createElement("td");
+                                        td.innerHTML = category;
+                                        tr.appendChild(td);
+                                        document.querySelector("tbody").appendChild(tr);
+                                    }
+                                }
+                            </script>
+                        </head>
+
+                        <body onload="bodyload()">
+                            <div class="container-fluid">
+                                <h2 class="text-center bg-danger text-white">Arrays</h2>
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>Categories List</h3>
+                                        <ol>
+
+                                        </ol>
+                                    </div>
+                                    <div class="col">
+                                        <select>
+
+                                        </select>
+                                    </div>
+                                    <div class="col">
+                                        <h3>Categories Table</h3>
+                                        <table class="table table-hover table-dark">
+                                            <thead>
+                                                <tr>
+                                                    <th>Categories</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </body>
+
+                        </html>
+
+                FAQ: What type of data we can store in array?
+                ans: Array can handle any type of data, both primitive, non-primitive and functions.
+
+                    Example: 01
+                        <script>
+                            var values = ["A", 1000, true, ['TV', 'Mobile'], function(){document.write("Mobile function ")}];
+                            document.write(values[3][1] + "<br>");
+                            values[4]();
+                        </script>
+
+                FAQ: why we need a function in Array?
+                ans: Array is defined with functions to handle call back mechanism.
+                     Call back is a technique where functions will execute according to situation.
+
+                     NOTE: JavaScript E5+ introduces Array Destruction.
+
+                        Example: 01 [ without destruction ]
+                            var values = [10, "John"];
+                            var sno = values[0];
+                            var name = values[1];
+
+                        Example: 02 [ with destruction]
+                            var values = [10, "John"];
+                            var [sno, name] = values;
+                            var [sno, name, salary] = values; // salary will be undefined
+                            var [sno] = values;               // sno = 10
+
+                        Example: 03 [ destruction with callback ]
+                            <script>
+                                var authorize = ["admin", function(){document.write("Login Success")}, function(){document.write("Login Failed")}];
+
+                                var [password, success, failure] = authorize;
+
+                                var yourPassword = prompt("Enter Password");
+                                if(password == yourPassword){
+                                    success();
+                                } else {
+                                    failure();
+                                }
+                            </script>
+
+                        NOTE: Function in Array must be Anonymous.
+                              Anonymous functions will not have a name.
+
+                                function() {         |   function success() {
+                                    // code block    |       // code block
+                                }                    |   }   
+                                 Anonymous function  |    Invalid in array
+
+                Adding values into Array:
+                    1. push()          :   adds new value at the end of the array as last element
+                    2. unshift()       :   adds new value at the begining of the array as first element
+                    3. splice()        :   adds value at specified index position as new value.
+
+                    syntax:
+                        arrayName.push("item1", "item2",...);
+                        arrayName.unshift("item1", "item2",...);
+                        arrayName.splice(startIndex, deleteCount, "item1", "item2",...);
+
+
+                Removing values from Array:
+                    1. pop()           :   removes last element from array
+                    2. shift()         :   removes first element from array
+                    3. splice()        :   removes element from specified index position
+
+                    syntax:
+                        arrayName.pop();
+                        arrayName.shift();
+                        arrayName.splice(startIndex, deleteCount);
+
+
