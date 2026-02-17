@@ -776,3 +776,384 @@ CREATE:
 			 1   1    2     1  1  1  4	---> 11 Bytes (Fixed Memory)
 	    Ex:
 		'27-DEC-2022 9:29:23.0000'
+
+
+
+	5. RAW & LONG RAW DataTypes:
+	----------------------------
+	- Storing image / audio / video file into binary format (0101010010001).
+	- these data types are also called as "Binary DataTypes" in oracle.
+	    5.1. RAW maximum size	. 2000 Bytes (static)
+	    5.2. LONG RAW Maximum size 	. 2 GB (Dynamic)
+
+
+	6. LOW DataTypes:
+	-----------------
+	- Large Objects DataTypes.
+	    6.1. CLOB
+	    6.2. NCLOB
+	    6.3. BLOB
+
+	    6.1. CLOB:
+	    ----------
+	    - Character large object.
+	    - will store non-unicode char's
+	    - it is a dynamic datatype
+	    - maximum size is 4 GB.
+
+	    6.2. NCLOB:
+	    -----------
+	    - National Character Large Object
+	    - Will store unicode character
+	    - It is a dynamic datatype
+	    - maximum size is 4 GB.
+
+	    6.3. BLOB:
+	    ----------
+	    - Binary large object
+	    - It is a dynamic datatype
+	    - will store image / audio / video file inthe form of 010101010100010
+	    - maximum size is 4 GB.
+
+	summary:
+	~~~~~~~~
+	NON-UNICODE CHARACTER:					UNICODE CHARACTER:				BINARY DATA:
+	----------------------					------------------				------------
+	- CHAR (size)			- 	2000 Bytes	NCHAR (size)		-	2000 Bytes	RAW		- 	2000 Bytes
+	- VARCHAR2 (size)		- 	4000 Bytes	NVARCHAR (size)		- 	4000 Bytes	LONG RAW	- 	2 GB
+	- LONG				- 	2 GB		LONG			- 	2 GB		BLOB		-	4 GB
+	- CLOB				- 	4 GB		NCLOB			- 	4 GB
+
+	
+    How to create a new table in Oracle DB:
+    ---------------------------------------
+    syntax:
+	1. login to user
+	2. if we create then privelige error shown
+	3. login to system user
+	4. GRANT CREATE TABLE TO KOUSHAL;
+	5. again login with user
+	6. create table
+	    CREATE TABLE <tablename> (<column name1> <datatype> [size], <column name2> <datatype> [size],.....);
+
+		SQL> CREATE TABLE STUDENT (STID INT, SNAME CHAR(10), SFEE NUMBER(6,2));
+		Table created.
+	
+    To view list of tables in Oracle DB:
+    ------------------------------------
+    syntax:
+	SELECT * FROM TAB:
+
+	SQL> SELECT * FROM TAB;
+	TNAME
+	--------------------------------------------------------------------------------
+	TABTYPE        CLUSTERID
+	------------- ----------
+	STUDENT
+	TABLE
+
+    To view the structure of a Table:
+    ---------------------------------
+    syntax:
+	DESC <TABLE NAME>; (desc-> describe)
+
+	SQL> DESC STUDENT;
+ 	Name                                      Null?    Type
+ 	----------------------------------------- -------- ----------------------------
+ 	STID                                               NUMBER(38)
+ 	SNAME                                              CHAR(10)
+ 	SFEE                                               NUMBER(6,2)
+
+
+
+    ALTER:
+    ------
+    - to modify the structure of a table
+    - is having four sub-commands
+	1. ALTER-MODIFY
+	---------------
+	- to change datatype and also the size of datatype of a column
+	syntax:
+	    ALTER TABLE <TABLE NAME> MODIFY <COLUMN NAME> <NEW DATATYPE> [new size];
+
+		SQL> ALTER TABLE STUDENT MODIFY SNAME VARCHAR2(5);
+		Table altered.
+
+		SQL> DESC STUDENT;
+		 Name                                      Null?    Type
+		 ----------------------------------------- -------- ----------------------------
+		 STID                                               NUMBER(38)
+		 SNAME                                              VARCHAR2(5)
+		 SFEE						    NUMBER(6,2)
+
+
+	2. ALTER-ADD:
+	-------------
+	- to add a new column to a table.
+	syntax:
+	    ALTER TABLE <TABLE NAME> ADD <NEW COLUMN NAME> <DATATYPE> [size]
+
+		SQL> ALTER TABLE STUDENT ADD SADDRESS VARCHAR2(20);
+		Table altered.
+
+		SQL> DESC STUDENT;
+ 		 Name                                      Null?    Type
+ 		 ----------------------------------------- -------- ----------------------------
+ 		 STID                                               NUMBER(38)
+		 SNAME                                              VARCHAR2(5)
+ 		 SFEE                                               NUMBER(6,2)
+  		 SADDRESS                                           VARCHAR2(20)
+
+
+	3. ALTER-RENAME:
+	----------------
+	- to change a column name.
+	syntax:
+	    ALTER TABLE <TABLE NAME> RENAME <COLUMN> <OLD COLUMN NAME> TO <NEW COLUMN NAME>
+
+		SQL> ALTER TABLE STUDENT RENAME COLUMN SNAME TO STUDENTNAMES;
+		Table altered.
+
+		SQL> DESC STUDENT;
+		 Name                                      Null?    Type
+		 ----------------------------------------- -------- ----------------------------
+		 STID                                               NUMBER(38)
+		 STUDENTNAMES                                       VARCHAR2(5)
+		 SFEE                                               NUMBER(6,2)
+		 SADDRESS
+
+
+	4. ALTER- DROP:
+	---------------
+	- to delete / drop a column from a table.
+	syntax:
+	    ALTER TABLE <TABLE NAME> DROP <COLUMN> <COLUMN NAME>;
+
+		SQL> ALTER TABLE STUDENT DROP COLUMN SFEE;
+		Table altered.
+
+		SQL> DESC STUDENT;
+		 Name                                      Null?    Type
+		 ----------------------------------------- -------- ----------------------------
+		 STID                                               NUMBER(38)
+		 STUDENTNAMES                                       VARCHAR2(5)
+		 SADDRESS
+
+
+    RENAME:
+    -------
+    - to change a table name
+    syntax:
+	RENAME <OLD TABLE NAME> TO <NEW TABLE NAME>;
+
+	SQL> RENAME STUDENT TO SDETAILS;
+	Table renamed.
+
+	SQL> DESC STUDENT;
+	ERROR:
+	ORA-04043: object STUDENT does not exist
+
+	SQL> DESC SDETAILS;
+	 Name                                      Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 STID                                               NUMBER(38)
+	 STUDENTNAMES                                       VARCHAR2(5)
+	 SADDRESS
+
+	SQL> RENAME SDETAILS TO STUDENT;
+	Table renamed.
+
+	SQL> DESC STUDENT
+	 Name  	                                   Null?    Type
+	 ----------------------------------------- -------- ----------------------------
+	 STID                                               NUMBER(38)
+	 STUDENTNAMES                                       VARCHAR2(5)
+	 SADDRESS                                           VARCHAR2(20)
+
+
+    TRUNCATE:
+    ---------
+    - to delete all rows (data) from a table at a time.
+    - deleting rows but not columns (structure).
+    - deleting rows (data) are permanent.
+    - we cannot delete a specific row because truncate command is not allowed "WHERE" condition.
+    syntax:
+	TRUNCATE TABLE <TABLE NAME>;
+
+	SQL> SELECT * FROM STUDENT;
+
+      	STID STUDE SADDRESS
+	---------- ----- --------------------
+      	1001 SHANU KOLKATA
+
+	SQL> TRUNCATE TABLE STUDENT;
+	Table truncated.
+
+	SQL> SELECT * FROM STUDENT;
+	no rows selected
+
+
+    DROP:
+    -----
+    - to delete the entire table including rows & column.
+    syntax:
+	DROP TABLE <TABLE NAME>;
+
+	SQL> INSERT INTO STUDENT VALUES (1, 'A', 'HYD');
+	1 row created.
+
+	SQL> INSERT INTO STUDENT VALUES (1, 'B', 'HYD');
+	1 row created.
+
+	SQL> SELECT * FROM STUDENT;
+        STID STUDE SADDRESS
+	---------- ----- --------------------
+         1 A     HYD
+         1 B     HYD
+
+	SQL> DROP TABLE STUDENT;
+	Table dropped.						NOTE: before oracle 10g enterprise edition once we dropped a table that was permanent whereas from oracle
+								      10g enterprise edition once we dropped a table that was temporary.
+	SQL> SELECT * FROM STUDENT;
+	SELECT * FROM STUDENT
+              *
+	ERROR at line 1:
+	ORA-00942: table or view does not exist
+
+
+	SQL> SELECT * FROM TAB;
+
+	TNAME
+	--------------------------------------------------------------------------------
+	TABTYPE        CLUSTERID
+	------------- ----------
+	BIN$lYMTXFNZQOOR+UhnZ/bGvQ==$0
+	TABLE
+
+
+    New Features Of Oracle10g Enterprise Edition:
+    ---------------------------------------------
+    . RECYCLEBIN
+    . FLASHBACK
+    . PURGE
+
+    RECYCLEBIN:
+    -----------
+    - It is system defined table.
+    - It will store the information about deleted tables.
+    - It is similar to windows recyclebin in computer.
+
+    To view the deleted table in RECYCLEBIN:
+    ----------------------------------------
+    syntax:
+	SELECT OBJECT_NAME, ORIGINAL_NAME FROM RECYCLEBIN;
+	
+	SQL> DESC RECYCLEBIN; [to view the structure of recycle bin]
+	 Name                                      Null?    Type
+	 ---------------------------------------- -------- ----------------------------
+	 OBJECT_NAME                               NOT NULL VARCHAR2(128)
+	 ORIGINAL_NAME                                      VARCHAR2(128)
+
+	SQL> SELECT OBJECT_NAME, ORIGINAL_NAME FROM RECYCLEBIN;
+
+	OBJECT_NAME
+	--------------------------------------------------------------------------------
+	ORIGINAL_NAME
+	--------------------------------------------------------------------------------
+	BIN$lYMTXFNZQOOR+UhnZ/bGvQ==$0
+	STUDENT
+
+
+    FLASHBACK:
+    ----------
+    - It is a DDL command.
+    - to restore deleted tables from recyclebin to database memory.
+
+    syntax:
+	FLASHBACK TABLE <TABLE NAME> TO BEFORE DROP;
+
+	SQL> FLASHBACK TABLE STUDENT TO BEFORE DROP;
+	Flashback complete.
+
+	SQL> SELECT OBJECT_NAME, ORIGINAL_NAME FROM RECYCLEBIN;
+	no rows selected
+
+	SQL> SELECT * FROM STUDENT;
+        STID STUDE SADDRES
+	---------- ----- --------------------
+         1 A     HYD
+         1 B     HYD
+
+	SQL> SELECT * FROM TAB;
+	TNAME
+	--------------------------------------------------------------------------------
+	TABTYPE        CLUSTERID
+	------------- ----------
+	STUDENT
+	TABLE
+
+
+    PURGE:
+    ------
+    - to delete a table from database / from recyclebin permanently.
+    case-1: to delete a specific table from recyclebin:
+    ---------------------------------------------------
+    syntax:
+	PURGE TABLE <TABLE NAME>;
+
+	SQL> PURGE TABLE TEST1;
+	Table purged.
+
+	SQL> SELECT OBJECT_NAME, ORIGINAL_NAME FROM RECYCLEBIN;
+	OBJECT_NAME
+	--------------------------------------------------------------------------------
+	ORIGINAL_NAME
+	--------------------------------------------------------------------------------
+	BIN$eVkR+F4mRhirdSo3qLPy0Q==$0
+	TEST2
+
+	SQL> FLASHBACK TABLE TEST1 TO BEFORE DROP;
+	FLASHBACK TABLE TEST1 TO BEFORE DROP
+	*
+	ERROR at line 1:
+	ORA-38305: object not in RECYCLE BIN
+
+    case-2: to delete all tables from recyclebin:
+    ---------------------------------------------
+    syntax:
+	PURGE RECYCLEBIN;
+
+	SQL> PURGE RECYCLEBIN;
+	Recyclebin purged.
+
+	SQL> SELECT OBJECT_NAME, ORIGINAL_NAME FROM RECYCLEBIN;
+	no rows selected
+
+    case-3: to delete a table from database permanently:
+    ----------------------------------------------------
+    syntax:
+	DROP TABLE <TABLE NAME> PURGE;
+
+
+	SQL> CREATE TABLE TT1 (SNO INT);
+	Table created	
+
+	SQL> SELECT * FROM TAB;
+	TNAME
+	--------------------------------------------------------------------------------
+	TABTYPE        CLUSTERID
+	------------- ----------
+	TT1
+	TABLE
+
+	SQL> DROP TABLE TT1 PURGE;
+	Table dropped.
+
+	SQL> SELECT OBJECT_NAME, ORIGINAL_NAME FROM RECYCLEBIN;
+	no rows selected
+
+	SQL> FLASHBACK TABLE TT1 TO BEFORE DROP;
+	FLASHBACK TABLE TT1 TO BEFORE DROP
+	*
+	ERROR at line 1:
+	ORA-38305: object not in RECYCLE BIN
