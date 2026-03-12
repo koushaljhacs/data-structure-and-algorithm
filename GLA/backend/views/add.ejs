@@ -3,13 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
+    <title>Add Product - MyStore</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --light-gray: #f8f9fa;
+            --dark-gray: #343a40;
+            --border-color: #dee2e6;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+        }
+        .navbar {
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar .brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .navbar .nav-links a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1rem;
+        }
+         .navbar .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .main-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            border-color: var(--primary-color);
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+    </style>
 </head>
 <body>
-    <form action="/submit" method="get">
-        <label for="">ADD Product</label>
-        <input type="text" name="p_name" placeholder="Product Name>
-        <button type="submit">submit</button>
-    </form> 
+    <nav class="navbar">
+        <a href="/product" class="brand">MyStore</a>
+        <div class="nav-links">
+            <a href="/product">Products</a>
+            <a href="/add" class="active">Add Product</a>
+        </div>
+    </nav>
+    <main class="main-content">
+        <h1>Add a New Product</h1>
+        <form action="/add" method="POST">
+            <div class="form-group">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" name="product" class="form-control" placeholder="e.g., Smart Watch" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Product</button>
+        </form>
+    </main>
 </body>
 </html>
