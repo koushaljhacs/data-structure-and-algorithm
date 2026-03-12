@@ -7,6 +7,8 @@
     <style>
         :root {
             --primary-color: #4a90e2;
+            --secondary-color: #5c6ac4;
+            --danger-color: #d0021b;
             --light-gray: #f8f9fa;
             --dark-gray: #343a40;
             --border-color: #dee2e6;
@@ -64,16 +66,26 @@
             border-radius: 4px;
         }
         .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 1rem 1.5rem;
             border-bottom: 1px solid var(--border-color);
         }
         .product-item:last-child {
             border-bottom: none;
         }
+        .product-item .product-name {
+            font-size: 1.1rem;
+        }
+        .product-item .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
         .btn {
             display: inline-block;
-            padding: 0.8rem 1.5rem;
-            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
             font-weight: bold;
             text-align: center;
             text-decoration: none;
@@ -84,10 +96,14 @@
         .btn-primary {
             background-color: var(--primary-color);
             color: #fff;
-            border-color: var(--primary-color);
         }
-        .btn-primary:hover {
-            opacity: 0.9;
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: #fff;
         }
     </style>
 </head>
@@ -106,14 +122,20 @@
         </div>
         <div class="product-list">
             <% if (products.length > 0) { %>
-                <% products.map(item => { %>
+                <% products.forEach(item => { %>
                     <div class="product-item">
-                        <%= item %>
+                        <span class="product-name"><%= item.name %></span>
+                        <div class="actions">
+                            <a href="/product/<%= item.id %>/edit" class="btn btn-secondary">Edit</a>
+                            <form action="/product/<%= item.id %>?_method=DELETE" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 <% }); %>
             <% } else { %>
                 <div class="product-item">
-                    <p>No products found. Add one!</p>
+                    No products found. Add one!
                 </div>
             <% } %>
         </div>
