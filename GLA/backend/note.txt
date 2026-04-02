@@ -1,0 +1,87 @@
+STUDENT-PROJECT
+|_database
+  |_migration
+    |_developement
+      |_student.sql
+
+
+backend
+|_src
+  |_config
+  | |_database.js
+  |_model
+    |_studentModel.js
+
+
+	
+
+
+|_.env
+|_package.json
+
+env:
+====
+DB_USER=admin
+DB_PASSWORD=12345678
+DB_HOST=100.81.13.80 
+DB_PORT = 5432
+DB_NAME = student
+DB_SCHEMA = PUBLIC
+
+
+package.json:
+=============
+
+{
+	"name":  "backend",
+	"version": "1.0.0",
+	"description": "student database",
+	"main": "server.js",
+	"script": {
+		"start": "node server.js",
+	},
+	"dependencies": {
+		"express": "^4.2.21",
+		"pg"		
+	}
+	
+}
+
+
+
+database.js
+===========
+
+const {pool} = require('pg');
+require('dotenv}.config();
+
+const pool = new Pool({
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	port: process.env.DB_PORT,
+	host: process.env.DB_HOST,
+	database: process.env.DB_name,
+});
+
+module.exports = pool;
+
+
+
+studentModel.js:
+=================
+const pool = require('../config/database');
+sum()
+add();
+
+const getAllStudents = async () => {
+	cosnt result = await pool.query('SELECT * FROM student ORDER BY ASC');
+	return result.rows;
+};
+
+module.exports = {
+	getAllStudents
+};
+
+
+sum()
+async
